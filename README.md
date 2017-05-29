@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="./images/nicohaho-logo.png" width="400" height="400">
+  <img src="./images/nicohaco-logo.png" width="400" height="400">
 </div>
 
-## NicoHakoとは？
+## NicoHacoとは？
 [NicoBox](https://itunes.apple.com/jp/app/nicobox-%E3%83%8B%E3%82%B3%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9/id421753493?mt=8)のPC版アプリです。  
 NicoBoxと同様に、ニコニコ動画を音楽として聞くことに特化しています。
 
@@ -12,7 +12,7 @@ NicoBoxと同様に、ニコニコ動画を音楽として聞くことに特化�
 [![Build Status](https://travis-ci.org/abouthiroppy/nicohako.svg?branch=master)](https://travis-ci.org/abouthiroppy/nicohako)
 
 ## ダウンロード
-[こちら](https://github.com/abouthiroppy/nicohako/releases)から最新のdmgをダウンロードし、インストーラーを使う。
+[こちら](https://github.com/abouthiroppy/nicohaco/releases)から最新のdmgをダウンロードし、インストーラーを使う。
 
 ## 検証プラットフォーム
 - [ ] windows
@@ -28,13 +28,13 @@ NicoBoxと同様に、ニコニコ動画を音楽として聞くことに特化�
 [mi77jp/nicohaco-logo](https://github.com/mi77jp/nicohaco-logo)  
 
 ## Changelog
-[CHANGELOG.md](https://github.com/abouthiroppy/nicohako/blob/master/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/abouthiroppy/nicohaco/blob/master/CHANGELOG.md)
 
 ## リリースログ
-[リリースリスト](https://github.com/abouthiroppy/nicohako/releases)
+[リリースリスト](https://github.com/abouthiroppy/nicohaco/releases)
 
 ## 要望、バグ報告
-[Issues](https://github.com/abouthiroppy/nicohako/issues)の方へ起票してください。
+[Issues](https://github.com/abouthiroppy/nicocako/issues)の方へ起票してください。
 ## PR, ISSUEについて
 日本語でも英語でも可能です。
 

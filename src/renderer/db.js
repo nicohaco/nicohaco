@@ -2,7 +2,7 @@
 
 import Dexie from 'dexie';
 
-const db = new Dexie('nicohako');
+const db = new Dexie('nicohaco');
 
 // mylist:
 //   videoId,

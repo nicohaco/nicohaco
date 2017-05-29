@@ -1,5 +1,5 @@
 {
-  "name": "NicoHako",
+  "name": "NicoHaco",
   "main": "dist/main.js",
   "author": "abouthiroppy <git@about-hiroppy.com http://about-hiroppy.com",
   "version": "0.0.1",
@@ -80,7 +80,6 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "axios": "^0.16.1",
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
     "convert-keys": "^1.2.0",
@@ -102,7 +101,7 @@
     "redux-saga": "^0.15.3"
   },
   "build": {
-    "appId": "com.electron.nicohako",
+    "appId": "com.electron.nicohaco",
     "files": [
       "dist",
       "index.html",

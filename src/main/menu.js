@@ -67,7 +67,7 @@ const help = {
   submenu: [
     {
       label: 'GitHub repository',
-      click: () => shell.openExternal('https://github.com/abouthiroppy/nicohako')
+      click: () => shell.openExternal('https://github.com/abouthiroppy/nicohaco')
     }
   ]
 };

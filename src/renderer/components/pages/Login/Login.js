@@ -23,7 +23,7 @@ class Login extends React.Component<void, Props, void> {
       <div className={styles.container}>
         <div className={styles.description}>
           <div className={styles.icon} />
-          <p>NicoHakoとはNicoBoxのPC版クライアントです</p>
+          <p>NicoHacoとはNicoBoxのPC版クライアントです</p>
           <p>Version: α</p>
         </div>
         <form className={styles.form}>
@@ -60,7 +60,7 @@ class Login extends React.Component<void, Props, void> {
             ログインする
           </Button>
         </div>
-        <p>バグ・要望があればHelpにあるNicoHakoのissuesへどうぞ</p>
+        <p>バグ・要望があればHelpにあるNicoHacoのissuesへどうぞ</p>
       </div>
     );
   }

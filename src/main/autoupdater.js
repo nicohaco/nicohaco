@@ -11,7 +11,7 @@ const GhReleases = require('electron-gh-releases');
 function initAutoUpdater() {
 
   const options = {
-    repo          : 'abouthiroppy/nicohako',
+    repo          : 'abouthiroppy/nicohaco',
     currentVersion: app.getVersion()
   };
   const updater = new GhReleases(options);
