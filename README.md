@@ -11,6 +11,9 @@ NicoBoxと同様に、ニコニコ動画を音楽として聞くことに特化�
 
 [![Build Status](https://travis-ci.org/abouthiroppy/nicohako.svg?branch=master)](https://travis-ci.org/abouthiroppy/nicohako)
 
+## ダウンロード
+[こちら](https://github.com/abouthiroppy/nicohako/releases)から最新のdmgをダウンロードし、インストーラーを使う。
+
 ## 検証プラットフォーム
 - [ ] windows
 - [x] osx
@@ -25,6 +28,10 @@ NicoBoxと同様に、ニコニコ動画を音楽として聞くことに特化�
 [mi77jp/nicohaco-logo](https://github.com/mi77jp/nicohaco-logo)  
 
 ## Changelog
+[CHANGELOG.md](https://github.com/abouthiroppy/nicohako/blob/master/CHANGELOG.md)
+
+## リリースログ
+[リリースリスト](https://github.com/abouthiroppy/nicohako/releases)
 
 ## 要望、バグ報告
 [Issues](https://github.com/abouthiroppy/nicohako/issues)の方へ起票してください。
@@ -32,7 +39,8 @@ NicoBoxと同様に、ニコニコ動画を音楽として聞くことに特化�
 日本語でも英語でも可能です。
 
 ## スペシャルサンクス
-Icon: [@mi77](https://github.com/mi77jp)
+Icon: [@mi77](https://github.com/mi77jp)  
+デバッグに協力してくださった皆さん
 
 ## 開発
 ```shell
