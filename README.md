@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./images/nicohaho-logo.svg" width="400" height="400">
+  <img src="./images/nicohaho-logo.png" width="400" height="400">
 </div>
 
 ## NicoHakoとは？
@@ -7,6 +7,9 @@
 NicoBoxと同様に、ニコニコ動画を音楽として聞くことに特化しています。
 
 <img src="./images/screenshot.png" width="600">
+
+
+[![Build Status](https://travis-ci.org/abouthiroppy/nicohako.svg?branch=master)](https://travis-ci.org/abouthiroppy/nicohako)
 
 ## 検証プラットフォーム
 - [ ] windows
