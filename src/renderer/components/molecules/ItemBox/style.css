@@ -1,0 +1,26 @@
+:root {
+  --container-height: 150px;
+  --container-width: 150px;
+}
+
+.container {
+  /* flex: 1 0 3em; */
+  margin: 5px;
+  text-align: center;
+  width: var(--container-width);
+}
+
+.img {
+  height: 120px;
+  position: relative;
+  width: var(--container-width);
+}
+
+.img:hover .overlay {
+  display: block;
+}
+
+.title {
+  margin: 0;
+  text-align: left;
+}

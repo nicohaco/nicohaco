@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+}
+
+.textBox {
+  margin-left: 10px;
+}
+
+.mylistInfo {
+  color: #777;
+  font-size: .8rem;
+  margin-top: 5px;
+}

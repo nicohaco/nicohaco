@@ -1,0 +1,3 @@
+@define-mixin outer-border $color: #3498db {
+  border: 1px solid $color;
+}

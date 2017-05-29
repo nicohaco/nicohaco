@@ -1,0 +1,46 @@
+:root {
+  --margin: 5px;
+}
+
+.container {
+  background: rgba(0, 0, 0, .6);
+  color: white;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.play {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+}
+
+.menu {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+
+.videoId {
+  cursor: pointer;
+  font-size: .9rem;
+  left: var(--margin);
+  position: absolute;
+}
+
+.time {
+  bottom: 0;
+  font-size: .9rem;
+  font-weight: 600;
+  margin: var(--margin);
+  position: absolute;
+  right: 0;
+}

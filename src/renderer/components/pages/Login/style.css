@@ -1,0 +1,35 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+}
+
+.description {
+  & > .icon {
+    background-image: url("../../../../../images/nicohaco_512x512@2x.png");
+    background-size: contain;
+    height: 200px;
+    margin: 0 auto 50px;
+    width: 200px;
+  }
+
+  & > p:last-child {
+    color: #888;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+}
+
+.form {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: space-around;
+  width: 100%;
+}

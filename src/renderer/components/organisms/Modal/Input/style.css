@@ -1,0 +1,22 @@
+.input {
+  background: #f5f5f5;
+  border: 1px solid #e9ebec;
+  border-radius: 3px;
+  color: #808080;
+  display: block;
+  font-size: 14px;
+  height: 30px;
+  outline: none;
+  padding: 0 12px;
+  width: 100%;
+}
+
+.input:focus {
+  border: 1px solid #999;
+}
+
+.button {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}

@@ -1,0 +1,25 @@
+:root {
+  --height: 50px;
+}
+
+.container {
+  display: flex;
+  height: var(--height);
+  -webkit-app-region: drag; /* stylelint-disable-line */
+}
+
+.player {
+  width: 100%;
+}
+
+.user {
+  display: flex;
+  height: var(--height);
+  position: absolute;
+  right: 100px;
+}
+
+.sub {
+  border-bottom: 1px solid #e5e5e5;
+  height: 30px;
+}

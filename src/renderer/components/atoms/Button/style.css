@@ -1,0 +1,27 @@
+.container {
+  background: none;
+  border: 0;
+  outline: none;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.container:disabled {
+  color: #999;
+}
+
+.borderButton {
+  border: 1px solid #999;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  font-size: .75rem;
+  font-weight: normal;
+  height: 32px;
+  line-height: 32px; /* [TODO] don't use px */
+  margin: 0;
+  outline: none;
+  padding: 0 10px;
+  text-align: center;
+  text-decoration: none;
+}

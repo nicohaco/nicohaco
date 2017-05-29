@@ -1,0 +1,18 @@
+@import "../../../styles/variables";
+
+.container {
+  display: flex;
+  height: calc(100% - 80px); /* 80px is header */
+  width: 100%;
+}
+
+.left {
+  background: var(--background-gray);
+  border-right: 2px solid #f5f5f5;
+  min-width: 250px;
+  width: 250px;
+}
+
+.right {
+  overflow-y: auto;
+}

@@ -1,0 +1,28 @@
+:root {
+  --default-size: 300px;
+}
+
+.container {
+  border: 1px solid #bbc8cc;
+  border-radius: 5px;
+  bottom: 0;
+  box-shadow: 0 5px 20px 0 rgba(126, 137, 140, .2);
+  height: var(--default-size);
+  left: 0;
+  margin: auto;
+  outline: none;
+  overflow: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: var(--default-size);
+}
+
+.overlay {
+  background: transparent;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 100;
+}

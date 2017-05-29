@@ -1,0 +1,96 @@
+@import "../../../styles/variables";
+
+:root {
+  --content-height: 50px;
+  --seekbar-height: 5px;
+  --main-box-width: 500px;
+  --thumbail-width: 65px;
+}
+
+.container {
+  display: flex;
+  height: var(--content-height);
+  width: calc(var(--main-box-width) + var(--thumbail-width) * 2);
+}
+
+.mainBox {
+  background: var(--background-gray);
+  display: flex;
+  flex-flow: column nowrap;
+  width: var(--main-box-width);
+}
+
+.mainBoxTop {
+  height: calc(var(--content-height) - var(--seekbar-height));
+  margin: auto;
+  position: relative;
+  width: calc(100% - 2 * 5px); /* margin is 5px */
+}
+
+.mainBoxBottom {
+  height: var(--seekbar-height);
+}
+
+.time {
+  bottom: 0;
+  color: #777;
+  font-size: .8rem;
+  position: absolute;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.title {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.thumbnail {
+  height: var(--content-height);
+  width: 65px;
+}
+
+.thumbnailBox {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.loading {
+  align-items: center;
+  background: rgba(0, 0, 0, .4);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* react-slider */
+.slider {
+  background: #d1cfd1;
+  cursor: pointer;
+  height: var(--seekbar-height);
+
+  & div:first-child {
+    background: #555;
+    height: 100%;
+  }
+
+  & div:last-child { /* for hundle */
+    background: #222;
+    height: 100%;
+    width: 5px;
+  }
+}
+

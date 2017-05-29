@@ -1,0 +1,40 @@
+.container {
+  bottom: 0;
+  display: flex;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 850px;
+}
+
+.box {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value {
+  margin: auto;
+}
+
+.poster {
+  width: 150px;
+}
+
+.videoId {
+  width: 110px;
+}
+
+.date {
+  width: 180px;
+}
+
+.num {
+  width: 80px;
+}

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label component should render self and subcomponents 1`] = `
+<span
+  className="icon icon-undefined"
+  style={
+    Object {
+      "fontSize": "1rem",
+    }
+  }
+/>
+`;

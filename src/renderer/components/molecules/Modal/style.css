@@ -1,0 +1,19 @@
+:root {
+  --header-height: 50px;
+  --body-margin: 20px;
+}
+
+.header {
+  background: #edf5f7;
+  color: #454b4d;
+  font-size: 1rem;
+  height: var(--header-height);
+  padding: 15px 20px;
+}
+
+.body {
+  height: calc(100% - var(--header-height) - var(--body-margin) * 2);
+  margin: var(--body-margin);
+  overflow-y: auto;
+  position: relative;
+}
