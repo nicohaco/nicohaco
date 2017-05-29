@@ -1,0 +1,4 @@
+dist
+coverage
+flow-typed
+node_modules

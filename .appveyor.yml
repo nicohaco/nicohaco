@@ -1,0 +1,10 @@
+environment:
+  nodejs_version: stable
+platform:
+  - x86
+  - x64
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install
+test_script: npm test
+build: off

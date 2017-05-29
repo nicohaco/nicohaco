@@ -1,0 +1,7 @@
+.env
+docs
+dist
+coverage
+flow-typed
+node_modules
+npm-debug.log

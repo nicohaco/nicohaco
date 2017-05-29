@@ -1,0 +1,13 @@
+[ignore]
+.*/node_modules/.*
+
+[include]
+.*/src/.*
+
+[libs]
+./decls/global.js
+
+[options]
+module.file_ext=.js
+module.file_ext=.css
+esproposal.class_static_fields=enable

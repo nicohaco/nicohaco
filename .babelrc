@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "stage-1",
+    "react"
+  ],
+  "plugins": [
+    "syntax-flow",
+    "react-hot-loader/babel",
+    "transform-flow-strip-types"
+  ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "import/order": 0,
+    "no-underscore-dangle": [
+      "error", {
+        "allow": [
+          "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__",
+          "_invoke"
+        ]
+      }
+    ]
+  },
+  "extends": "sky"
+}
