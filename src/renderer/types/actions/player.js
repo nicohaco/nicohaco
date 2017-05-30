@@ -9,6 +9,11 @@ export type Play = {
   index: number;
 };
 
+export type ToggleLoop = {
+  type: 'TOGGLE_LOOP';
+  mode: 'none' | 'one' | 'all';
+};
+
 export type PlayNextAudio = {
   type: 'PLAY_NEXT_AUDIO';
 };
@@ -67,10 +72,11 @@ export type InsertCurrentAudio = {
 };
 
 export type Player =
-Play |
-PlayNextAudio |
+  Play |
+  ToggleLoop |
   ChangeVolume |
   ToggleStatus |
+  PlayNextAudio |
   PlaySpecificAudio |
   FetchFlvSuccess |
   InsertToPlaylist |

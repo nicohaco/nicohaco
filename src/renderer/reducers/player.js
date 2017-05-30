@@ -4,6 +4,7 @@ import type { Player as State } from '../types/states/player';
 import type { Player as Action } from '../types/actions/player';
 
 const initialState = {
+  loop   : 'none',
   current: {
     src               : '',
     title             : '',
@@ -78,6 +79,10 @@ const reducer = (state: State = initialState, action: Action) => {
         status: action.status !== undefined ?
           action.status :
           !state.status
+      });
+    case 'TOGGLE_LOOP':
+      return Object.assign({}, state, {
+        loop: action.mode
       });
     case 'UPDATE_ELAPSED_TIME':
       return Object.assign({}, state, {
