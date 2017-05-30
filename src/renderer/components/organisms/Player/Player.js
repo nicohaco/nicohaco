@@ -10,10 +10,12 @@ import type { Current } from '../../../types/states/player';
 
 type Props = {
   src: string;
+  loop: 'none' | 'one' | 'all';
   index: number;
   volume: number;
   status: boolean;
   videoInfo: Current;
+  toggleLoop: ('none' | 'one' | 'all') => {};
   elapsedTime: number;
   getDuration: (number) => {};
   toggleStatus: () => {};
@@ -37,10 +39,12 @@ const Player = (props: Props) => (
       toggleStatus={props.toggleStatus}
     />
     <AudioInfo
+      loop={props.loop}
       title={props.videoInfo.title}
       disabled={!props.src}
       className={styles.info}
       totalTime={props.videoInfo.totalTime}
+      toggleLoop={props.toggleLoop}
       elapsedTime={props.elapsedTime}
       thumbnailUrl={props.videoInfo.thumbnailUrl}
       toggleStatus={props.toggleStatus}
@@ -49,6 +53,7 @@ const Player = (props: Props) => (
     />
     <Audio
       src={props.src}
+      looped={props.loop === 'one'}
       volume={props.volume}
       status={props.status}
       className={styles.audio}

@@ -5,15 +5,18 @@ import cx from 'classnames';
 import Slider from 'react-slider';
 import Loading from 'react-loading';
 import Image from '../../atoms/Image';
+import LoopButton from '../LoopButton';
 import { formatTime } from '../../../utils/format';
 import styles from './style.css';
 
 type Props = {
+  loop: 'none' | 'one' | 'all';
   title: string;
   loading: boolean;
   disabled: boolean;
   totalTime: number;
   className: string;
+  toggleLoop: ('none' | 'one' | 'all') => {};
   elapsedTime: number;
   thumbnailUrl: string;
   toggleStatus: () => {};
@@ -44,6 +47,15 @@ const AudioInfo = (props: Props) => (
     </div>
     <div className={styles.mainBox}>
       <div className={styles.mainBoxTop}>
+        {
+          !props.disabled ? (
+            <LoopButton
+              loop={props.loop}
+              onClick={props.toggleLoop}
+              className={styles.loopButton}
+            />
+          ) : null
+        }
         <span className={`${styles.time} ${styles.left}`}>
           {props.disabled ? '' : formatTime(props.elapsedTime)}
         </span>

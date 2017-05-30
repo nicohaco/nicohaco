@@ -6,6 +6,7 @@ import { ipcRenderer } from 'electron';
 import { takeEvery, effects } from 'redux-saga';
 import {
   getNico,
+  getPlayer,
   getPlaylist
 } from './selectors';
 
@@ -89,11 +90,17 @@ function *play(action: Play): Generator<Effect, void, *> {
 function *playSpecificAudio(action: PlaySpecificAudio):
   Generator<Effect, void, *>
 {
+  const loop            = (yield select(getPlayer)).loop;
   const currentPlaylist = yield select(getPlaylist);
+  const newVideo        = currentPlaylist[action.index];
 
-  const newVideo = currentPlaylist[action.index];
-
-  if (newVideo) {
+  if (loop === 'all' && currentPlaylist.length === action.index) {
+    yield put({
+      type : 'PLAY',
+      index: 0
+    });
+  }
+  else if (newVideo) {
     yield put({
       type : 'PLAY',
       index: action.index

@@ -18,6 +18,7 @@ export type Current = {
 };
 
 export type Player = {
+  loop: 'none' | 'one' | 'all';
   current: Current;
   volume: number;
   status: boolean;

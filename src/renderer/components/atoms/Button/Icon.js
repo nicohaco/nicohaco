@@ -8,12 +8,14 @@ import styles from './style.css';
 type Props = {
   icon: string;
   size?: string;
+  onClick: () => {};
   className?: string;
 };
 
 const ButtonIcon = (props: Props) => (
   <button
     {...props}
+    onClick={props.onClick}
     className={cx(styles.container, props.className)}
   >
     <span

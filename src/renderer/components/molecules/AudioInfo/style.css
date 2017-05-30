@@ -31,6 +31,12 @@
   height: var(--seekbar-height);
 }
 
+.loopButton {
+  color: #666;
+  position: absolute;
+  z-index: 50;
+}
+
 .time {
   bottom: 0;
   color: #777;

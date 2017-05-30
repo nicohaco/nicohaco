@@ -1,0 +1,29 @@
+:root {
+  --container-height: 30px;
+  --container-width: 30px;
+  --bg-vertical-margin: 5px;
+}
+
+.container {
+  height: var(--container-height);
+  position: relative;
+  width: var(--container-width);
+}
+
+.bg {
+  background: #c5c5c5;
+  border-radius: 3px;
+  height: calc(var(--container-height) - var(--bg-vertical-margin) * 2);
+  position: absolute;
+  top: var(--bg-vertical-margin);
+  width: var(--container-width);
+
+  & > .oneLabel {
+    float: right;
+    font-weight: bold;
+  }
+}
+
+.button {
+  position: absolute;
+}

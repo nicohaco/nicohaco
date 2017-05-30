@@ -2,6 +2,7 @@
 
 import type {
   Play,
+  ToggleLoop,
   ChangeVolume,
   ToggleStatus,
   InsertToPlaylist,
@@ -13,6 +14,11 @@ import type { Mylistitem } from '../types/apis/mylist';
 export const play = (index: number): Play => ({
   type: 'PLAY',
   index
+});
+
+export const toggleLoop = (mode: 'none' | 'one' | 'all'): ToggleLoop => ({
+  type: 'TOGGLE_LOOP',
+  mode
 });
 
 export const insertToPlaylist =  // [TODO] rename to `insertPlaylist`

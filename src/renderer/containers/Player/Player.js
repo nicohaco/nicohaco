@@ -8,6 +8,7 @@ import Player from '../../components/organisms/Player';
 import type { State } from '../../types/states';
 
 type DispatchToProps = {
+  toggleLoop: ('none' | 'one' | 'all') => {};
   getDuration: (number) => {};
   toggleStatus: (boolean) => {};
   changeVolume: (number) => {};
@@ -17,6 +18,7 @@ type DispatchToProps = {
 
 const mapStateToProps = (state: State) => ({
   src            : state.player.current.src,
+  loop           : state.player.loop,
   index          : state.player.current.index,
   volume         : state.player.volume,
   status         : state.player.status,
@@ -26,6 +28,7 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
+  toggleLoop         : (mode) => dispatch(actions.toggleLoop(mode)),
   getDuration        : (time) => dispatch(actions.insertDuration(time)),
   toggleStatus       : (status) => dispatch(actions.toggleStatus(status)),
   changeVolume       : (volume) => dispatch(actions.changeVolume(volume)),
