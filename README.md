@@ -9,7 +9,7 @@ NicoBoxと同様に、ニコニコ動画を音楽として聞くことに特化�
 <img src="./images/screenshot.png" width="600">
 
 
-[![Build Status](https://travis-ci.org/abouthiroppy/nicohako.svg?branch=master)](https://travis-ci.org/abouthiroppy/nicohako)
+[![Build Status](https://travis-ci.org/abouthiroppy/nicohaco.svg?branch=master)](https://travis-ci.org/abouthiroppy/nicohaco)
 
 ## ダウンロード
 [こちら](https://github.com/abouthiroppy/nicohaco/releases)から最新のdmgをダウンロードし、インストーラーを使う。
