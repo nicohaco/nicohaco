@@ -1,3 +1,18 @@
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/abouthiroppy/nicohaco/compare/v0.1.0...v0.1.1) (2017-06-08)
+
+
+### Bug Fixes
+
+* **PlayerInfo:** change play icon when finish playlist ([c2c44d9](https://github.com/abouthiroppy/nicohaco/commit/c2c44d9))
+
+
+### Features
+
+* **LoopButton:** change color ([ac287ad](https://github.com/abouthiroppy/nicohaco/commit/ac287ad))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/abouthiroppy/nicohaco/compare/v0.0.1...v0.1.0) (2017-06-02)
 
