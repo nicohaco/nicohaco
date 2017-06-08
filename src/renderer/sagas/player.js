@@ -110,6 +110,10 @@ function *playSpecificAudio(action: PlaySpecificAudio):
 
     // reset
     yield put({ type: 'RESET_CURRENT_AUDIO' });
+    yield put({
+      type  : 'TOGGLE_STATUS',
+      status: false
+    });
   }
 }
 
