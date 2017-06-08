@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import cx from 'classnames';
 import { Icon as Button } from '../../atoms/Button';
 import styles from './style.css';
 
@@ -37,7 +38,7 @@ const LoopButton = (props: Props) => (
         icon="loop"
         size="1.2rem"
         title="loop"
-        className={styles.button}
+        className={cx(styles.button, props.loop !== 'none' ? styles.loop : '')}
         onClick={() => props.onClick(decideLoopPositon(props.loop))}
       />
     </div>

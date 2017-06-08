@@ -25,5 +25,10 @@
 }
 
 .button {
+  color: #999;
   position: absolute;
+}
+
+.loop {
+  color: #444;
 }
