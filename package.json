@@ -110,7 +110,7 @@
       "build"
     ],
     "mac": {
-      "target": "dmg"
+      "target": "default"
     },
     "directories": {
       "output": "docs"
