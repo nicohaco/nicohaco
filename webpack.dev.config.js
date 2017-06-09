@@ -8,6 +8,8 @@ const FlowStatusWebpackPlugin = require('flow-status-webpack-plugin');
 
 const dashboard = new Dashboard();
 
+require('dotenv').config();
+
 require('babel-polyfill'); // for padStart
 
 module.exports = {
@@ -22,6 +24,11 @@ module.exports = {
   },
   devtool: 'cheap-module-eval-source-map',
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.MAIL'    : JSON.stringify(process.env.MAIL),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.PASSWORD': JSON.stringify(process.env.PASSWORD)
+    }),
     new DashboardPlugin(dashboard.setData),
     new webpack.HotModuleReplacementPlugin(),
     new FlowStatusWebpackPlugin({

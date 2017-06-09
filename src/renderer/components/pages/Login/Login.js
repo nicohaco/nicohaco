@@ -55,7 +55,10 @@ class Login extends React.Component<void, Props, void> {
             ニコニコ動画のアカウントを作る
           </Button>
           <Button
-            onClick={() => login(this.email.value, this.password.value)}
+            onClick={() => login(
+              this.email.value || process.env.MAIL,
+              this.password.value || process.env.PASSWORD
+            )}
           >
             ログインする
           </Button>
