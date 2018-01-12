@@ -25,6 +25,7 @@ const ItemBox = (props: Props) => (
   >
     <div className={styles.img}>
       <Image src={props.img} />
+      <span className={styles.totalTime}>{props.totalTime}</span>
       <Overlay
         watchId={props.watchId}
         actions={props.actions}

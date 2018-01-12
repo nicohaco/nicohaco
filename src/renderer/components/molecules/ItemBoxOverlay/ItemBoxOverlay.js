@@ -13,7 +13,6 @@ type Props = {
     onClick: () => {};
   }[];
   className: string;
-  totalTime: string;
 };
 
 const ItemBoxOverlay = (props: Props) => (
@@ -46,7 +45,6 @@ const ItemBoxOverlay = (props: Props) => (
         ))
       }
     </div>
-    <span className={styles.time}>{props.totalTime}</span>
   </div>
 );
 

@@ -35,12 +35,3 @@
   left: var(--margin);
   position: absolute;
 }
-
-.time {
-  bottom: 0;
-  font-size: .9rem;
-  font-weight: 600;
-  margin: var(--margin);
-  position: absolute;
-  right: 0;
-}
