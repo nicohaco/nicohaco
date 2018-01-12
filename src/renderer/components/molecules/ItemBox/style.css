@@ -1,11 +1,10 @@
 :root {
-  --container-height: 150px;
-  --container-width: 150px;
+  --container-height: 112.5px;
+  --container-width: 210px;
 }
 
 .container {
-  /* flex: 1 0 3em; */
-  margin: 5px;
+  margin: 5px 2px;
   text-align: center;
   width: var(--container-width);
 }
