@@ -1,22 +1,24 @@
+// @flow
+
 import { createStore, applyMiddleware, compose } from 'redux';
-import createSaga from 'redux-saga';
-import createHistory from 'history/createMemoryHistory';
 import { routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createMemoryHistory';
+import createSaga from 'redux-saga';
 import rootReducer from '../reducers';
 import mySaga from '../sagas';
+
+import type { State } from '../types/states';
 
 export const history = createHistory();
 
 const saga = createSaga();
 
-const middlewares: Array<Function> = [saga];
-
 const enhancer = compose(applyMiddleware(
-  ...middlewares,
+  saga,
   routerMiddleware(history)
 ));
 
-const configureStore = (initialState?: AllStates) => {
+const configureStore = (initialState?: State) => {
   const store = createStore(rootReducer, initialState, enhancer);
 
   saga.run(mySaga);
