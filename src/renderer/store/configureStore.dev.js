@@ -1,7 +1,9 @@
+// @flow
+
 import { createStore, applyMiddleware, compose } from 'redux';
-import createSaga from 'redux-saga';
-import createHistory from 'history/createMemoryHistory';
 import { routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createMemoryHistory';
+import createSaga from 'redux-saga';
 import rootReducer from '../reducers';
 import mySaga from '../sagas';
 
@@ -11,27 +13,16 @@ export const history = createHistory();
 
 const saga = createSaga();
 
-const middlewares: Array<Function> = [saga];
-
 const createEnhancer = () => {
-  const reduxDevtoolsExtensionsCompose
-    = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-
   const appliedMiddlewares = applyMiddleware(
-    ...middlewares,
-      routerMiddleware(history)
+    saga,
+    routerMiddleware(history)
   );
 
-  if (reduxDevtoolsExtensionsCompose) {
-    const devtoolsExtensionCompose = reduxDevtoolsExtensionsCompose({
-      actionsBlacklist: ['UPDATE_ELAPSED_TIME']
-    });
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
-    return compose(devtoolsExtensionCompose(appliedMiddlewares));
-  }
-  else {
-    return compose(appliedMiddlewares);
-  }
+  return composeEnhancers(appliedMiddlewares);
 };
 
 const configureStore = (initialState?: State) => {
@@ -39,14 +30,6 @@ const configureStore = (initialState?: State) => {
   const store = createStore(rootReducer, initialState, enhancer);
 
   saga.run(mySaga);
-
-  if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers/');
-
-      store.replaceReducer(nextRootReducer);
-    });
-  }
 
   return store;
 };
