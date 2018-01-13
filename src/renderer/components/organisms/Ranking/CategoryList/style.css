@@ -1,4 +1,22 @@
+:root {
+  --condition-height: 35px;
+}
+
 .container {
   height: 100%;
-  overflow-y: auto;
+
+  & > ul {
+    height: calc(100% - var(--condition-height));
+    overflow-y: auto;
+  }
+}
+
+.condition {
+  display: flex;
+  height: 35px;
+
+  & > div {
+    border-radius: none;
+    flex: 1;
+  }
 }

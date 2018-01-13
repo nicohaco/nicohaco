@@ -19,13 +19,23 @@
   display: block;
 }
 
-.title {
-  display: -webkit-box;
-  margin-top: 10px;
-  overflow: hidden;
-  text-align: left;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+.info {
+  margin: 10px 0 15px 0;
+
+  & .title {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    text-align: left;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  & .infoDetail {
+    color: #666;
+    margin-top: 5px;
+    text-align: left;
+  }
 }
 
 .totalTime {

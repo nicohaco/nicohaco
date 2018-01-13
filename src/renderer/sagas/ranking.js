@@ -13,7 +13,9 @@ import type { FetchRanking } from '../types/actions/ranking';
 function *fetchRanking(action: FetchRanking) {
   try {
     const nico = yield select(getNico);
-    const ranking = yield nico.video.getRanking(action.category);
+    const ranking = yield nico.video.getRanking(
+      action.category, action.target, action.period
+    );
 
     yield put({
       type   : 'FETCH_RANKING_SUCCESS',

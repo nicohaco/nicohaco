@@ -1,6 +1,8 @@
 // @flow
 
 import React from 'react';
+import Select from 'react-select'
+import { categoryList as categories, ranking } from 'nico-value';
 import List from '../../../atoms/List';
 import styles from './style.css';
 
@@ -8,58 +10,91 @@ type Props = {
   selectCategory: (string) => {};
 };
 
-const categories = [
-  { title: 'カテゴリ合算' },
+const period = ranking.period.map((item) => ({
+  value: item.key,
+  label: item.title
+}));
 
-  { title: 'エンタメ・音楽' },
-  { title: 'VOCALOID' },
-  { title: '歌ってみた' },
-  { title: 'ラジオ' },
-  { title: '東方' },
-  { title: 'ニコニコインディーズ' },
+const target = ranking.target.map((item) => ({
+  value: item.key,
+  label: item.title
+}));
 
-  { title: '生活・一般・スポ' },
-  { title: '動物' },
-  { title: '料理' },
-  { title: '自然' },
-  { title: '旅行' },
-  { title: 'スポーツ' },
-  { title: 'ニコニコ動画講座' },
-  { title: '車載動画' },
-  { title: '歴史' },
+class CategoryList extends React.Component {
+  constructor() {
+    super();
 
-  { title: '政治' },
+    this.state = {
+      period: period[1],
+      target: target[0],
+      current: 'all'
+    };
+  }
 
-  { title: '科学・技術' },
-  { title: '科学' },
-  { title: 'ニコニコ技術部' },
-  { title: 'ニコニコ手芸部' },
-  { title: '作ってみた' },
+  changePath = (path) => {
+    this.setState({ current: path });
 
-  { title: 'アニメ・ゲーム・絵' },
-  { title: 'アニメ' },
-  { title: 'ゲーム' },
-  { title: '実況プレイ動画' },
-  { title: '東方' },
-  { title: 'アイドルマスター' },
-  { title: 'ラジオ' },
-  { title: '描いてみた' },
+    this.props.selectCategory(
+      path, this.state.target.value, this.state.period.value
+    );
+  }
 
-  { title: 'その他' },
-  { title: '例のアレ' },
-  { title: '日記' }
-];
+  changeTarget = (target) => {
+    this.setState({ target });
 
-const CategoryList = (props: Props) => (
-  <div className={styles.container}>
-    <List
-      items={categories.map((item) => ({
-        key    : item.title,
-        title  : item.title,
-        onClick: () => props.selectCategory(item.title)
-      }))}
-    />
-  </div>
-);
+    this.props.selectCategory(
+      this.state.current, target.value, this.state.period.value
+    );
+  }
+
+  changePeriod = (period) => {
+    this.setState({ period });
+
+    this.props.selectCategory(
+      this.state.current, this.state.target.value, period.value
+    );
+  }
+
+  componentWillMount() {
+    this.props.selectCategory(
+      this.state.current, this.state.target.value, this.state.period.value
+    );
+  }
+
+  render() {
+    const {
+      selectCategory
+    } = this.props;
+
+    return (
+      <div className={styles.container}>
+        <div className={styles.condition}>
+          <Select
+            name="target"
+            value={this.state.target}
+            options={target}
+            onChange={this.changeTarget}
+            searchable={false}
+          />
+          <Select
+            name="period"
+            value={this.state.period}
+            options={period}
+            onChange={this.changePeriod}
+            searchable={false}
+          />
+        </div>
+        <List
+          items={categories.flatten().map((item, i) => ({
+            key    : `${i}_${item.title}`,
+            active: item.key === this.state.current,
+            title  : item.title,
+            onClick: () => this.changePath(item.key)
+          }))}
+        />
+      </div>
+    );
+  }
+}
 
 export default CategoryList;

@@ -12,7 +12,8 @@ type DispatchToProps = {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
-  selectCategory: (category) => dispatch(actions.fetchRanking(category))
+  selectCategory: (category, target, period) =>
+    dispatch(actions.fetchRanking(category, target, period))
 });
 
 export default connect(

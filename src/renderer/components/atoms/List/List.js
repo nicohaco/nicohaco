@@ -25,7 +25,9 @@ const List = (props: Props) => (
             textAlign: item.textAlign ? item.textAlign : 'left'
           }}
           onClick={item.onClick}
-          className={cx(photon['list-group-item'], styles.li)}
+          className={cx(
+            photon['list-group-item'], styles.li, item.active ? styles.active : undefined
+          )}
         >
           <strong>{item.title}</strong>
           <p>{item.message}</p>
