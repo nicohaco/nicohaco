@@ -19,7 +19,7 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
-  play: (index, list) => {
+  play: (type, index, list) => {
 
     // replacement is bothersome so add as videoId...
     const convertedList = list.map((item) => Object.assign(item, {
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
     }));
 
     dispatch(actions.insertToPlaylist(convertedList));
-    dispatch(actions.play(index));
+    dispatch(actions.play(type, index));
   },
   actionMylist: (item) => dispatch(commonActions.openModal(item)) // add
 });

@@ -19,9 +19,9 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
-  play: (index, list) => {
+  play: (type, index, list) => {
     dispatch(actions.insertToPlaylist(list));
-    dispatch(actions.play(index));
+    dispatch(actions.play(type, index));
   },
   actionMylist: (item) => dispatch(commonActions.openModal(item)) // add
 });
