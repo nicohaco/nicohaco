@@ -2,7 +2,7 @@
 
 :root {
   --content-height: 50px;
-  --seekbar-height: 5px;
+  --seekbar-height: 10px;
   --main-box-width: 500px;
   --thumbail-width: 65px;
 }

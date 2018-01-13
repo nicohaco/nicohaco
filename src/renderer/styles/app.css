@@ -3,3 +3,7 @@
   height: 100vh;
   justify-content: center; /* for login */
 }
+
+:global {
+  @import '/node_modules/rc-slider/assets/index.css';
+}
