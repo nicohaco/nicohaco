@@ -1,6 +1,6 @@
 // @flow
 
-import { effects } from 'redux-saga';
+import { all, fork } from 'redux-saga/effects';
 import db from './db';
 import auth from './auth';
 import page from './page';
@@ -17,17 +17,17 @@ import type { Effect } from 'redux-saga';
  * Root for saga
  */
 function *rootSaga(): Generator<Effect, void, *> {
-  yield [
-    effects.fork(db),
-    effects.fork(auth),
-    effects.fork(page),
-    effects.fork(root),
-    effects.fork(error),
-    effects.fork(mylist),
-    effects.fork(search),
-    effects.fork(player),
-    effects.fork(ranking)
-  ];
+  yield all([
+    fork(db),
+    fork(auth),
+    fork(page),
+    fork(root),
+    fork(error),
+    fork(mylist),
+    fork(search),
+    fork(player),
+    fork(ranking)
+  ]);
 }
 
 export default rootSaga;

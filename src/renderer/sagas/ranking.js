@@ -1,15 +1,10 @@
 // @flow
 
-import { takeEvery, effects } from 'redux-saga';
+import { put, select, takeLatest } from 'redux-saga/effects';
 import { getNico } from './selectors';
 
 import type { Effect } from 'redux-saga';
 import type { FetchRanking } from '../types/actions/ranking';
-
-const {
-  put,
-  select
-} = effects;
 
 /**
  * fetch ranking from niconico
@@ -38,5 +33,5 @@ function *fetchRanking(action: FetchRanking) {
  * Root for ranking
  */
 export default function *rankingProcess(): Generator<Effect, void, *> {
-  yield* takeEvery('FETCH_RANKING', fetchRanking);
+  yield takeLatest('FETCH_RANKING', fetchRanking);
 }
