@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Header from './organisms/Header';
+import VideoPlayer from '../containers/Player/Video'; // TODO: delete
 import { history } from '../store/configureStore';
 import styles from '../styles/app.css';
 
@@ -17,6 +18,7 @@ const App = (props: Props) => (
       ) : null
     }
     <div className={styles.container}>
+      <VideoPlayer />
       {
         props.children
       }

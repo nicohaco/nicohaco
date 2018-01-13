@@ -20,9 +20,9 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchProps => ({
-  play: (index, list) => {
+  play: (type, index, list) => {
     dispatch(actions.insertToPlaylist(list));
-    dispatch(actions.play(index));
+    dispatch(actions.play(type, index));
   },
   actionMylist: (video) =>
     dispatch(mylistActions.removeVideo(video.groupId, video.itemId))

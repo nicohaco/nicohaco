@@ -11,8 +11,9 @@ import type {
 } from '../types/actions/player';
 import type { Mylistitem } from '../types/apis/mylist';
 
-export const play = (index: number): Play => ({
+export const play = (playType, index: number): Play => ({
   type: 'PLAY',
+  playType,
   index
 });
 
@@ -55,4 +56,9 @@ export const changeLoadingStatus = (loaded: boolean) => ({
 export const insertDuration = (duration: number) => ({ // [TODO] rename
   type: 'INSERT_TOTAL_TIME',
   duration
+});
+
+export const closeVideoPlayer = () => ({
+  type: 'SET_PLAY_TYPE',
+  playType: 'music'
 });

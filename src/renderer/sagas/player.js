@@ -33,6 +33,26 @@ function *play(action: Play): Generator<Effect, void, *> {
 
     const videoInfo = playlist[action.index];
 
+    yield put({
+      type: 'SET_PLAY_TYPE',
+      playType: action.playType
+    });
+
+    if (action.playType === 'video') {
+      yield resetCurrentAudio();
+
+      yield put({ // TODO: fix
+        type: 'INSERT_CURRENT_AUDIO',
+        payload: {
+          title: videoInfo.title,
+          videoId: videoInfo.videoId
+        }
+      })
+      console.log(videoInfo);
+      return;
+    }
+
+    console.log('aaaaa')
     if (videoInfo) {
 
       // co is undefined...(sm is ok)

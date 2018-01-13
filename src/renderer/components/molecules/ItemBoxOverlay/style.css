@@ -13,14 +13,16 @@
   width: 100%;
 }
 
-.play {
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 30px;
+.playBox {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  & > button {
+    margin: 0 5px;
+  }
 }
 
 .menu {

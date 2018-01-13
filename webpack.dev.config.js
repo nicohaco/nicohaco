@@ -10,12 +10,10 @@ const dashboard = new Dashboard();
 
 require('dotenv').config();
 
-require('babel-polyfill'); // for padStart
-
 module.exports = {
   cache: true,
   entry: [
-    'react-hot-loader/patch',
+    // 'react-hot-loader/patch',
     'babel-polyfill',
     path.join(__dirname, 'src', 'renderer', 'index.js')
   ],
@@ -31,9 +29,9 @@ module.exports = {
     }),
     new DashboardPlugin(dashboard.setData),
     new webpack.HotModuleReplacementPlugin(),
-    new FlowStatusWebpackPlugin({
-      failOnError: true
-    }),
+    // new FlowStatusWebpackPlugin({
+    //   failOnError: true
+    // }),
     new webpack.LoaderOptionsPlugin({
       debug   : true,
       minimize: false

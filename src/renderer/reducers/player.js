@@ -23,7 +23,9 @@ const initialState = {
   status         : false, // play: true, stop: false
   playlist       : [],
   elapsedTime    : 0,
-  displayedLoader: false
+  displayedLoader: false,
+
+  playType: 'music' // music, video
 };
 
 const reducer = (state: State = initialState, action: Action) => {
@@ -102,6 +104,8 @@ const reducer = (state: State = initialState, action: Action) => {
     case 'PLAY_NEXT_AUDIO':
     case 'PLAY_SPECIFIC_AUDIO':
       return state;
+    case 'SET_PLAY_TYPE':
+      return {...state, playType: action.playType};
     default:
       (action: empty);
       return state;

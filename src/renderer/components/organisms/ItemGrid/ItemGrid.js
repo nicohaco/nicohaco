@@ -9,7 +9,7 @@ import type { MylistArray } from '../../../types/states/mylist';
 
 type Props = {
   list: MylistArray;
-  play: (number, MylistArray) => {};
+  play: ('music' | 'video', number, MylistArray) => {};
   actionIcon: 'add' | 'delete';
   actionMylist: () => {};
 };
@@ -30,16 +30,9 @@ const ItemGrid = (props: Props) => (
                 props.actionMylist(item);
               }
             }
-
-            // {
-            //   icon   : 'newspaper', // details
-            //   onClick: (e) => {
-            //     e.stopPropagation();
-            //   }
-            // }
           ]}
           watchId={item.watchId || item.contentId}
-          onClick={() => props.play(i, props.list)}
+          onClick={(type) => props.play(type, i, props.list)}
           totalTime={
             item.lengthSeconds ? (
               item.lengthSeconds.includes(':') ?

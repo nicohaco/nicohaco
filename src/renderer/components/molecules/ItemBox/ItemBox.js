@@ -21,12 +21,12 @@ const ItemBox = (props: Props) => (
   <section
     data-watchId={props.watchId}
     className={styles.container}
-    onClick={props.onClick}
   >
     <div className={styles.img}>
       <Image src={props.img} />
       <span className={styles.totalTime}>{props.totalTime}</span>
       <Overlay
+        onClick={props.onClick}
         watchId={props.watchId}
         actions={props.actions}
         className={styles.overlay}

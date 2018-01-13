@@ -7,6 +7,7 @@ import { Icon } from '../../atoms/Button';
 import styles from './style.css';
 
 type Props = {
+  onClick: () => void;
   watchId: string;
   actions: {
     icon: string;
@@ -28,11 +29,18 @@ const ItemBoxOverlay = (props: Props) => (
         props.watchId
       }
     </span>
-    <Icon
-      icon="play"
-      size="3rem"
-      className={styles.play}
-    />
+    <div className={styles.playBox}>
+      <Icon
+        icon="music"
+        size="2rem"
+        onClick={() => props.onClick('music')}
+      />
+      <Icon
+        icon="video"
+        size="2rem"
+        onClick={() => props.onClick('video')}
+      />
+    </div>
     <div className={styles.menu}>
       {
         props.actions.map((item, i) => (
