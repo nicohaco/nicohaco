@@ -19,7 +19,7 @@ const ItemGrid = (props: Props) => (
     {
       props.list.map((item, i) => (
         <ItemBox
-          key={item.watchId}
+          key={`${i}_${item.watchIda}`}
           img={item.videoId.match(/^so/) ? item.thumbnailUrl : `${item.thumbnailUrl}.M`}
           title={item.title}
           actions={[
@@ -33,6 +33,8 @@ const ItemGrid = (props: Props) => (
           ]}
           watchId={item.watchId || item.contentId}
           onClick={(type) => props.play(type, i, props.list)}
+          viewCount={item.viewCounter}
+          commentCount={item.commentCounter}
           totalTime={
             item.lengthSeconds ? (
               item.lengthSeconds.includes(':') ?

@@ -90,7 +90,8 @@ class Audio extends React.Component<void, Props, void> {
   render() {
     const {
       src,
-      looped
+      looped,
+      notifyEnded
     } = this.props;
 
     return (
@@ -100,7 +101,7 @@ class Audio extends React.Component<void, Props, void> {
         loop={looped}
         autoPlay
         preload="auto"
-        {...this.props}
+        notifyEnded={notifyEnded}
       />
     );
   }

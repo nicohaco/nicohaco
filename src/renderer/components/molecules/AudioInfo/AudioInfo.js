@@ -35,8 +35,8 @@ const AudioInfo = (props: Props) => (
               <Loading
                 type="bars"
                 color="#fff"
-                width="30"
-                height="30"
+                width="50%"
+                height="70%"
               />
             </div>
             <Image src={props.thumbnailUrl} />

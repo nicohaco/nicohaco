@@ -18,10 +18,7 @@ type Props = {
 };
 
 const ItemBox = (props: Props) => (
-  <section
-    data-watchId={props.watchId}
-    className={styles.container}
-  >
+  <section className={styles.container}>
     <div className={styles.img}>
       <Image src={props.img} />
       <span className={styles.totalTime}>{props.totalTime}</span>
@@ -33,12 +30,26 @@ const ItemBox = (props: Props) => (
         totalTime={props.totalTime}
       />
     </div>
-    <p
-      title={props.title}
-      className={styles.title}
-    >
-      {props.title}
-    </p>
+    <div className={styles.info}>
+      <p
+        title={props.title}
+        className={styles.title}
+      >
+        {props.title}
+      </p>
+      <div className={styles.infoDetail}>
+        {
+          props.viewCount ? (
+            <span>視聴回数 {(~~props.viewCount).toLocaleString()}</span>
+          ) : null
+        }
+        {
+          props.commentCount ? (
+            <span>コメント数 {(~~props.commentCount).toLocaleString()}</span>
+          ) : null
+        }
+      </div>
+    </div>
   </section>
 );
 
