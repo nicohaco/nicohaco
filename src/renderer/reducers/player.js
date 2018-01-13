@@ -105,7 +105,9 @@ const reducer = (state: State = initialState, action: Action) => {
     case 'PLAY_SPECIFIC_AUDIO':
       return state;
     case 'SET_PLAY_TYPE':
-      return {...state, playType: action.playType};
+      return action.playType === 'video' ?
+        {...state, playType: action.playType} :
+        {...state, playType: action.playType, current: initialState.current}
     default:
       (action: empty);
       return state;

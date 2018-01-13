@@ -21,19 +21,23 @@ const prefix = 'http://www.nicovideo.jp/';
 
 const VideoInfo = (props: Props) => (
   <div className={styles.container}>
-    <div className={cx(styles.box, styles.poster)}>
-      <Image
-        src={props.posterThumbnailUrl}
-        width="25"
-        height="25"
-      />
-      <span
-        title="poster"
-        className={styles.value}
-      >
-        {props.poster}
-      </span>
-    </div>
+    {
+      props.posterThumbnailUrl ? (
+        <div className={cx(styles.box, styles.poster)}>
+          <Image
+            src={props.posterThumbnailUrl}
+            width="25"
+            height="25"
+          />
+          <span
+            title="poster"
+            className={styles.value}
+          >
+            {props.poster}
+          </span>
+        </div>
+      ) : null
+    }
     <div
       className={cx(styles.box, styles.videoId)}
       onClick={() => shell.openExternal(`${prefix}/watch/${props.videoId}`)}i
