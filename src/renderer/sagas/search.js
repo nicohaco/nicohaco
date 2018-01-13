@@ -1,15 +1,10 @@
 // @flow
 
-import { takeEvery, effects } from 'redux-saga';
+import { put, select, takeLatest } from 'redux-saga/effects';
 import { getNico } from './selectors';
 
 import type { Effect } from 'redux-saga';
 import type { SearchAction as Search } from '../types/actions/search';
-
-const {
-  put,
-  select
-} = effects;
 
 /**
  * search
@@ -40,5 +35,5 @@ function *search(action: Search): Generator<Effect, void, *> {
  * Root for search
  */
 export default function *searchProcess(): Generator<Effect, void, *> {
-  yield takeEvery('SEARCH', search);
+  yield takeLatest('SEARCH', search);
 }

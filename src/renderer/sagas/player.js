@@ -3,7 +3,7 @@
 /* eslint-disable flowtype/space-after-type-colon */
 
 import { ipcRenderer } from 'electron';
-import { takeEvery, effects } from 'redux-saga';
+import { put, select, takeLatest } from 'redux-saga/effects';
 import {
   getNico,
   getPlayer,
@@ -15,11 +15,6 @@ import type {
   Play,
   PlaySpecificAudio
 } from '../types/actions/player';
-
-const {
-  put,
-  select
-} = effects;
 
 // [TODO] implement for DMC
 /**
@@ -163,7 +158,7 @@ function *resetCurrentAudio() {
  * Root for player
  */
 export default function *playerProcess(): Generator<Effect, void, *> {
-  yield takeEvery('PLAY', play);
-  yield takeEvery('PLAY_SPECIFIC_AUDIO', playSpecificAudio);
-  yield takeEvery('RESET_CURRENT_AUDIO', resetCurrentAudio);
+  yield takeLatest('PLAY', play);
+  yield takeLatest('PLAY_SPECIFIC_AUDIO', playSpecificAudio);
+  yield takeLatest('RESET_CURRENT_AUDIO', resetCurrentAudio);
 }

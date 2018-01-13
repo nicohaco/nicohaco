@@ -3,7 +3,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
 
-import { takeEvery, effects } from 'redux-saga';
+import { put, take, select, takeLatest } from 'redux-saga/effects';
 import { getNico } from './selectors';
 import {
   formatTime,
@@ -18,12 +18,6 @@ import type {
   RemoveVideo,
   CreateMylist
 } from '../types/actions/mylist';
-
-const {
-  put,
-  take,
-  select
-} = effects;
 
 /**
  * setup for mylist page
@@ -265,11 +259,11 @@ function *fetchMylistgroup(): Generator<Effect, void, *> {
  * Root for mylist
  */
 export default function *mylistProcess(): Generator<Effect, void, *> {
-  yield takeEvery('ADD_VIDEO', addVideo);
-  yield takeEvery('LOAD_MYLIST', loadMylist);
-  yield takeEvery('SETUP_MYLIST', setup);
-  yield takeEvery('REMOVE_VIDEO', removeVideo);
-  yield takeEvery('FETCH_MYLIST', fetchMylist);
-  yield takeEvery('CREATE_MYLIST', createMylist);
-  yield takeEvery('FETCH_MYLISTGROUP', fetchMylistgroup);
+  yield takeLatest('ADD_VIDEO', addVideo);
+  yield takeLatest('LOAD_MYLIST', loadMylist);
+  yield takeLatest('SETUP_MYLIST', setup);
+  yield takeLatest('REMOVE_VIDEO', removeVideo);
+  yield takeLatest('FETCH_MYLIST', fetchMylist);
+  yield takeLatest('CREATE_MYLIST', createMylist);
+  yield takeLatest('FETCH_MYLISTGROUP', fetchMylistgroup);
 }

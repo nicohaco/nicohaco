@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-disable flowtype/space-after-type-colon */
 
-import { takeEvery, effects } from 'redux-saga';
+import { put, takeLatest } from 'redux-saga/effects';
 import db from '../db';
 
 import type { Effect } from 'redux-saga';
@@ -15,8 +15,6 @@ import type {
   InsertMylistgroup
 } from '../types/actions/mylist';
 import type { InsertSearchHistory } from '../types/actions/search';
-
-const { put } = effects;
 
 // Open the database
 db.open();
@@ -220,20 +218,20 @@ function *deleteDB() {
  * Root for db
  */
 export default function *mylistProcess(): Generator<Effect, void, *> {
-  yield takeEvery('SHOW_USER_DATA', showUserData);
-  yield takeEvery('INSERT_USER_DATA', insertUserData);
-  yield takeEvery('DELETE_USER_DATA', deleteUserData);
+  yield takeLatest('SHOW_USER_DATA', showUserData);
+  yield takeLatest('INSERT_USER_DATA', insertUserData);
+  yield takeLatest('DELETE_USER_DATA', deleteUserData);
 
-  yield takeEvery('SHOW_MYLISTGROUP', showMylistgroup);
-  yield takeEvery('INSERT_MYLISTGROUP', insertMylistgroup);
-  yield takeEvery('UPDATE_MYLISTGROUP', updateMylistgroup);
+  yield takeLatest('SHOW_MYLISTGROUP', showMylistgroup);
+  yield takeLatest('INSERT_MYLISTGROUP', insertMylistgroup);
+  yield takeLatest('UPDATE_MYLISTGROUP', updateMylistgroup);
 
-  yield takeEvery('SHOW_MYLIST', showMylist);
-  yield takeEvery('INSERT_MYLIST', insertMylist);
+  yield takeLatest('SHOW_MYLIST', showMylist);
+  yield takeLatest('INSERT_MYLIST', insertMylist);
 
-  yield takeEvery('SHOW_SEARCH_HISTORY', showSearchHistory);
-  yield takeEvery('INSERT_SEARCH_HISTORY', insertSearchHistory);
-  yield takeEvery('DELETE_SEARCH_HISTORY', deleteSearchHistory);
+  yield takeLatest('SHOW_SEARCH_HISTORY', showSearchHistory);
+  yield takeLatest('INSERT_SEARCH_HISTORY', insertSearchHistory);
+  yield takeLatest('DELETE_SEARCH_HISTORY', deleteSearchHistory);
 
-  yield takeEvery('DELETE_DB', deleteDB);
+  yield takeLatest('DELETE_DB', deleteDB);
 }

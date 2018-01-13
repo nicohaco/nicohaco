@@ -1,14 +1,9 @@
 // @flow
 
-import { takeEvery, effects } from 'redux-saga';
+import { put, take, takeLatest } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import type { Effect } from 'redux-saga';
-
-const {
-  put,
-  take
-} = effects;
 
 /**
  * page
@@ -44,5 +39,5 @@ function *routePage(): Generator<Effect, void, *> {
  * Root for page
  */
 export default function *pageProcess(): Generator<Effect, void, *> {
-  yield takeEvery('ROUTE_PAGE', routePage);
+  yield takeLatest('ROUTE_PAGE', routePage);
 }
