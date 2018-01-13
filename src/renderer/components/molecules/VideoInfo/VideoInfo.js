@@ -50,42 +50,58 @@ const VideoInfo = (props: Props) => (
         {props.videoId}
       </span>
     </div>
-    <div className={cx(styles.box, styles.date)}>
-      <Icon icon="publish" />
-      <span
-        title="postedDate"
-        className={styles.value}
-      >
-        {props.postedDate}
-      </span>
-    </div>
-    <div className={cx(styles.box, styles.num)}>
-      <Icon icon="users" />
-      <span
-        title="view count"
-        className={styles.value}
-      >
-        {props.viewCount}
-      </span>
-    </div>
-    <div className={cx(styles.box, styles.num)}>
-      <Icon icon="pencil" />
-      <span
-        title="comment count"
-        className={styles.value}
-      >
-        {props.commentCount}
-      </span>
-    </div>
-    <div className={cx(styles.box, styles.num)}>
-      <Icon icon="folder" />
-      <span
-        title="mylist count"
-        className={styles.value}
-      >
-        {props.mylistCount}
-      </span>
-    </div>
+    {
+      props.postedData ? (
+        <div className={cx(styles.box, styles.date)}>
+          <Icon icon="publish" />
+          <span
+            title="postedDate"
+            className={styles.value}
+          >
+            {props.postedDate}
+          </span>
+        </div>
+      ) : null
+    }
+    {
+      props.viewCount ? (
+        <div className={cx(styles.box, styles.num)}>
+          <Icon icon="users" />
+          <span
+            title="view count"
+            className={styles.value}
+          >
+            {props.viewCount}
+          </span>
+        </div>
+      ) : null
+    }
+    {
+      props.commentCount ? (
+        <div className={cx(styles.box, styles.num)}>
+          <Icon icon="pencil" />
+          <span
+            title="comment count"
+            className={styles.value}
+          >
+            {props.commentCount}
+          </span>
+        </div>
+      ) : null
+    }
+    {
+      props.mylistCount ? (
+        <div className={cx(styles.box, styles.num)}>
+          <Icon icon="folder" />
+          <span
+            title="mylist count"
+            className={styles.value}
+          >
+            {props.mylistCount}
+          </span>
+        </div>
+      ) : null
+    }
   </div>
 );
 

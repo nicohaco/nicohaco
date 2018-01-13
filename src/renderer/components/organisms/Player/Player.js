@@ -55,7 +55,7 @@ const Player = (props: Props) => (
       src={props.src}
       looped={props.loop === 'one'}
       volume={props.volume}
-      status={props.status}
+      status={props.status && props.src !== ''}
       className={styles.audio}
       getDuration={props.getDuration}
       elapsedTime={props.elapsedTime}

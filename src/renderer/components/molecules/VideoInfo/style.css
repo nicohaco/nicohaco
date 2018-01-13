@@ -1,11 +1,5 @@
 .container {
-  bottom: 0;
   display: flex;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
   width: 850px;
 }
 
