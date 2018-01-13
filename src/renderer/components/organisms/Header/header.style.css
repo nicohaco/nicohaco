@@ -1,10 +1,8 @@
-:root {
-  --height: 50px;
-}
+@import "../../../styles/variables.css";
 
 .container {
   display: flex;
-  height: var(--height);
+  height: var(--header-main-height);
   -webkit-app-region: drag; /* stylelint-disable-line */
 }
 
@@ -21,5 +19,5 @@
 
 .sub {
   border-bottom: 1px solid #e5e5e5;
-  height: 30px;
+  height: var(--header-sub-height);
 }

@@ -23,82 +23,49 @@ const VideoInfo = (props: Props) => (
   <div className={styles.container}>
     {
       props.posterThumbnailUrl ? (
-        <div className={cx(styles.box, styles.poster)}>
+        <div className={styles.box}>
           <Image
             src={props.posterThumbnailUrl}
-            width="25"
-            height="25"
+            width="30"
+            height="30"
           />
-          <span
-            title="poster"
-            className={styles.value}
-          >
+          <span title="poster">
             {props.poster}
           </span>
         </div>
       ) : null
     }
     <div
-      className={cx(styles.box, styles.videoId)}
+      className={styles.box}
       onClick={() => shell.openExternal(`${prefix}/watch/${props.videoId}`)}i
     >
-      <Icon icon="monitor" />
-      <span
-        title="videoID"
-        className={styles.value}
-      >
-        {props.videoId}
-      </span>
+      <span title="videoID">ID {props.videoId}</span>
     </div>
     {
       props.postedData ? (
-        <div className={cx(styles.box, styles.date)}>
-          <Icon icon="publish" />
-          <span
-            title="postedDate"
-            className={styles.value}
-          >
-            {props.postedDate}
-          </span>
+        <div className={styles.box}>
+          <span title="postedDate">投稿日 {props.postedDate}</span>
         </div>
       ) : null
     }
     {
       props.viewCount ? (
-        <div className={cx(styles.box, styles.num)}>
-          <Icon icon="users" />
-          <span
-            title="view count"
-            className={styles.value}
-          >
-            {props.viewCount}
-          </span>
+        <div className={styles.box}>
+          <span title="view count">視聴回数 {(~~props.viewCount).toLocaleString()}</span>
         </div>
       ) : null
     }
     {
       props.commentCount ? (
-        <div className={cx(styles.box, styles.num)}>
-          <Icon icon="pencil" />
-          <span
-            title="comment count"
-            className={styles.value}
-          >
-            {props.commentCount}
-          </span>
+        <div className={styles.box}>
+          <span title="comment count">コメント数 {(~~props.commentCount).toLocaleString()}</span>
         </div>
       ) : null
     }
     {
       props.mylistCount ? (
-        <div className={cx(styles.box, styles.num)}>
-          <Icon icon="folder" />
-          <span
-            title="mylist count"
-            className={styles.value}
-          >
-            {props.mylistCount}
-          </span>
+        <div className={styles.box}>
+          <span title="mylist count">マイリスト数 {(~~props.mylistCount).toLocaleString()}</span>
         </div>
       ) : null
     }

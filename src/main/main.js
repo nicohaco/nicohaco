@@ -11,14 +11,12 @@ const {
   BrowserWindow
 } = require('electron');
 const createMenu = require('./menu');
-const initAutoUpdter = require('./autoupdater');
+require('./autoupdater');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 const url = 'http://.nicovideo.jp';
-
-initAutoUpdter();
 
 /**
  * create browserWindow

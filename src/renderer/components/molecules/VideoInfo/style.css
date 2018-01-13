@@ -11,24 +11,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
 
-.value {
-  margin: auto;
-}
-
-.poster {
-  width: 150px;
-}
-
-.videoId {
-  width: 110px;
-}
-
-.date {
-  width: 180px;
-}
-
-.num {
-  width: 80px;
+  & > *:first-child {
+    margin-right: 10px;
+  }
 }

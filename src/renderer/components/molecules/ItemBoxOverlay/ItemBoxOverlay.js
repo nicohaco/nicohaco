@@ -4,6 +4,7 @@ import { shell } from 'electron';
 import React from 'react';
 import cx from 'classnames';
 import { Icon } from '../../atoms/Button';
+import MusicIcon from 'react-icons/lib/md/music-note';
 import styles from './style.css';
 
 type Props = {
@@ -30,8 +31,7 @@ const ItemBoxOverlay = (props: Props) => (
       }
     </span>
     <div className={styles.playBox}>
-      <Icon
-        icon="music"
+      <MusicIcon
         size="2rem"
         onClick={() => props.onClick('music')}
       />

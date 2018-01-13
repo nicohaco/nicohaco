@@ -24,7 +24,9 @@
     "postinstall": "npm run flow-typed",
     "flow-typed": "flow-typed install",
     "test:watch": "jest --watch --coverage",
-    "package:osx": "npm run build && build --mac --x64"
+    "package": "npm run build && npm run package:osx && npm run package:win",
+    "package:osx": "build --mac --x64",
+    "package:win": "build --win --x64"
   },
   "jest": {
     "moduleNameMapper": {
@@ -86,34 +88,41 @@
     "convert-keys": "^1.2.0",
     "dexie": "^2.0.1",
     "electron-devtools-installer": "^2.2.0",
-    "electron-gh-releases": "^2.0.4",
-    "nico-api": "^0.8.0",
+    "nico-api": "^0.8.1",
+    "nico-value": "^0.1.1",
     "photon": "https://github.com/connors/photon",
     "rc-slider": "^8.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-icons": "^2.2.7",
     "react-loading": "^1.0.3",
     "react-modal": "^3.1.10",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.1",
     "react-router-dom": "4.2.2",
     "react-router-redux": "next",
+    "react-select": "^1.2.1",
     "redux": "^3.6.0",
     "redux-saga": "^0.16.0"
   },
   "build": {
     "appId": "com.electron.nicohaco",
+    "productName": "nicohaco",
     "files": [
       "dist",
       "index.html",
       "package.json",
       "build"
     ],
-    "mac": {
-      "target": "default"
-    },
     "directories": {
       "output": "docs"
+    },
+    "mac": {
+      "target": "dmg",
+      "identity": null
+    },
+    "win": {
+     "target": "nsis"
     }
   }
 }

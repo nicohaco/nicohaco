@@ -20,7 +20,9 @@ const createEnhancer = () => {
   );
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      actionsBlacklist: ['UPDATE_ELAPSED_TIME']
+    }) : compose;
 
   return composeEnhancers(appliedMiddlewares);
 };
