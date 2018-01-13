@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import Slider from 'react-slider';
+import Slider from 'rc-slider';
 import { Icon as Button } from '../../atoms/Button';
 import styles from './style.css';
 
@@ -41,11 +41,7 @@ const AudioController = (props: Props) => (
       className={styles.button}
     />
     <Slider
-      min={0}
-      max={100}
-      withBars
       value={props.volume * 100}
-      className={styles.slider}
       onChange={(e) => props.changeVolume(e / 100)}
     />
   </div>
