@@ -1,11 +1,9 @@
 // @flow
 
-import { takeEvery, effects } from 'redux-saga';
+import { put, takeLatest } from 'redux-saga/effects';
 
 import type { Effect } from 'redux-saga';
 import type { Error } from '../types/actions/error';
-
-const { put } = effects;
 
 /**
  * route Error
@@ -106,12 +104,12 @@ function errorAccessDenied() {
  * Error for error
  */
 export default function *errorProcess(): Generator<Effect, void, *> {
-  yield takeEvery('ERROR', routeError);
-  yield takeEvery('ERROR_EXIST', errorExist);
-  yield takeEvery('ERROR_LOGIN', errorLogin);
-  yield takeEvery('ERROR_NOAUTH', errorNoauth);
-  yield takeEvery('ERROR_SERVER', errorServer);
-  yield takeEvery('ERROR_DELETED', errorDeleted);
-  yield takeEvery('ERROR_NOTFOUND', errorNotfound);
-  yield takeEvery('ERROR_ACCESS_DENIED', errorAccessDenied);
+  yield takeLatest('ERROR', routeError);
+  yield takeLatest('ERROR_EXIST', errorExist);
+  yield takeLatest('ERROR_LOGIN', errorLogin);
+  yield takeLatest('ERROR_NOAUTH', errorNoauth);
+  yield takeLatest('ERROR_SERVER', errorServer);
+  yield takeLatest('ERROR_DELETED', errorDeleted);
+  yield takeLatest('ERROR_NOTFOUND', errorNotfound);
+  yield takeLatest('ERROR_ACCESS_DENIED', errorAccessDenied);
 }
