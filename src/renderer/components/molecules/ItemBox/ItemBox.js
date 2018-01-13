@@ -33,14 +33,12 @@ const ItemBox = (props: Props) => (
         totalTime={props.totalTime}
       />
     </div>
-    <div>
-      <p
-        title={props.title}
-        className={styles.title}
-      >
-        {props.title}
-      </p>
-    </div>
+    <p
+      title={props.title}
+      className={styles.title}
+    >
+      {props.title}
+    </p>
   </section>
 );
 

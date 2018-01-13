@@ -19,7 +19,7 @@ const ItemGrid = (props: Props) => (
     {
       props.list.map((item, i) => (
         <ItemBox
-          key={item.watchId || item.contentId}
+          key={item.watchId}
           img={item.videoId.match(/^so/) ? item.thumbnailUrl : `${item.thumbnailUrl}.M`}
           title={item.title}
           actions={[

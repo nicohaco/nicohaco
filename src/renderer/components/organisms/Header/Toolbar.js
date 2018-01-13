@@ -6,6 +6,7 @@ import FeatureActions from '../../../components/molecules/FeatureActions';
 import styles from './toolbar.style.css';
 
 type Props = {
+  path: string;
   poster: string;
   videoId: string;
   pushPage: () => {};
@@ -18,7 +19,10 @@ type Props = {
 
 const Toolbar = (props: Props) => (
   <div className={styles.container}>
-    <FeatureActions pushPage={props.pushPage} />
+    <FeatureActions
+      path={props.path}
+      pushPage={props.pushPage}
+    />
     {
       props.videoId !== '' ? (
         <VideoInfo

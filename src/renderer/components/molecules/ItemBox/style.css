@@ -20,8 +20,12 @@
 }
 
 .title {
-  margin: 0;
+  display: -webkit-box;
+  margin-top: 10px;
+  overflow: hidden;
   text-align: left;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .totalTime {

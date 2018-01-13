@@ -1,0 +1,17 @@
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 250px;
+
+  & > span {
+    border-bottom: 2px solid #fff;
+    font-size: .7rem;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  & > .active {
+    border-bottom: 2px solid #333;
+  }
+}

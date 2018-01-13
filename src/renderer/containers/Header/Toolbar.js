@@ -10,6 +10,7 @@ type DispatchToProps = {
 };
 
 const mapStateToProps = (state) => ({
+  path              : state.router.location.pathname,
   poster            : state.player.current.poster,
   videoId           : state.player.current.videoId,
   viewCount         : state.player.current.viewCount,

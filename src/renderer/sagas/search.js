@@ -17,7 +17,12 @@ const {
 function *search(action: Search): Generator<Effect, void, *> {
   try {
     const nico = yield select(getNico);
-    const search = yield nico.video.search(action.params);
+    let search = yield nico.video.search(action.params);
+
+    search = search.map((item) => ({
+      videoId: item.contentId,
+      ...item
+    }));
 
     yield put({
       type   : 'SEARCH_SUCCESS',

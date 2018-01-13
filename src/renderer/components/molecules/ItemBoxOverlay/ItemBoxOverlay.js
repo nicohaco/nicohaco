@@ -39,7 +39,7 @@ const ItemBoxOverlay = (props: Props) => (
           <Icon
             key={`${i}__${item.icon}`}
             icon={item.icon}
-            size="1.1rem"
+            size="1.3rem"
             onClick={item.onClick}
           />
         ))

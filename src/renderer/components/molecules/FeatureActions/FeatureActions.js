@@ -1,30 +1,33 @@
 // @flow
 
 import React from 'react';
-import { Action as Button } from '../../atoms/Button';
-import photon from '../../../styles/photon';
+import styles from './style.css';
 
 type Props = {
+  path: string;
   pushPage: (string) => {};
 };
 
-// [TODO] hmmm... can't use Link from react-router-dom..
 const FeatureActions = (props: Props) => (
-  <div className={photon['toolbar-actions']}>
-    <div className={photon['btn-group']}>
-      <Button
-        icon="home"
-        onClick={() => props.pushPage('mylist')}
-      />
-      <Button
-        icon="search"
-        onClick={() => props.pushPage('search')}
-      />
-      <Button
-        icon="trophy"
-        onClick={() => props.pushPage('ranking')}
-      />
-    </div>
+  <div className={styles.container}>
+    <span
+      onClick={() => props.pushPage('mylist')}
+      className={props.path === '/mylist' ? styles.active : undefined}
+    >
+      マイリスト
+    </span>
+    <span
+      onClick={() => props.pushPage('search')}
+      className={props.path === '/search' ? styles.active : undefined}
+    >
+      検索
+    </span>
+    <span
+      onClick={() => props.pushPage('ranking')}
+      className={props.path === '/ranking' ? styles.active : undefined}
+    >
+      ランキング
+    </span>
   </div>
 );
 
