@@ -68,7 +68,7 @@ class User extends React.Component<void, Props, State> {
                 items={[
                   {
                     key    : 'logout',
-                    title  : 'logout',
+                    title  : 'ログアウト',
                     onClick: (e) => {
                       e.stopPropagation();
                       logout();
@@ -78,7 +78,7 @@ class User extends React.Component<void, Props, State> {
                   },
                   {
                     key    : 'history',
-                    title  : 'delete history data',
+                    title  : '検索履歴を消す',
                     onClick: (e) => {
                       e.stopPropagation();
                       deleteHistory();
@@ -87,7 +87,7 @@ class User extends React.Component<void, Props, State> {
                   },
                   {
                     key    : 'db',
-                    title  : 'delete db data',
+                    title  : 'DBを初期化する',
                     onClick: (e) => {
                       e.stopPropagation();
                       deleteDB();

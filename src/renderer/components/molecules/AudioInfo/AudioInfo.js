@@ -2,10 +2,9 @@
 
 import React from 'react';
 import cx from 'classnames';
-import Slider from 'react-slider';
+import Slider from 'rc-slider';
 import Loading from 'react-loading';
-import Image from '../../atoms/Image';
-import LoopButton from '../LoopButton';
+import Image from '../../atoms/Image'; import LoopButton from '../LoopButton';
 import { formatTime } from '../../../utils/format';
 import styles from './style.css';
 
@@ -67,10 +66,8 @@ const AudioInfo = (props: Props) => (
       <div className={styles.mainBoxBottom}>
         <Slider
           max={10000}
-          withBars
           disabled={props.disabled}
           value={((props.elapsedTime / props.totalTime) * 10000) || 0}
-          className={styles.slider}
           onChange={(e) =>
             props.updateElapsedTime(props.totalTime * (e / 10000))
           }
