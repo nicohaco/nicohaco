@@ -1,5 +1,6 @@
 {
   "rules": {
+    "max-len": [2, { "code": 100}],
     "import/order": 0,
     "no-underscore-dangle": [
       "error", {

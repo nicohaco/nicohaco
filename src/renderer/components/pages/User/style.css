@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  margin: 20px;
+  justify-content: space-between;
+
+  /* my*/
+  & > div {
+    &:first-child {
+      flex: .6;
+    }
+
+    &:nth-child(2) {
+      flex: .39;
+    }
+  }
+}

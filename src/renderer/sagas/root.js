@@ -23,15 +23,16 @@ function *routePage(): Generator<Effect, void, *> {
       session: userData.session
     });
     yield put({
-      type   : 'FETCH_USER_DATA_SUCCESS', // hmm... rename
+      type   : 'FETCH_OWN_DATA_SUCCESS',
       payload: {
         userData
       }
     });
-    yield put(push('mylist'));
+
+    yield put(push('/users/me'));
   }
   else {
-    yield put(push('login'));
+    yield put(push('/login'));
   }
 }
 

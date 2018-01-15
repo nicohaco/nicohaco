@@ -4,7 +4,7 @@ import type { Auth as State } from '../types/states/auth';
 import type { Auth as Action } from '../types/actions/auth';
 
 const initialState = {
-  userData: {  // [TODO] create user.js when `user` relation becomes bloated...
+  userData: { // [TODO] create user.js when `user` relation becomes bloated...
     id          : -1,
     name        : '',
     session     : '',
@@ -20,7 +20,7 @@ const reducer = (state: State = initialState, action: Action) => {
       return Object.assign({}, state, {
         nicoInstance: action.payload.nicoInstance
       });
-    case 'FETCH_USER_DATA_SUCCESS': // rename
+    case 'FETCH_OWN_DATA_SUCCESS':
       return Object.assign({}, state, {
         userData: action.payload.userData
       });

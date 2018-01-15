@@ -2,8 +2,6 @@
 
 import { shell } from 'electron';
 import React from 'react';
-import cx from 'classnames';
-import Icon from '../../atoms/Icon';
 import { Circle as Image } from '../../atoms/Image';
 import styles from './style.css';
 

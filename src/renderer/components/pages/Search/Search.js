@@ -1,18 +1,16 @@
 // @flow
 
 import React from 'react';
-import MainContainer from '../../templates/MainContainer';
+import ActionPage from '../../templates/ActionPage';
 import GridList from '../../../containers/Search/GridList';
 import SearchBox from '../../../containers/Search/SearchBox';
 import Modal from '../../../containers/Modal/AddMylist';
 
 const Search = () => (
-  <MainContainer
-    left={<SearchBox />}
-    right={<GridList />}
-  >
+  <ActionPage toolbar={<SearchBox />}>
+    <GridList />
     <Modal /> { /* [TODO] depricate */ }
-  </MainContainer>
+  </ActionPage>
 );
 
 export default Search;

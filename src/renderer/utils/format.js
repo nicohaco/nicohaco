@@ -2,6 +2,7 @@
 
 import convertKeys from 'convert-keys';
 
+import type { CustomApiSchema } from '../type/custom-schema';
 import type { Params } from '../types/apis/search';
 
 export const formatTime = (time: number): string => {
@@ -24,13 +25,42 @@ export const formatDate = (unixTime: number): string => {
     'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
   const m = (month.findIndex((item) => item === splitedDate[1]) + 1).toString().padStart(2, '0');
+  const time = splitedDate[4].split(':').slice(0, 2).join(':');
 
-  return `${splitedDate[3]}年${m}月${splitedDate[2]}日 ${splitedDate[4]}`;
+  return `${splitedDate[3]}/${m}/${splitedDate[2]} ${time}`;
 };
 
+export const formatDateOfISO8601 = (date: string) => {
+  // 2018-01-24T01:15:43+09:00
+  const splitedDate = date.split('T');
+
+  const [year, month, day] = splitedDate[0].split('-');
+  const [hour, min] = splitedDate[1].split(':');
+
+  return `${year}/${month}/${day} ${hour}:${min}`;
+}
+
 // eslint-disable-next-line flowtype/no-weak-types
-export const formatApiSchema = (obj: Object): Object =>
-  convertKeys.toCamel(obj);
+export const formatApiSchema = (o: Object): CustomApiSchema => {
+  const obj = convertKeys.toCamel(o);
+
+  return {
+    title       : obj.title,
+    itemId      : obj.itemId,
+    groupId     : obj.groupId,
+    deleted     : obj.deleted,
+    videoId     : obj.videoId || obj.watchId || obj.contentId,
+    groupType   : obj.groupType,
+    totalTime   : obj.lengthSeconds,
+    viewCount   : obj.viewCounter || obj.commentCount,
+    updateTime  : obj.updateTime,
+    postedDate  : obj.firstRetrieve || obj.postedDate || obj.startTime,
+    mylistCount : obj.mylistCounter || obj.mylistCount,
+    lastResBody : obj.lastResBody,
+    thumbnailUrl: obj.thumbnailUrl,
+    commentCount: obj.commentCounter || obj.numRes || obj.commentCount
+  };
+};
 
 export const createSearchParams = (text: string): Params => ({
   q       : text,

@@ -42,7 +42,9 @@ const AudioController = (props: Props) => (
     />
     <Slider
       value={props.volume * 100}
+      style={{ width: 100 }}
       onChange={(e) => props.changeVolume(e / 100)}
+      className={styles.slider}
     />
   </div>
 );

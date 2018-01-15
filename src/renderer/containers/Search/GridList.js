@@ -15,18 +15,12 @@ type DispatchToProps = {
 
 const mapStateToProps = (state: State) => ({
   list      : state.search.result,
-  actionIcon: state.router.location.pathname === '/search' ? 'plus' : ''
+  actionIcon: state.router.location.pathname === '/search' ? 'add' : ''
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
   play: (type, index, list) => {
-
-    // replacement is bothersome so add as videoId...
-    const convertedList = list.map((item) => Object.assign(item, {
-      videoId: item.contentId ? item.contentId : undefined
-    }));
-
-    dispatch(actions.insertToPlaylist(convertedList));
+    dispatch(actions.insertToPlaylist(list));
     dispatch(actions.play(type, index));
   },
   actionMylist: (item) => dispatch(commonActions.openModal(item)) // add

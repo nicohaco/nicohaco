@@ -1,0 +1,49 @@
+.container {
+
+}
+
+.title {
+  border-bottom: 1px solid #aaa;
+  font-size: 1.1rem;
+  margin: 10px;
+  letter-spacing: .1rem;
+  padding: 10px 0;
+}
+
+.main {
+  & > p {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 5px 20px;
+  }
+}
+
+.mylistItems {
+  padding: 0;
+  list-style: none;
+
+  & > li {
+    font-size: .9rem;
+    padding: 5px 20px;
+  }
+}
+
+.mylistController {
+  border-top: 1px solid #aaa;
+  padding-top: 15px;
+
+  & > p {
+    align-items: center;
+    display: flex;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 5px 20px;
+  }
+}
+
+.active {
+  background: #ddd;
+  color: #666;
+}

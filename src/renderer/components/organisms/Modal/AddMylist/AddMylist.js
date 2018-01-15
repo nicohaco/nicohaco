@@ -51,7 +51,7 @@ class AddMylist extends React.Component<void, Props, void> {
               key    : item.id,
               title  : item.name,
               message: `最終更新日: ${formatDate(item.updateTime * 1000)}`,
-              onClick: () => add(item.id, video.videoId || video.contentId)
+              onClick: () => add(item.id, video.videoId)
             }))}
           />
         }

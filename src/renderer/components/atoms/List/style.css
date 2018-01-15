@@ -3,5 +3,5 @@
 }
 
 .active {
-  border-left: 2px solid red;
+  background: #ccc;
 }

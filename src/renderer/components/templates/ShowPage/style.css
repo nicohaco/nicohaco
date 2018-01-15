@@ -1,0 +1,38 @@
+.container {
+  padding: 70px 20px 30px 20px;
+}
+
+.img {
+  text-align: center;
+
+  & > img {
+    border-radius: 50%;
+  }
+}
+
+.info {
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 15px 0;
+
+  & > .left {
+    & > .site {
+      font-size: 1.0rem;
+      width: 100px;
+    }
+  }
+
+  & > .right {
+    display: flex;
+
+    & > div {
+      margin-left: 20px;
+    }
+  }
+}
+
+.tile {
+  margin: auto;
+}

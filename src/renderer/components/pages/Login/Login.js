@@ -10,6 +10,8 @@ type Props = {
   login: (string, string) => {};
 };
 
+const accountUrl = 'https://account.nicovideo.jp/register/email';
+
 class Login extends React.Component<void, Props, void> {
   email: HTMLInputElement;
   password: HTMLInputElement;
@@ -24,7 +26,7 @@ class Login extends React.Component<void, Props, void> {
         <div className={styles.description}>
           <div className={styles.icon} />
           <p>NicoHacoとはNicoBoxのPC版クライアントです</p>
-          <p>Version: α</p>
+          <p>Version: {process.env.VERSION}</p>
         </div>
         <form className={styles.form}>
           <div className={photon['form-group']}>
@@ -48,19 +50,15 @@ class Login extends React.Component<void, Props, void> {
         </form>
         <div className={styles.buttons}>
           <Button
-            onClick={() =>
-              shell.openExternal('https://account.nicovideo.jp/register/email?site=niconico&sec=common_header&next_url=%2F&mode=landing')
-            }
-          >
-            ニコニコ動画のアカウントを作る
-          </Button>
-          <Button
             onClick={() => login(
               this.email.value || process.env.MAIL,
               this.password.value || process.env.PASSWORD
             )}
           >
             ログインする
+          </Button>
+          <Button onClick={() => shell.openExternal(accountUrl)}>
+            ニコニコ動画のアカウントを作る
           </Button>
         </div>
         <p>バグ・要望があればHelpにあるNicoHacoのissuesへどうぞ</p>

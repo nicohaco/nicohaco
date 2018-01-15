@@ -59,6 +59,6 @@ export const insertDuration = (duration: number) => ({ // [TODO] rename
 });
 
 export const closeVideoPlayer = () => ({
-  type: 'SET_PLAY_TYPE',
+  type    : 'SET_PLAY_TYPE',
   playType: 'music'
 });

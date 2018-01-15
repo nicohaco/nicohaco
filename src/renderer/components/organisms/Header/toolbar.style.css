@@ -1,5 +1,11 @@
 .container {
+  align-items: center;
   display: flex;
   height: 100%;
+  margin: 0 5px;
   position: relative;
+}
+
+.controller {
+  width: 230px;
 }

@@ -3,7 +3,7 @@ import * as actions from '../../actions/player';
 import Video from '../../components/organisms/VideoPlayer';
 
 const mapStateToProps = (state) => ({
-  id: state.player.current.videoId,
+  id    : state.player.current.videoId,
   opened: state.player.playType === 'video' // TODO: delete
 });
 

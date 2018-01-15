@@ -1,34 +1,32 @@
 // @flow
 
 import React from 'react';
-import Loader from 'react-loading';
+import SideMenu from '../../../containers/SideMenu';
 import styles from './style.css';
 
 type Props = {
-  left: React.Component<*>;
-  right: React.Component<*>;
+  hasMainBoxPadding: boolean;
   children: React.Component<*>;
 };
 
 const MainContainer = (props: Props) => (
   <div className={styles.container}>
-    <div className={styles.left}>{props.left}</div>
-    {props.children}
-    <div className={styles.right}>
-      {
-        /*
-        <div className={styles.loader}>
-          <Loader
-            type="bars"
-            height="50px"
-            width="50px"
-            />
-        </div>
-         */
-      }
-      {props.right}
+    <div className={styles.left}>
+      <SideMenu />
+    </div>
+    <div
+      className={styles.right}
+      style={{
+        padding: props.hasMainBoxPadding ? 20 : 0
+      }}
+    >
+      {props.children}
     </div>
   </div>
 );
+
+MainContainer.defaultProps = {
+  hasMainBoxPadding: true
+};
 
 export default MainContainer;

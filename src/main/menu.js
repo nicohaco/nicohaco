@@ -62,6 +62,19 @@ const edit = {
   ]
 };
 
+const window = ({ setAlwaysOnTop }) => {
+  return {
+    label  : 'window',
+    submenu: [
+      {
+        type: 'checkbox',
+        label: '常に最前面にする',
+        click: (flag) => setAlwaysOnTop(flag.checked)
+      }
+    ]
+  };
+};
+
 const help = {
   role   : 'help',
   submenu: [
@@ -87,10 +100,9 @@ const dev = {
 /**
  * create the menu
  */
-function createMenu() {
-  const template = process.env.NODE_ENV === 'production' ?
-    [about, edit, help] :
-    [about, edit, help, dev];
+function createMenu(funcs) {
+  const common = [about, edit, window(funcs), help];
+  const template = process.env.NODE_ENV === 'production' ? common : [...common, dev];
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 }

@@ -11,16 +11,27 @@ const dashboard = new Dashboard();
 require('dotenv').config();
 
 module.exports = {
-  cache: true,
-  entry: [
-    // 'react-hot-loader/patch',
-    'babel-polyfill',
-    path.join(__dirname, 'src', 'renderer', 'index.js')
-  ],
-  output: {
-    publicPath: '/dist/'
-  },
+  cache  : true,
   devtool: 'cheap-module-eval-source-map',
+  module : {
+    rules: [
+      {
+        test: /\.css$/,
+        use : [
+          'style-loader',
+          {
+            loader : 'css-loader',
+            options: {
+              modules       : true,
+              importLoaders : 1,
+              localIdentName: '[path]__[name]__[local]__[hash:base64:5]'
+            }
+          },
+          'postcss-loader'
+        ]
+      }
+    ]
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.MAIL'    : JSON.stringify(process.env.MAIL),
@@ -29,6 +40,7 @@ module.exports = {
     }),
     new DashboardPlugin(dashboard.setData),
     new webpack.HotModuleReplacementPlugin(),
+
     // new FlowStatusWebpackPlugin({
     //   failOnError: true
     // }),

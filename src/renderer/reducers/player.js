@@ -42,7 +42,7 @@ const reducer = (state: State = initialState, action: Action) => {
           viewCount         : action.payload.viewCount,
           postedDate        : action.payload.postedDate,
           commentCount      : action.payload.commentCount,
-          mylistCount       : action.payload.mylistCounter,
+          mylistCount       : action.payload.mylistCount,
           thumbnailUrl      : action.payload.thumbnailUrl,
           posterThumbnailUrl: action.payload.posterThumbnailUrl
         }
@@ -59,7 +59,7 @@ const reducer = (state: State = initialState, action: Action) => {
           viewCount         : action.payload.viewCount,
           postedDate        : action.payload.postedDate,
           commentCount      : action.payload.commentCount,
-          mylistCount       : action.payload.mylistCounter,
+          mylistCount       : action.payload.mylistCount,
           thumbnailUrl      : action.payload.thumbnailUrl,
           posterThumbnailUrl: action.payload.posterThumbnailUrl
         }
@@ -106,8 +106,8 @@ const reducer = (state: State = initialState, action: Action) => {
       return state;
     case 'SET_PLAY_TYPE':
       return action.playType === 'video' ?
-        {...state, playType: action.playType} :
-        {...state, playType: action.playType, current: initialState.current}
+        { ...state, playType: action.playType } :
+        { ...state, playType: action.playType, current: initialState.current };
     default:
       (action: empty);
       return state;

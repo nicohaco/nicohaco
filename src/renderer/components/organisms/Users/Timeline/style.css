@@ -1,0 +1,11 @@
+.container {
+
+}
+
+.title {
+  border-bottom: 1px solid #ccc;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 5px;
+}

@@ -12,7 +12,7 @@
 
 .user {
   display: flex;
-  height: var(--height);
+  height: var(--header-main-height);
   position: absolute;
   right: 100px;
 }

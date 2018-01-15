@@ -12,7 +12,7 @@
 
 .borderButton {
   border: 1px solid #999;
-  border-radius: 5px;
+  border-radius: 25px;
   color: #333;
   cursor: pointer;
   font-size: .75rem;

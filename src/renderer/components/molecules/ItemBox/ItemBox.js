@@ -15,6 +15,7 @@ type Props = {
   watchId: string;
   onClick: () => {};
   totalTime: string;
+  postedDate: string;
 };
 
 const ItemBox = (props: Props) => (
@@ -39,13 +40,23 @@ const ItemBox = (props: Props) => (
       </p>
       <div className={styles.infoDetail}>
         {
+          props.postedDate ? (
+            <span>投稿 {props.postedDate}</span>
+          ) : null
+        }
+        {
+          props.viewCount || props.commentCount ? (
+            <br />
+          ) : null
+        }
+        {
           props.viewCount ? (
-            <span>視聴回数 {(~~props.viewCount).toLocaleString()}</span>
+            <span>再生 {(~~props.viewCount).toLocaleString()}</span>
           ) : null
         }
         {
           props.commentCount ? (
-            <span>コメント数 {(~~props.commentCount).toLocaleString()}</span>
+            <span>コメ {(~~props.commentCount).toLocaleString()}</span>
           ) : null
         }
       </div>
