@@ -3,8 +3,6 @@
 }
 
 .container {
-  height: 100%;
-
   & > ul {
     height: calc(100% - var(--condition-height));
     overflow-y: auto;
@@ -14,9 +12,26 @@
 .condition {
   display: flex;
   height: 35px;
+  width: 300px;
 
   & > div {
     border-radius: none;
     flex: 1;
   }
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+}
+
+.category {
+  padding: 5px 10px;
+  text-align: center;
+  width: 150px;
+}
+
+.active {
+  background: #ccc;
+  color: #666;
 }

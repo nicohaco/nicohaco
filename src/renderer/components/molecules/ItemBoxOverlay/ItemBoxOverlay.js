@@ -43,17 +43,21 @@ const ItemBoxOverlay = (props: Props) => (
     </div>
     <div className={styles.menu}>
       {
-        props.actions.map((item, i) => (
-          <Icon
-            key={`${i}__${item.icon}`}
-            icon={item.icon}
-            size="1.3rem"
-            onClick={item.onClick}
-          />
+        props.actions.map((Icon, i) => (
+          <div
+            key={i}
+            style={{fontSize: '1.8rem'}}
+          >
+            {Icon}
+          </div>
         ))
       }
     </div>
   </div>
 );
+
+ItemBoxOverlay.defaultProps = {
+  actions: []
+};
 
 export default ItemBoxOverlay;

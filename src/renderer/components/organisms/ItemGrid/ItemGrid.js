@@ -1,6 +1,8 @@
 // @flow
 
 import React from 'react';
+import AddIcon from 'react-icons/lib/md/add';
+import DeleteIcon from 'react-icons/lib/md/delete';
 import { formatTime } from '../../../utils/format';
 import ItemBox from '../../molecules/ItemBox';
 import styles from './style.css';
@@ -19,27 +21,36 @@ const ItemGrid = (props: Props) => (
     {
       props.list.map((item, i) => (
         <ItemBox
-          key={`${i}_${item.watchIda}`}
+          key={`${i}_${item.videoId}`}
           img={item.videoId.match(/^so/) ? item.thumbnailUrl : `${item.thumbnailUrl}.M`}
           title={item.title}
           actions={[
-            {
-              icon   : props.actionIcon, // add or delete
-              onClick: (e) => {
-                e.stopPropagation();
-                props.actionMylist(item);
-              }
-            }
+            props.actionIcon === 'add' ? (
+              <AddIcon
+                onClick={(e) => {
+                  e.stopPropagation();
+                  props.actionMylist(item);
+                }}
+              />
+            ) : (
+              <DeleteIcon
+                onClick={(e) => {
+                  e.stopPropagation();
+                  props.actionMylist(item);
+                }}
+              />
+            )
           ]}
-          watchId={item.watchId || item.contentId}
+          watchId={item.videoId}
           onClick={(type) => props.play(type, i, props.list)}
-          viewCount={item.viewCounter}
-          commentCount={item.commentCounter}
+          viewCount={item.viewCount}
+          commentCount={item.commentCount}
+          postedDate={item.postedDate}
           totalTime={
-            item.lengthSeconds ? (
-              item.lengthSeconds.includes(':') ?
-                item.lengthSeconds.padStart(5, '0') : // for ranking
-                formatTime(parseInt(item.lengthSeconds))
+            item.totalTime ? (
+              item.totalTime.includes(':') ?
+                item.totalTime.padStart(5, '0') : // for ranking
+                formatTime(parseInt(item.totalTime))
             ) : null
           }
         />

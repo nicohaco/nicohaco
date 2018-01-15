@@ -66,9 +66,7 @@ function *deleteUserData(): Generator<Effect, void, *> {
  * insert mylistgroup to indexedDB
  * @param {InsertMylistgroup} action
  */
-function *insertMylistgroup(action: InsertMylistgroup):
-  Generator<Effect, void, *>
-{
+function *insertMylistgroup(action: InsertMylistgroup): Generator<Effect, void, *> {
   try {
     yield db.mylistgroup.clear();
     yield db.mylistgroup.bulkAdd(action.payload.mylistgroup);
@@ -99,9 +97,7 @@ function *showMylistgroup(): Generator<Effect, void, *> {
  * update mylistgroup in indexedDB
  * @param {UpdateMylistgroup} action
  */
-function *updateMylistgroup(action: UpdateMylistgroup):
-  Generator<Effect, void, *>
-{
+function *updateMylistgroup(action: UpdateMylistgroup): Generator<Effect, void, *> {
   try {
     yield db.mylistgroup.update(action.groupId, action.items);
   } catch (e) {
@@ -153,19 +149,30 @@ function *showMylist(action: ShowMylist): Generator<Effect, void, *> {
  * insert search history to indexedDB
  * @param {InsertSearchHistory} action
  */
-function *insertSearchHistory(action: InsertSearchHistory):
-  Generator<Effect, void, *>
-{
+function *insertSearchHistory(action: InsertSearchHistory): Generator<Effect, void, *> {
   try {
     const payload = {
       text: action.text,
       date: (new Date()).getTime()
     };
 
-    yield db.history.add({
-      text: payload.text,
-      date: payload.date
+    const item = yield db.history.get({
+      text: payload.text
     });
+
+    if (item) {
+      yield db.history.put({
+        id: item.id,
+        text: item.text,
+        date: payload.date
+      });
+    }
+    else {
+      yield db.history.add({
+        text: payload.text,
+        date: payload.date
+      });
+    }
 
     yield put({
       type: 'INSERT_SEARCH_HISTORY_SUCCESS',
@@ -181,7 +188,9 @@ function *insertSearchHistory(action: InsertSearchHistory):
  */
 function *showSearchHistory(): Generator<Effect, void, *> {
   try {
-    const history = yield db.history.toArray();
+    const history = yield db.history
+      .orderBy('date')
+      .toArray();
 
     yield put({
       type   : 'SHOW_SEARCH_HISTORY_SUCCESS',

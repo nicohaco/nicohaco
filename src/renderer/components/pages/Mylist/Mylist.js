@@ -1,27 +1,38 @@
 // @flow
 
 import React from 'react';
-import MainContainer from '../../templates/MainContainer';
-import GroupList from '../../../containers/Mylist/GroupList';
+import { formatDate } from '../../../utils/format';
+import ShowPage from '../../templates/ShowPage';
 import GridList from '../../../containers/Mylist/GridList';
 
-type Props = {
-  setup: () => {};
-};
-
-class Mylist extends React.Component<void, Props, void> {
-  componentWillMount() {
-    this.props.setup();
-  }
-
-  render() {
-    return (
-      <MainContainer
-        left={<GroupList />}
-        right={<GridList />}
-      />
-    );
-  }
-}
+const Mylist = (props) =>(
+  <ShowPage
+    title={props.group.name}
+    pathname={props.pathname}
+    thumbnailUrl={props.group.img}
+    buttons={[
+      {
+        title: 'PLAY',
+        onClick: () => props.play('music', 0, props.list)
+      }
+    ]}
+    info={[
+      {
+        title: 'UpdatedAt',
+        text: formatDate(props.group.updateTime * 1000)
+      },
+      {
+        title: 'TotalVideos',
+        text: props.group.totalVideos
+      },
+      {
+        title: 'TotalTime',
+        text: props.group.totalTime
+      }
+    ]}
+  >
+    <GridList />
+  </ShowPage>
+);
 
 export default Mylist;

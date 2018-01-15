@@ -1,19 +1,31 @@
 // @flow
+/* eslint-disable no-console */
 
 'use strict';
 
-const { app, autoUpdater } = require('electron');
+const { app, dialog, autoUpdater } = require('electron');
 
-const server = 'https://hazel-server-zrvhbcejjx.now.sh';
+const server = 'https://hazel-server-ighgtcdaut.now.sh';
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
 
-console.log(app.getVersion())
-autoUpdater.on('error', err => console.log(err));
-autoUpdater.on('checking-for-update', () => console.log('アップデートの有無をチェック中'));
-autoUpdater.on('update-available', () => console.log('アップデートを利用可能'));
-autoUpdater.on('update-not-available', () => console.log('アップデートを利用不可能'));
-autoUpdater.on('update-downloaded', () => console.log('アップデートをダウンロード済'));
+autoUpdater.on('error', (err) => console.log(err));
+autoUpdater.on('checking-for-update', () => console.log('checking-for-update'));
+autoUpdater.on('update-available', () => console.log('update-available'));
+autoUpdater.on('update-not-available', () => console.log('update-not-available'));
 
-console.log(feed)
+autoUpdater.on('update-downloaded', () => {
+  console.log('downloaded');
+
+  const index = dialog.showMessageBox({
+    message: 'アップデートあり',
+    detail : '再起動してインストールできます。',
+    buttons: ['再起動', '後で']
+  });
+
+  if (index === 0) {
+    autoUpdater.quitAndInstall();
+  }
+});
+
 autoUpdater.setFeedURL(feed);
 autoUpdater.checkForUpdates();

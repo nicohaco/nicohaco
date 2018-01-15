@@ -2,22 +2,27 @@
 
 :root {
   --content-height: 50px;
+  --content-width: 600px;
   --seekbar-height: 10px;
   --main-box-width: 500px;
   --thumbail-width: 65px;
 }
 
 .container {
+  background: var(--background-gray);
   display: flex;
   height: var(--content-height);
-  width: calc(var(--main-box-width) + var(--thumbail-width) * 2);
+  max-width: var(--content-width);
+}
+
+.thumbnailBox {
+  height: var(--content-height);
+  position: relative;
+  width: 65px;
 }
 
 .mainBox {
-  background: var(--background-gray);
-  display: flex;
-  flex-flow: column nowrap;
-  width: var(--main-box-width);
+  width: calc(100% - 65px);
 }
 
 .mainBoxTop {
@@ -29,6 +34,10 @@
 
 .mainBoxBottom {
   height: var(--seekbar-height);
+
+  & > div {
+    background: transparent !important;
+  }
 }
 
 .loopButton {
@@ -38,7 +47,7 @@
 }
 
 .time {
-  bottom: 0;
+  bottom: -5px;
   color: #777;
   font-size: .8rem;
   position: absolute;
@@ -54,19 +63,9 @@
 
 .title {
   margin-top: 5px;
+  padding: 0 50px;
   position: absolute;
   text-align: center;
-  width: 100%;
-}
-
-.thumbnail {
-  height: var(--content-height);
-  width: 65px;
-}
-
-.thumbnailBox {
-  height: 100%;
-  position: relative;
   width: 100%;
 }
 
@@ -83,21 +82,6 @@
   top: 0;
 }
 
-/* react-slider */
 .slider {
-  background: #d1cfd1;
-  cursor: pointer;
-  height: var(--seekbar-height);
-
-  & div:first-child {
-    background: #555;
-    height: 100%;
-  }
-
-  & div:last-child { /* for hundle */
-    background: #222;
-    height: 100%;
-    width: 5px;
-  }
+  -webkit-app-region: no-drag; /* eslint-disable-line */
 }
-

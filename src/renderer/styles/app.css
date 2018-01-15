@@ -1,14 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 .container {
   display: flex;
+  font-family: 'Lato', sans-serif;
   height: 100vh;
   justify-content: center; /* for login */
-}
-
-:global {
-  @import '/node_modules/rc-slider/assets/index.css';
-  @import '/node_modules/react-select/dist/react-select.css';
-
-  & .rc-slider-disabled {
-    background: transparent;
-  }
 }

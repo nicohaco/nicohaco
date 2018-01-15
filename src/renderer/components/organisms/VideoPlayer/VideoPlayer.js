@@ -19,7 +19,7 @@ class VideoPlayer extends React.PureComponent {
   }
 
   changeSize = () => {
-    this.setState({ isSmall: !this.state.isSmall })
+    this.setState({ isSmall: !this.state.isSmall });
   }
 
   render() {

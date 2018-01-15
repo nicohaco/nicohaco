@@ -11,3 +11,16 @@ export const pushPage = (path: string): PushPage => ({
 export const routePage = () => ({
   type: 'ROUTE_PAGE'
 });
+
+export const goBackPage = () => ({
+  type: 'GO_BACK_PAGE'
+});
+
+export const goForwardPage = () => ({
+  type: 'GO_FORWARD_PAGE'
+});
+
+export const setAlwaysOnTop = (flag: boolean) => ({
+  type: 'SET_ALWAYS_ON_TOP',
+  flag
+});

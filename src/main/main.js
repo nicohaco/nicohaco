@@ -11,12 +11,23 @@ const {
   BrowserWindow
 } = require('electron');
 const createMenu = require('./menu');
+
 require('./autoupdater');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 const url = 'http://.nicovideo.jp';
+const sizePreset = {
+  normal: {
+    width: 1210,
+    height: 800
+  },
+  small: {
+    width: 640,
+    height: 480
+  }
+};
 
 /**
  * create browserWindow
@@ -26,11 +37,12 @@ function createWindow() {
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width         : 1210,
-    frame         : false,
-    height        : 800,
-    minWidth      : 1150,
-    minHeight     : 650,
+    width : sizePreset.normal.width,
+    height: sizePreset.normal.height,
+    minWidth: 320,
+    minHeight: 180,
+    frame : false,
+    alwaysOnTop   : false,
     titleBarStyle : 'hidden',
     webPreferences: {
       webSecurity: false
@@ -38,7 +50,9 @@ function createWindow() {
     acceptFirstMouse: true
   });
 
-  createMenu();
+  createMenu({
+    setAlwaysOnTop
+  });
 
   if (process.env.NODE_ENV !== 'production') {
     mainWindow.loadURL('http://localhost:8080');
@@ -61,8 +75,16 @@ function createWindow() {
     mainWindow.webContents.openDevTools();
   }
   else {
-    mainWindow.loadURL(`file://${path.join(__dirname, '..', 'index.html')}`);
+    mainWindow.loadURL(`file://${path.join(__dirname, '..', 'dist', 'index.html')}`);
   }
+
+  const filter = {
+    urls: ['http://ads.nicovideo.jp/*']
+  };
+
+  session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
+    callback({ cancel: true });
+  });
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -96,6 +118,16 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+// for main
+function setAlwaysOnTop(flag) {
+  mainWindow.setAlwaysOnTop(flag);
+}
+
+// for renderer
+ipcMain.on('setAlwaysOnTop', (flag) => {
+  setAlwaysOnTop(flag);
 });
 
 ipcMain.on('setCookie', (e, c) => {

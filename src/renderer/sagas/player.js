@@ -29,19 +29,19 @@ function *play(action: Play): Generator<Effect, void, *> {
     const videoInfo = playlist[action.index];
 
     yield put({
-      type: 'SET_PLAY_TYPE',
+      type    : 'SET_PLAY_TYPE',
       playType: action.playType
     });
 
     if (action.playType === 'video') {
       yield put({ // TODO: fix
-        type: 'INSERT_CURRENT_AUDIO',
+        type   : 'INSERT_CURRENT_AUDIO',
         payload: {
-          title: videoInfo.title,
-          videoId: videoInfo.videoId,
-          viewCount: videoInfo.viewCounter,
-          commentCount: videoInfo.numRes,
-          mylistCount: videoInfo.mylistCounter
+          title       : videoInfo.title,
+          videoId     : videoInfo.videoId,
+          viewCount   : videoInfo.viewCount,
+          commentCount: videoInfo.numRes || videoInfo.commentCount,
+          mylistCount : videoInfo.mylistCount
         }
       });
       return;

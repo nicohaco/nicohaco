@@ -1,10 +1,12 @@
 // @flow
 
 import React from 'react';
+import cx from 'classnames';
 import styles from './style.css';
 
 type Props = {
   src: string;
+  className: string;
 };
 
 const Image = (props: Props) => {
@@ -14,8 +16,8 @@ const Image = (props: Props) => {
     <img
       src={props.src}
       ref={(img) => el = img}
-      onError={() => el.src = el.src.split('.M')[0] /* TODO: fix */ }
-      className={styles.container}
+      onError={() => el.src = el.src.split('.M')[0]}
+      className={cx(styles.container, props.className)}
     />
   );
 };

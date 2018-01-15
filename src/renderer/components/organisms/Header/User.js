@@ -18,7 +18,7 @@ type State = {
   openedPopup: boolean;
 };
 
-class User extends React.Component<void, Props, State> {
+class User extends React.PureComponent<Props, State> {
   state: State;
   onClick: () => {}; // eslint-disable-line
 
