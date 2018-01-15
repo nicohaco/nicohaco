@@ -5,7 +5,12 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './containers';
 
-const rootEl = document.getElementById('root');
+import '!style-loader!css-loader!rc-slider/assets/index.css';
+import '!style-loader!css-loader!react-select/dist/react-select.css';
+
+const rootEl = document.createElement('div');
+
+if (document.body) document.body.appendChild(rootEl);
 
 const render = () => {
   ReactDOM.render((

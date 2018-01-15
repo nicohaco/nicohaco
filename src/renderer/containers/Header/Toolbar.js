@@ -10,7 +10,6 @@ type DispatchToProps = {
 };
 
 const mapStateToProps = (state) => ({
-  path              : state.router.location.pathname,
   poster            : state.player.current.poster,
   videoId           : state.player.current.videoId,
   viewCount         : state.player.current.viewCount,
@@ -21,7 +20,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
-  pushPage: (path) => dispatch(actions.pushPage(path))
+  pushPage: (path) => dispatch(actions.pushPage(path)),
+  goBackPage: () => dispatch(actions.goBackPage()),
+  goForwardPage: () => dispatch(actions.goForwardPage())
 });
 
 export default connect(

@@ -56,6 +56,8 @@ function *login(action: Login): Generator<Effect, void, *> {
           })
         }
       });
+
+      yield put({ type: 'ROUTE_PAGE' });
     }
     else {
       throw {
@@ -145,16 +147,13 @@ function *validateUserSession(): Generator<Effect, void, *> {
   }
 }
 
-/**
- * fetch user data
- */
-function *fetchUserData(): Generator<Effect, void, *> {
+function *fetchOwnData(): Generator<Effect, void, *> {
   try {
     const nico = yield select(getNico);
     const userData = yield nico.user.getInfo();
 
     yield put({
-      type   : 'FETCH_USER_DATA_SUCCESS',
+      type   : 'FETCH_OWN_DATA_SUCCESS',
       payload: {
         userData
       }
@@ -173,9 +172,7 @@ function *fetchUserData(): Generator<Effect, void, *> {
 export default function *authProcess(): Generator<Effect, void, *> {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
+  yield takeEvery('FETCH_OWN_DATA', fetchOwnData);
   yield takeEvery('CREATE_NICO_INSTANCE', createNicoInstance);
   yield takeEvery('VALIDATE_USER_SESSION', validateUserSession);
-
-  // [TODO] create user.js when `user` relation becomes bloated...
-  yield takeEvery('FETCH_USER_DATA', fetchUserData);
 }

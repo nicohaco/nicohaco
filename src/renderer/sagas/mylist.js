@@ -4,6 +4,7 @@
 /* eslint-disable no-console */
 
 import { put, take, select, takeLatest } from 'redux-saga/effects';
+import convertKeys from 'convert-keys';
 import { getNico } from './selectors';
 import {
   formatTime,
@@ -232,7 +233,7 @@ function *fetchMylistgroup(): Generator<Effect, void, *> {
     const nico = yield select(getNico);
     const group = yield nico.mylist.getAll();
 
-    const groupList = group.mylistgroup.map((item) => formatApiSchema(item));
+    const groupList = group.mylistgroup.map((item) => convertKeys.toCamel(item));
 
     yield put({
       type   : 'INSERT_MYLISTGROUP',

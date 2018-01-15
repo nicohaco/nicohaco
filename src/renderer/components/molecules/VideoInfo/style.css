@@ -1,5 +1,7 @@
 .container {
+  align-items: center;
   display: flex;
+  margin: auto;
   width: 850px;
 }
 

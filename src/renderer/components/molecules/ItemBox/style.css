@@ -13,10 +13,10 @@
   height: 120px;
   position: relative;
   width: var(--container-width);
-}
 
-.img:hover .overlay {
-  display: block;
+  &:hover .overlay {
+    display: block;
+  }
 }
 
 .info {
@@ -35,6 +35,10 @@
     color: #666;
     margin-top: 5px;
     text-align: left;
+
+    & > span {
+      margin-right: 5px;
+    }
   }
 }
 

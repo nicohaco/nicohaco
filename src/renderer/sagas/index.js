@@ -3,6 +3,7 @@
 import { all, fork } from 'redux-saga/effects';
 import db from './db';
 import auth from './auth';
+import user from './user';
 import page from './page';
 import root from './root';
 import error from './error';
@@ -20,6 +21,7 @@ function *rootSaga(): Generator<Effect, void, *> {
   yield all([
     fork(db),
     fork(auth),
+    fork(user),
     fork(page),
     fork(root),
     fork(error),

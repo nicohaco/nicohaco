@@ -2,6 +2,7 @@
 
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
+import { formatDate } from '../../utils/format';
 import * as actions from '../../actions/player';
 import * as mylistActions from '../../actions/mylist';
 import GridList from '../../components/organisms/ItemGrid';
@@ -15,7 +16,9 @@ type DispatchProps = {
 };
 
 const mapStateToProps = (state: State) => ({
-  list      : state.mylist.mylist,
+  list: state.mylist.mylist.map((item) =>
+    ({...item, postedDate: formatDate(item.postedDate * 1000)})
+  ),
   actionIcon: state.router.location.pathname === '/mylist' ? 'trash' : ''
 });
 

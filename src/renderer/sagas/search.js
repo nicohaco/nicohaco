@@ -2,6 +2,7 @@
 
 import { put, select, takeLatest } from 'redux-saga/effects';
 import { getNico } from './selectors';
+import { formatApiSchema } from '../utils/format';
 
 import type { Effect } from 'redux-saga';
 import type { SearchAction as Search } from '../types/actions/search';
@@ -14,10 +15,7 @@ function *search(action: Search): Generator<Effect, void, *> {
     const nico = yield select(getNico);
     let search = yield nico.video.search(action.params);
 
-    search = search.map((item) => ({
-      videoId: item.contentId,
-      ...item
-    }));
+    search = search.map((item) => formatApiSchema(item));
 
     yield put({
       type   : 'SEARCH_SUCCESS',

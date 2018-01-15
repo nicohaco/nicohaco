@@ -2,6 +2,7 @@
 
 import { put, select, takeLatest } from 'redux-saga/effects';
 import { getNico } from './selectors';
+import { formatApiSchema } from '../utils/format';
 
 import type { Effect } from 'redux-saga';
 import type { FetchRanking } from '../types/actions/ranking';
@@ -13,9 +14,19 @@ import type { FetchRanking } from '../types/actions/ranking';
 function *fetchRanking(action: FetchRanking) {
   try {
     const nico = yield select(getNico);
-    const ranking = yield nico.video.getRanking(
+    let ranking = yield nico.video.getRanking(
       action.category, action.target, action.period
     );
+
+    if (ranking) {
+      ranking = ranking.map((item) => (formatApiSchema({
+        ...item,
+        postedDate: item.postedDate
+          .replace(/[年|月]/g, '/')
+          .replace(/：/g, ':')
+          .replace(/日/, ' - ')
+      })));
+    }
 
     yield put({
       type   : 'FETCH_RANKING_SUCCESS',

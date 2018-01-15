@@ -1,12 +1,6 @@
 .container {
-  height: 100%;
 }
 
 .searchBox {
-  margin: 0 1px;
-}
-
-.history {
-  height: calc(100% - 32px - 20px);
-  overflow-y: auto;
+  width: 400px;
 }

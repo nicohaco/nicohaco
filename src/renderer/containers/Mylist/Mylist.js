@@ -1,22 +1,25 @@
 // @flow
 
-import * as Redux from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/mylist';
+import * as actions from '../../actions/player';
 import Mylist from '../../components/pages/Mylist';
 
-import type { State } from '../../types/states';
+const mapStateToProps = (state: State) => {
+  const pathname = state.router.location.pathname;
+  const id = pathname.split('/').slice(-1)[0];
 
-type DispatchToProps = {
-  setup: () => {};
-};
+  return {
+    list : state.mylist.mylist,
+    group: state.mylist.group.find((item) => item.id === id) || [],
+    pathname
+  };
+}
 
-const mapStateToProps = (state: State) => ({
-  group: state.mylist.group
-});
-
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
-  setup: () => dispatch(actions.setup())
+const mapDispatchToProps = (dispatch) => ({
+  play: (type, index, list) => {
+    dispatch(actions.insertToPlaylist(list));
+    dispatch(actions.play(type, index));
+  },
 });
 
 export default connect(

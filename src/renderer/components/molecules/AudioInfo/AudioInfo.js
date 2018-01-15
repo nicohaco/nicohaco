@@ -24,26 +24,24 @@ type Props = {
 
 const AudioInfo = (props: Props) => (
   <div className={cx(styles.container, props.className)}>
-    <div className={styles.thumbnail}>
-      {
-        props.thumbnailUrl ? (
-          <div className={styles.thumbnailBox}>
-            <div
-              style={{ opacity: props.displayedLoader ? 0 : 1 }}
-              className={styles.loading}
-            >
-              <Loading
-                type="bars"
-                color="#fff"
-                width="50%"
-                height="70%"
-              />
-            </div>
-            <Image src={props.thumbnailUrl} />
+    {
+      props.thumbnailUrl ? (
+        <div className={styles.thumbnailBox}>
+          <div
+            style={{ opacity: props.displayedLoader ? 0 : 1 }}
+            className={styles.loading}
+          >
+            <Loading
+              type="bars"
+              color="#fff"
+              width="50%"
+              height="70%"
+            />
           </div>
-        ) : null
-      }
-    </div>
+          <Image src={props.thumbnailUrl} />
+        </div>
+      ) : null
+    }
     <div className={styles.mainBox}>
       <div className={styles.mainBoxTop}>
         {
@@ -64,16 +62,20 @@ const AudioInfo = (props: Props) => (
         </span>
       </div>
       <div className={styles.mainBoxBottom}>
-        <Slider
-          max={10000}
-          disabled={props.disabled}
-          value={((props.elapsedTime / props.totalTime) * 10000) || 0}
-          onChange={(e) =>
-            props.updateElapsedTime(props.totalTime * (e / 10000))
-          }
-          onBeforeChange={() => props.toggleStatus(false)}
-          onAfterChange={() => props.toggleStatus()}
-        />
+        {
+          !props.disabled ? (
+            <Slider
+              max={10000}
+              value={((props.elapsedTime / props.totalTime) * 10000) || 0}
+              onChange={(e) =>
+                props.updateElapsedTime(props.totalTime * (e / 10000))
+              }
+              className={styles.slider}
+              onBeforeChange={() => props.toggleStatus(false)}
+              onAfterChange={() => props.toggleStatus()}
+            />
+          ) : null
+        }
       </div>
     </div>
   </div>
