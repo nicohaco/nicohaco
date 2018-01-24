@@ -75,14 +75,20 @@ const window = ({ setAlwaysOnTop }) => {
   };
 };
 
-const help = {
-  role   : 'help',
-  submenu: [
-    {
-      label: 'GitHub repository',
-      click: () => shell.openExternal('https://github.com/abouthiroppy/nicohaco')
-    }
-  ]
+const help = ({ deleteDB }) => {
+  return {
+    role   : 'help',
+    submenu: [
+      {
+        label: 'GitHub repository',
+        click: () => shell.openExternal('https://github.com/abouthiroppy/nicohaco')
+      },
+      {
+        label: 'Delete DB',
+        click: deleteDB
+      }
+    ]
+  };
 };
 
 const dev = {
@@ -101,7 +107,7 @@ const dev = {
  * create the menu
  */
 function createMenu(funcs) {
-  const common = [about, edit, window(funcs), help];
+  const common = [about, edit, window(funcs), help(funcs)];
   const template = process.env.NODE_ENV === 'production' ? common : [...common, dev];
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));

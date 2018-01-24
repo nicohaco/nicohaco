@@ -1,6 +1,7 @@
 // @flow
 
 import { connect } from 'react-redux';
+import * as actions from '../../actions/auth';
 import Me from '../../components/pages/User';
 
 const mapStateToProps = (state) => ({
@@ -9,6 +10,11 @@ const mapStateToProps = (state) => ({
   thumbnailUrl: state.auth.userData.thumbnailUrl
 });
 
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
+  logout: () => dispatch(actions.logout())
+});
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Me);
