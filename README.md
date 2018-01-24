@@ -33,7 +33,7 @@ Slide: https://abouthiroppy.github.io/slides/nicohaco/
 - [ ] linux
 
 ## 配布パッケージ
-- [ ] windows
+- [x] windows
 - [x] osx
 - [ ] linux
 
