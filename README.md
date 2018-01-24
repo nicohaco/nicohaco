@@ -13,7 +13,7 @@
 [リリースリスト](https://github.com/abouthiroppy/nicohaco/releases)から合うOSのパッケージを落としてください。
 
 ### 検証プラットフォーム
-- [ ] windows
+- [x] windows
 - [x] osx
 - [ ] linux
 
