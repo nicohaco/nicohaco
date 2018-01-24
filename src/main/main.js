@@ -51,6 +51,7 @@ function createWindow() {
   });
 
   createMenu({
+    deleteDB,
     setAlwaysOnTop
   });
 
@@ -119,6 +120,10 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+function deleteDB() {
+  mainWindow.webContents.send('deleteDB');
+}
 
 // for main
 function setAlwaysOnTop(flag) {
