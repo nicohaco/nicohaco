@@ -2,7 +2,7 @@
   "name": "NicoHaco",
   "main": "dist/main.js",
   "author": "abouthiroppy <git@about-hiroppy.com http://about-hiroppy.com",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "description": "NicoBoxのPC版です",
   "homepage": "",
