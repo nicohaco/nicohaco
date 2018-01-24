@@ -15,6 +15,10 @@ const Users = (props) =>(
       {
         title: 'SITE',
         onClick: () => shell.openExternal('http://www.nicovideo.jp/my')
+      },
+      {
+        title: 'LOGOUT',
+        onClick: props.logout
       }
     ]}
     info={[

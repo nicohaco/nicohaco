@@ -19,10 +19,15 @@
 .info {
   height: 80px;
   margin-left: 15px;
+  width: calc(100% - 120px - 15px);
 
   & > .title {
     font-size: .9rem;
     margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: calc(100% - 15px);
   }
 }
 
