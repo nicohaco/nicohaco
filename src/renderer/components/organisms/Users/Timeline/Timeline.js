@@ -27,6 +27,7 @@ class Timeline extends React.PureComponent {
           items.map((item) => (
             <TimelineItem
               id={item.id}
+              action="Uploaded"
               title={item.video.title}
               onClick={(type) => play(type, 0, item.video)}
               videoImg={item.video.thumbnailUrl.normal}

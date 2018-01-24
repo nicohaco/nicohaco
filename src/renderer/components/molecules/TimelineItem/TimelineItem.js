@@ -18,6 +18,7 @@ const TimelineItem = (props) => (
       />
     </div>
     <div className={styles.info}>
+      <span className={styles.action}>{props.action}</span>
       <span>{props.createdAt}</span>
       <p className={styles.title}>{props.title}</p>
       <div className={styles.creator}>

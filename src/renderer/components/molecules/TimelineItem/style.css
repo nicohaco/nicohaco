@@ -21,6 +21,11 @@
   margin-left: 15px;
   width: calc(100% - 120px - 15px);
 
+  & > .action {
+    color: #ee1ee1;
+    margin-right: 10px;
+  }
+
   & > .title {
     font-size: .9rem;
     margin: 5px 0;
