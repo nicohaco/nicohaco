@@ -67,8 +67,8 @@ const window = ({ setAlwaysOnTop }) => {
     label  : 'window',
     submenu: [
       {
-        type: 'checkbox',
-        label: '常に最前面にする',
+        // type: 'checkbox',
+        label: 'Use Video Player with AlwaysOnTop',
         click: (flag) => setAlwaysOnTop(flag.checked)
       }
     ]

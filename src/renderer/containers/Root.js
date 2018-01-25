@@ -17,7 +17,8 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchProps => ({
     dispatch(dbActions.deleteDB());
     dispatch(actions.pushPage('/login'));
   },
-  routePage: () => dispatch(actions.routePage())
+  routePage: () => dispatch(actions.routePage()),
+  updateSubWindowStatus: (flag) => dispatch(actions.updateSubWindowStatus(flag))
 });
 
 export default connect(

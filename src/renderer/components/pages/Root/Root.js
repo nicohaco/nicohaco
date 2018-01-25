@@ -13,8 +13,12 @@ class Root extends React.PureComponent<Props, void> {
     this.props.routePage();
 
     // TODO: remove
-    ipcRenderer.on('deleteDB', (event, arg) => {
+    ipcRenderer.on('deleteDB', () => {
       this.props.deleteDB();
+    });
+
+    ipcRenderer.on('subWindow', (event, opened) => {
+      this.props.updateSubWindowStatus(opened);
     });
   }
 

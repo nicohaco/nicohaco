@@ -7,7 +7,8 @@ import { put, select, takeLatest } from 'redux-saga/effects';
 import {
   getNico,
   getPlayer,
-  getPlaylist
+  getPlaylist,
+  getCurrentSubWindowStatus
 } from './selectors';
 
 import type { Effect } from 'redux-saga';
@@ -34,16 +35,25 @@ function *play(action: Play): Generator<Effect, void, *> {
     });
 
     if (action.playType === 'video') {
+      const payload = {
+        title       : videoInfo.title,
+        videoId     : videoInfo.videoId,
+        viewCount   : videoInfo.viewCount,
+        commentCount: videoInfo.numRes || videoInfo.commentCount,
+        mylistCount : videoInfo.mylistCount
+      };
+
+      const openedSubWindow = yield select(getCurrentSubWindowStatus);
+
+      if (openedSubWindow) {
+        ipcRenderer.send('sendVideoInfoToSubWindow', payload);
+      }
+
       yield put({ // TODO: fix
         type   : 'INSERT_CURRENT_AUDIO',
-        payload: {
-          title       : videoInfo.title,
-          videoId     : videoInfo.videoId,
-          viewCount   : videoInfo.viewCount,
-          commentCount: videoInfo.numRes || videoInfo.commentCount,
-          mylistCount : videoInfo.mylistCount
-        }
+        payload
       });
+
       return;
     }
 

@@ -20,7 +20,7 @@ export const goForwardPage = () => ({
   type: 'GO_FORWARD_PAGE'
 });
 
-export const setAlwaysOnTop = (flag: boolean) => ({
-  type: 'SET_ALWAYS_ON_TOP',
-  flag
+export const updateSubWindowStatus = (opened: boolean) => ({
+  type: 'UPDATE_SUB_WINDOW_STATUS',
+  opened
 });
