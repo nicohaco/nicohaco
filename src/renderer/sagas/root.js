@@ -9,30 +9,37 @@ import type { Effect } from 'redux-saga';
  * page
  */
 function *routePage(): Generator<Effect, void, *> {
-  yield put({ type: 'VALIDATE_USER_SESSION' });
+  try {
+    yield put({ type: 'VALIDATE_USER_SESSION' });
 
-  const {
-    userData,
-    verificationResult
-  } = (yield take('VALIDATE_USER_SESSION_RESULT')).payload;
+    const {
+      userData,
+      verificationResult
+    } = (yield take('VALIDATE_USER_SESSION_RESULT')).payload;
 
-  // logged in
-  if (verificationResult) {
+    // logged in
+    if (verificationResult) {
+      yield put({
+        type   : 'CREATE_NICO_INSTANCE',
+        session: userData.session
+      });
+      yield put({
+        type   : 'FETCH_OWN_DATA_SUCCESS',
+        payload: {
+          userData
+        }
+      });
+
+      yield put(push('/users/me'));
+    }
+    else {
+      yield put(push('/login'));
+    }
+  } catch (e) {
     yield put({
-      type   : 'CREATE_NICO_INSTANCE',
-      session: userData.session
+      type : 'ERROR',
+      error: e
     });
-    yield put({
-      type   : 'FETCH_OWN_DATA_SUCCESS',
-      payload: {
-        userData
-      }
-    });
-
-    yield put(push('/users/me'));
-  }
-  else {
-    yield put(push('/login'));
   }
 }
 
