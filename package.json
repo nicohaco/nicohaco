@@ -85,13 +85,13 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "@nicohaco/electron-window-manager": "^1.1.1",
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
     "colorthief": "^2.0.2",
     "convert-keys": "^1.2.0",
     "dexie": "^2.0.1",
     "electron-devtools-installer": "^2.2.0",
-    "electron-window-manager": "^1.0.5",
     "nico-api": "^0.11.0",
     "nico-value": "^0.1.1",
     "node-vibrant": "^3.0.0",
