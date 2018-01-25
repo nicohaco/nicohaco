@@ -21,10 +21,10 @@ function *fetchUserData(): Generator<Effect, void, *> {
       }
     });
   } catch (e) {
-    yield put({
-      type : 'ERROR',
-      error: e
-    });
+    // yield put({ // TODO: fix
+    //   type : 'ERROR',
+    //   error: e
+    // });
   }
 }
 
@@ -38,10 +38,10 @@ function *fetchMyTimeline(): Generator<Effect, void, *> {
       payload
     });
   } catch (e) {
-    yield put({
-      type : 'ERROR',
-      error: e
-    });
+    // yield put({ // TODO: fix
+    //   type : 'ERROR',
+    //   error: e
+    // });
   }
 }
 
