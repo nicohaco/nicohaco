@@ -4,7 +4,7 @@
 'use strict';
 
 const path = require('path');
-const windowManager = require('electron-window-manager');
+const windowManager = require('@nicohaco/electron-window-manager');
 const {
   app,
   ipcMain,
@@ -137,10 +137,9 @@ function createSubWindow() {
     webPreferences: {
       webSecurity: false
     }
-  });
+  }, () => {
 
-  // BUG: it will not run after the second time
-  subWindow.content().on('close', (e) => {
+    // native `close` event can not be acquired after the second time
     mainWindow.content().send('subWindow', false);
     subWindow.destroy();
     openedSubWindow = false;
