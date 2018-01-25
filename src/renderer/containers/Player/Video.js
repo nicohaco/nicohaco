@@ -4,7 +4,7 @@ import Video from '../../components/organisms/VideoPlayer';
 
 const mapStateToProps = (state) => ({
   id    : state.player.current.videoId,
-  opened: state.player.playType === 'video' // TODO: delete
+  opened: state.player.playType === 'video' && !state.common.subWindow.opened
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -13,13 +13,16 @@ const config = process.env.NODE_ENV !== 'production' ?
 const common = {
   bail  : true,
   target: 'electron-renderer',
-  entry : [
-    'babel-polyfill',
-    path.join(__dirname, 'src', 'renderer', 'index.js')
-  ],
+  entry: {
+    core: [
+      'babel-polyfill',
+      path.join(__dirname, 'src', 'renderer', 'index.js'),
+    ],
+    sub: path.join(__dirname, 'src', 'renderer', 'SubWindow')
+  },
   output: {
     path    : path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   resolve: {
     modules         : ['node_modules'],
@@ -40,7 +43,14 @@ const common = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      chunks: ['core'],
+      filename: 'core.html'
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['sub'],
+      filename: 'sub.html'
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.VERSION' : JSON.stringify(require('./package.json').version)

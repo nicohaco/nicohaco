@@ -22,7 +22,7 @@
   width: calc(100% - 120px - 15px);
 
   & > .action {
-    color: #ee1ee1;
+    color: #f27f7f;
     margin-right: 10px;
   }
 
