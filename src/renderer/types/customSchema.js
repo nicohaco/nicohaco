@@ -9,6 +9,7 @@ export type CustomApiSchema = {
   groupYpe: string;
   totalTime: string | number;
   viewCount: number;
+  updateTIme: string;
   postedDate: string | number;
   mylistCount: number;
   lastResBody: string;

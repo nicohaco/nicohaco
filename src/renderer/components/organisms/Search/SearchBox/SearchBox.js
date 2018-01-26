@@ -9,22 +9,17 @@ import {
 import List from '../../../atoms/List';
 import styles from './style.css';
 
-type Props = {
-  search: () => {};
-  searchHistory: {
-    id: number;
-    text: string;
-    date: number;
-  }[];
-  showSearchHistory: () => {};
-  insertSearchHistory: (string) => {};
+import type { Props } from '../../../../containers/Search/SearchBox';
+
+type State = {
+  word: string;
 };
 
-class SearchBox extends React.PureComponent<Props, void> {
+class SearchBox extends React.PureComponent<Props, State> {
+  state: State;
+
   searchProcess = (text: string) => {
-    if (text === '') {
-      return;
-    }
+    if (text === '') return;
 
     this.setState({word: text});
     this.props.insertSearchHistory(text);
@@ -35,7 +30,7 @@ class SearchBox extends React.PureComponent<Props, void> {
     this.props.search(createSearchParams(text));
   }
 
-  onInputKeyDown = (e) => {
+  onInputKeyDown = (e: Object) => { // TODO: weak
 
     // enter
     if (e.keyCode === 13) {
@@ -49,7 +44,7 @@ class SearchBox extends React.PureComponent<Props, void> {
   constructor() {
     super();
 
-    this.state = { ward: '' };
+    this.state = { word: '' };
   }
 
   componentWillMount() {

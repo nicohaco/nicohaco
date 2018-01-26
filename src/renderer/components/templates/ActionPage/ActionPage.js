@@ -4,7 +4,18 @@ import React from 'react';
 import MainContainer from '../MainContainer';
 import styles from './style.css';
 
-class ActionPage extends React.Component {
+type Props = {
+  toolbar: React$Node;
+  children: React$Node;
+};
+
+type State = {
+  bg: string;
+};
+
+class ActionPage extends React.PureComponent<Props, State> {
+  state: State;
+
   constructor() {
     super();
 

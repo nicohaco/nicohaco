@@ -10,19 +10,26 @@ import GridList from '../../components/organisms/ItemGrid';
 import type { State } from '../../types/states';
 import type { Mylistitem } from '../../types/apis/mylist';
 
-type DispatchProps = {
-  play: (number, Array<Mylistitem>) => void;
+type MapStateToProps = {
+  list: Object[]; // TODO: fix
+  actionIcon: string;
+};
+
+type MapDispatchToProps = {
+  play: ('video' | 'audio', number, Array<Mylistitem>) => void;
   actionMylist: (Mylistitem) => {};
 };
 
-const mapStateToProps = (state: State) => ({
-  list: state.mylist.mylist.map((item) =>
+export type Props = MapStateToProps & MapDispatchToProps;
+
+const mapStateToProps = (state: State): MapStateToProps => ({
+  list: state.mylist.mylist.map((item: any) => // TODO: fix
     ({...item, postedDate: formatDate(item.postedDate * 1000)})
   ),
   actionIcon: state.router.location.pathname === '/mylist' ? 'trash' : ''
 });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   play: (type, index, list) => {
     dispatch(actions.insertToPlaylist(list));
     dispatch(actions.play(type, index));

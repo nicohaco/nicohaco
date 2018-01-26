@@ -12,10 +12,6 @@ export type Logout = {
   type: 'LOGOUT';
 };
 
-export type ShowUserSession = {
-  type: 'SHOW_USER_SESSION';
-};
-
 export type CreateNicoInstance = {
   type: 'CREATE_NICO_INSTANCE';
   session: string;
@@ -25,7 +21,7 @@ export type ValidateUserSession = {
   type: 'VALIDATE_USER_SESSION';
 };
 
-export type RoutePage = {
+export type RoutePage = { // TODO: ???
   type: 'ROUTE_PAGE';
 };
 
@@ -55,7 +51,6 @@ export type Auth =
   Login |
   Logout |
   RoutePage |
-  ShowUserSession |
   InsertUserSession |
   CreateNicoInstance |
   ValidateUserSession |

@@ -5,11 +5,27 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/page';
 import Toolbar from '../../components/organisms/Header/Toolbar';
 
-type DispatchToProps = {
-  pushPage: (string) => {};
+import type { State } from '../../types/states/';
+
+type MapStateToProps = {
+  poster: string;
+  videoId: string;
+  viewCount: number;
+  postedDate: string;
+  mylistCount: number;
+  commentCount: number;
+  posterThumbnailUrl: string;
 };
 
-const mapStateToProps = (state) => ({
+type MapDispatchToProps = {
+  pushPage: (string) => {};
+  goBackPage: () => {};
+  goForwardPage: () => {};
+};
+
+export type Props = MapStateToProps & MapDispatchToProps;
+
+const mapStateToProps = (state: State): MapStateToProps => ({
   poster            : state.player.current.poster,
   videoId           : state.player.current.videoId,
   viewCount         : state.player.current.viewCount,
@@ -19,7 +35,7 @@ const mapStateToProps = (state) => ({
   posterThumbnailUrl: state.player.current.posterThumbnailUrl
 });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   pushPage: (path) => dispatch(actions.pushPage(path)),
   goBackPage: () => dispatch(actions.goBackPage()),
   goForwardPage: () => dispatch(actions.goForwardPage())

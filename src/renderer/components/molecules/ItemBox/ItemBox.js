@@ -51,12 +51,12 @@ const ItemBox = (props: Props) => (
         }
         {
           props.viewCount ? (
-            <span>再生 {(~~props.viewCount).toLocaleString()}</span>
+            <span>再生 {Number(props.viewCount).toLocaleString()}</span>
           ) : null
         }
         {
           props.commentCount ? (
-            <span>コメ {(~~props.commentCount).toLocaleString()}</span>
+            <span>コメ {Number(props.commentCount).toLocaleString()}</span>
           ) : null
         }
       </div>

@@ -49,21 +49,21 @@ const VideoInfo = (props: Props) => (
     {
       props.viewCount ? (
         <div className={styles.box}>
-          <span title="view count">視聴回数 {(~~props.viewCount).toLocaleString()}</span>
+          <span title="view count">視聴回数 {Number(props.viewCount).toLocaleString()}</span>
         </div>
       ) : null
     }
     {
       props.commentCount ? (
         <div className={styles.box}>
-          <span title="comment count">コメント数 {(~~props.commentCount).toLocaleString()}</span>
+          <span title="comment count">コメント数 {Number(props.commentCount).toLocaleString()}</span>
         </div>
       ) : null
     }
     {
       props.mylistCount ? (
         <div className={styles.box}>
-          <span title="mylist count">マイリスト数 {(~~props.mylistCount).toLocaleString()}</span>
+          <span title="mylist count">マイリスト数 {Number(props.mylistCount).toLocaleString()}</span>
         </div>
       ) : null
     }

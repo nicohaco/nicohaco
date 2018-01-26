@@ -5,7 +5,7 @@ import cx from 'classnames';
 import styles from './tile.style.css';
 
 type Props = {
-  src: Array<string>;
+  src: string[];
   size: number;
   isCircle: boolean;
 };

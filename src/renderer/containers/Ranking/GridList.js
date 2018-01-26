@@ -9,16 +9,22 @@ import GridList from '../../components/organisms/ItemGrid';
 import type { State } from '../../types/states';
 import type { Mylistitem } from '../../types/apis/mylist';
 
-type DispatchToProps = {
-  play: (number, Array<Mylistitem>) => void;
+type MapStateToProps = {
+  list: any; //TODO: fix
+  actionIcon: 'plus' | '';
 };
 
-const mapStateToProps = (state: State) => ({
+type MapDispatchToProps = {
+  play: ('video' | 'audio', number, Array<Mylistitem>) => void;
+  actionMylist: (any) => {}; // TODO fix
+};
+
+const mapStateToProps = (state: State): MapStateToProps => ({
   list      : state.ranking.result,
   actionIcon: state.router.location.pathname === '/ranking' ? 'plus' : ''
 });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   play: (type, index, list) => {
     dispatch(actions.insertToPlaylist(list));
     dispatch(actions.play(type, index));

@@ -2,7 +2,7 @@
 
 import convertKeys from 'convert-keys';
 
-import type { CustomApiSchema } from '../type/custom-schema';
+import type { CustomApiSchema } from '../type/customSchema';
 import type { Params } from '../types/apis/search';
 
 export const formatTime = (time: number): string => {
@@ -30,7 +30,7 @@ export const formatDate = (unixTime: number): string => {
   return `${splitedDate[3]}/${m}/${splitedDate[2]} ${time}`;
 };
 
-export const formatDateOfISO8601 = (date: string) => {
+export const formatDateOfISO8601 = (date: string): string => {
   // 2018-01-24T01:15:43+09:00
   const splitedDate = date.split('T');
 

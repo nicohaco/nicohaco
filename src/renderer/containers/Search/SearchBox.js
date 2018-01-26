@@ -8,13 +8,23 @@ import SearchBox from '../../components/organisms/Search/SearchBox';
 import type { State } from '../../types/states';
 import type { Params } from '../../types/apis/search';
 
-type DispatchToProps = {
+type MapStateToProps = {
+  searchHistory: {
+    id: number;
+    text: string;
+    date: number;
+  }[]; // TODO: fix
+};
+
+type MapDispatchToProps = {
   search: (Params) => {}; // fix
   showSearchHistory: () => {};
   insertSearchHistory: (string) => {};
 };
 
-const mapStateToProps = (state: State) => ({
+export type Props = MapStateToProps & MapDispatchToProps;
+
+const mapStateToProps = (state: State): MapStateToProps => ({
   searchHistory: state.search.history.reverse()
 });
 

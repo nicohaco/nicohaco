@@ -7,7 +7,9 @@ import Timeline from '../../../containers/Users/Timeline';
 import Following from '../../../containers/Users/Following'
 import styles from './style.css';
 
-const Users = (props) =>(
+import type { Props } from '../../../containers/Users/Me';
+
+const Users = (props: Props) =>(
   <ShowPage
     title={props.title}
     thumbnailUrl={props.thumbnailUrl}
