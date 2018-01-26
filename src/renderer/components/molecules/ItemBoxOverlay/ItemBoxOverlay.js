@@ -8,12 +8,9 @@ import MusicIcon from 'react-icons/lib/md/music-note';
 import styles from './style.css';
 
 type Props = {
-  onClick: () => void;
+  onClick: ('music' | 'video') => void;
   watchId: string;
-  actions: {
-    icon: string;
-    onClick: () => {};
-  }[];
+  actions: React$Node[];
   className: string;
 };
 

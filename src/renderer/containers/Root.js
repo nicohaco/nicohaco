@@ -6,13 +6,15 @@ import * as actions from '../actions/page';
 import * as dbActions from '../actions/db';
 import Root from '../components/pages/Root';
 
-type DispatchProps = {
+type MapDispatchToProps = {
+  deleteDB: () => void;
   routePage: () => {};
+  updateSubWindowStatus: (boolean) => {};
 };
 
-const mapStateToProps = () => ({});
+export type Props = MapDispatchToProps;
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   deleteDB: () => {
     dispatch(dbActions.deleteDB());
     dispatch(actions.pushPage('/login'));
@@ -22,6 +24,6 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchProps => ({
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Root);

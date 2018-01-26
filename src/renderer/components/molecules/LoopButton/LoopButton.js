@@ -7,7 +7,7 @@ import styles from './style.css';
 
 type Props = {
   loop: 'none' | 'one' | 'all';
-  onClick: () => {};
+  onClick: ('none' | 'one' | 'all') => void;
   className: string;
 };
 

@@ -10,13 +10,13 @@ type Props = {
   width: number;
   height: number;
   opened: boolean;
-  onClick: () => {};
-  closeModal: () => {};
+  onClick: (string) => void;
+  closeModal: () => void;
   buttonLabel: string;
 };
 
-class Input extends React.Component<void, Props, void> {
-  input: HTMLInputElement;
+class Input extends React.PureComponent<Props, void> {
+  input: ?HTMLInputElement;
 
   render() {
     const {
@@ -44,7 +44,7 @@ class Input extends React.Component<void, Props, void> {
         />
         <Button
           onClick={() => {
-            if (this.input.value !== '') {
+            if (this.input != null && this.input.value !== '') {
               onClick(this.input.value);
             }
           }}

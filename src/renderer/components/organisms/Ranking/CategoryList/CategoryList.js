@@ -7,8 +7,18 @@ import { categoryList as categories, ranking } from 'nico-value';
 import List from '../../../atoms/List';
 import styles from './style.css';
 
-type Props = {
-  selectCategory: (string) => {};
+import type { Props } from '../../../../containers/Ranking/CategoryList';
+
+type State = {
+  period: string;
+  period: {
+    value: string; // TODO: fix
+    label: string; // TODO: fix
+  };
+  target: {
+    value: string; // TODO: fix
+    label: string; // TODO: fix
+  };
 };
 
 const period = ranking.period.map((item) => ({
@@ -21,7 +31,9 @@ const target = ranking.target.map((item) => ({
   label: item.title
 }));
 
-class CategoryList extends React.PureComponent {
+class CategoryList extends React.PureComponent<Props, State> {
+  categoryName: string; // TODO: fix
+
   constructor() {
     super();
 
@@ -33,7 +45,7 @@ class CategoryList extends React.PureComponent {
     this.categoryName = 'all';
   }
 
-  componentWillReceiveProps(props, nextProps) {
+  componentWillReceiveProps(props: Props, nextProps: Props) {
     if (!props.category.includes(this.categoryName)) {
       this.props.fetchCategory(
         props.category.split('/ranking/')[1],
@@ -43,17 +55,25 @@ class CategoryList extends React.PureComponent {
     }
   }
 
-  changePath = (path) => {
-    this.props.changeCategory(path, this.state.target.value, this.state.period.value);
+  changePath = (path: string) => {
+    // this.props.changeCategory(path, this.state.target.value, this.state.period.value); // TODO: bug
+
+    this.props.changeCategory(path); // TODO: bug
   }
 
-  changeTarget = (target) => {
+  changeTarget = (target: {
+    label: string;
+    value: string;
+  }) => {
     this.setState({ target });
 
     this.props.fetchCategory(this.categoryName, target.value, this.state.period.value);
   }
 
-  changePeriod = (period) => {
+  changePeriod = (period: {
+    label: string;
+    value: string;
+  }) => {
     this.setState({ period });
 
     this.props.fetchCategory(this.categoryName, this.state.target.value, period.value);
@@ -69,8 +89,7 @@ class CategoryList extends React.PureComponent {
 
   render() {
     const {
-      category: categoryName,
-      selectCategory
+      category: categoryName
     } = this.props;
 
     this.categoryName = categoryName.split('/ranking/')[1];

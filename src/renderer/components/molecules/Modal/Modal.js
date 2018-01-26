@@ -9,8 +9,8 @@ type Props = {
   width: number;
   height: number;
   opened: boolean;
-  children: React.Component<*>;
-  closeModal: () => {};
+  children: React$Node;
+  closeModal: () => void;
 };
 
 const ModalComponent = (props: Props) => (

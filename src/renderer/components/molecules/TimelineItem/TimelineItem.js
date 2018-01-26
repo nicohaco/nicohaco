@@ -5,7 +5,18 @@ import Overlay from '../ItemBoxOverlay';
 import Image from '../../atoms/Image';
 import styles from './style.css';
 
-const TimelineItem = (props) => (
+type Props = {
+  action: string; // TODO: fix
+  title: string;
+  creatorImg: string;
+  creatorName: string;
+  createdAt: string;
+  videoImg: string;
+  watchId: string;
+  onClick: () => void;
+};
+
+const TimelineItem = (props: Props) => (
   <div className={styles.container}>
     <div className={styles.img}>
       <Image

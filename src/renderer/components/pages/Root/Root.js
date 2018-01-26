@@ -1,12 +1,9 @@
 // @flow
 
 import React from 'react';
-
 import {ipcRenderer} from 'electron';
 
-type Props = {
-  routePage: () => {};
-};
+import type { Props } from '../../../containers/Root';
 
 class Root extends React.PureComponent<Props, void> {
   componentWillMount() {

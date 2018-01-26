@@ -18,7 +18,7 @@ type Props = {
   toggleLoop: ('none' | 'one' | 'all') => {};
   elapsedTime: number;
   thumbnailUrl: string;
-  toggleStatus: () => {};
+  toggleStatus: (?boolean) => {};
   updateElapsedTime: () => {};
 };
 

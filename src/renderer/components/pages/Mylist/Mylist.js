@@ -5,7 +5,9 @@ import { formatDate } from '../../../utils/format';
 import ShowPage from '../../templates/ShowPage';
 import GridList from '../../../containers/Mylist/GridList';
 
-const Mylist = (props) =>(
+import type { Props } from '../../../containers/Mylist/Mylist';
+
+const Mylist = (props: Props) =>(
   <ShowPage
     title={props.group.name}
     pathname={props.pathname}

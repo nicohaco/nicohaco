@@ -29,7 +29,6 @@ const reducer = (state: State = initialState, action: Action) => {
     case 'LOGIN':
     case 'LOGOUT':
     case 'ROUTE_PAGE':
-    case 'SHOW_USER_SESSION':
     case 'CREATE_NICO_INSTANCE':
     case 'VALIDATE_USER_SESSION':
     case 'VALIDATE_USER_SESSION_RESULT':
