@@ -5,17 +5,17 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/auth';
 import Login from '../components/pages/Login';
 
-type DispatchProps = {
+type MapDispatchToProps = {
   login: (string, string) => {};
 };
 
-const mapStateToProps = () => ({});
+export type Props = MapDispatchToProps;
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   login: (mail, password) => dispatch(actions.login(mail, password))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Login);

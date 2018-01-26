@@ -7,22 +7,33 @@ import * as mylistActions from '../../actions/mylist';
 import Modal from '../../components/organisms/Modal/AddMylist';
 
 import type { State } from '../../types/states';
+import type { GroupArray } from '../../types/states/mylist';
 
-type DispatchToProps = {
+type MapStateToProps = {
+  video: {
+    videoId: string;
+    contentId: string;
+  };
+  opened: boolean;
+  mylistgroup: GroupArray;
+};
+
+type MapDispatchToProps = {
   add: (string, string) => {};
   launch: () => {};
   closeModal: () => {};
 };
 
-const mapStateToProps = (state: State) => ({
+export type Props = MapStateToProps & MapDispatchToProps;
+
+const mapStateToProps = (state: State): MapStateToProps => ({
   video      : state.common.modal.data,
   opened     : state.common.modal.opened,
   mylistgroup: state.mylist.group
 });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
-  add: (groupId, videoId) =>
-    dispatch(mylistActions.addVideo(groupId, videoId)),
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
+  add: (groupId, videoId) => dispatch(mylistActions.addVideo(groupId, videoId)),
   launch    : () => dispatch(mylistActions.fetchMylistgroup()),
   closeModal: () => dispatch(actions.closeModal())
 });

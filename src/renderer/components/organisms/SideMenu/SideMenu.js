@@ -2,6 +2,7 @@
 
 import React from 'react';
 import cx from 'classnames';
+import CreateMylistModal from '../Modal/Input'; // TODO delete
 import MyIcon from 'react-icons/lib/md/account-circle';
 import AddIcon from 'react-icons/lib/md/add-circle-outline';
 import SearchIcon from 'react-icons/lib/md/search';
@@ -9,10 +10,13 @@ import ReloadIcon from 'react-icons/lib/md/autorenew';
 import TimelineIcon from 'react-icons/lib/md/timeline';
 import styles from './style.css';
 
-// TODO delete
-import CreateMylistModal from '../Modal/Input';
+import type {Props} from '../../../containers/SideMenu';
 
-class SideMenu extends React.Component {
+type State = {
+  openedCreateMylistModal: boolean;
+};
+
+class SideMenu extends React.PureComponent<Props, State> {
   constructor() {
     super();
 

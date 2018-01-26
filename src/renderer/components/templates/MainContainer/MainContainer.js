@@ -6,7 +6,7 @@ import styles from './style.css';
 
 type Props = {
   hasMainBoxPadding: boolean;
-  children: React.Component<*>;
+  children: React$Node;
 };
 
 const MainContainer = (props: Props) => (
@@ -16,9 +16,7 @@ const MainContainer = (props: Props) => (
     </div>
     <div
       className={styles.right}
-      style={{
-        padding: props.hasMainBoxPadding ? 20 : 0
-      }}
+      style={{ padding: props.hasMainBoxPadding ? 20 : 0 }}
     >
       {props.children}
     </div>

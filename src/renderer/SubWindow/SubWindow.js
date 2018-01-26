@@ -1,8 +1,17 @@
+// @flow
+
 import React from 'react';
 import { ipcRenderer } from 'electron';
 import styles from './style.css';
 
-class SubWindow extends React.Component {
+type State = {
+  title: string;
+  videoId: string;
+};
+
+class SubWindow extends React.PureComponent<void, State> {
+  state: State;
+
   constructor() {
     super();
 

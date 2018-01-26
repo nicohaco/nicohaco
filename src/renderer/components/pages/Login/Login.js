@@ -6,13 +6,11 @@ import Button from '../../atoms/Button';
 import photon from '../../../styles/photon';
 import styles from './style.css';
 
-type Props = {
-  login: (string, string) => {};
-};
+import type { Props } from '../../../containers/Login';
 
 const accountUrl = 'https://account.nicovideo.jp/register/email';
 
-class Login extends React.Component<void, Props, void> {
+class Login extends React.PureComponent<Props, void> {
   email: HTMLInputElement;
   password: HTMLInputElement;
 
@@ -32,7 +30,9 @@ class Login extends React.Component<void, Props, void> {
           <div className={photon['form-group']}>
             <label>Email address</label>
             <input
-              ref={(input) => this.email = input}
+              ref={(input) => {
+                if (input !== null) this.email = input;
+              }}
               type="email"
               className={photon['form-control']}
               placeholder="Email"
@@ -41,7 +41,9 @@ class Login extends React.Component<void, Props, void> {
           <div className={photon['form-group']}>
             <label>Password</label>
             <input
-              ref={(input) => this.password = input}
+              ref={(input) => {
+                if (input !== null) this.password = input;
+              }}
               type="password"
               className={photon['form-control']}
               placeholder="Password"

@@ -5,21 +5,9 @@ import List from '../../../atoms/List';
 import Modal from '../../../molecules/Modal';
 import { formatDate } from '../../../../utils/format';
 
-import type { GroupArray } from '../../../../types/states/mylist';
+import type { Props } from '../../../../containers/Modal/AddMylist';
 
-type Props = {
-  add: (string, ?string) => {};
-  video: {
-    videoId?: string;
-    contentId?: string;
-  };
-  opened: boolean;
-  launch: () => {};
-  closeModal: () => {};
-  mylistgroup: GroupArray;
-};
-
-class AddMylist extends React.Component<void, Props, void> {
+class AddMylist extends React.PureComponent<Props, void> {
   componentWillReceiveProps(nextProps: Props) {
     if (!this.props.opened && nextProps.opened) {
 

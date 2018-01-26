@@ -6,17 +6,7 @@ import ArrowRightIcon from 'react-icons/lib/md/keyboard-arrow-right';
 import VideoInfo from '../../../components/molecules/VideoInfo';
 import styles from './toolbar.style.css';
 
-type Props = {
-  path: string;
-  poster: string;
-  videoId: string;
-  pushPage: () => {};
-  viewCount: string;
-  postedDate: string;
-  mylistCount: string;
-  commentCount: string;
-  posterThumbnailUrl: string;
-};
+import type { Props } from '../../../containers/Header/Toolbar';
 
 const Toolbar = (props: Props) => (
   <div className={styles.container}>
