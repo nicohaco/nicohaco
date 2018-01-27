@@ -28,6 +28,7 @@ export type Props = MapStateToProps & MapDispatchToProps;
 const mapStateToProps = (state: State): MapStateToProps => ({
   poster            : state.player.current.poster,
   videoId           : state.player.current.videoId,
+  posterId          : state.player.current.posterId,
   viewCount         : state.player.current.viewCount,
   postedDate        : state.player.current.postedDate,
   mylistCount       : state.player.current.mylistCount,
@@ -38,6 +39,7 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   pushPage: (path) => dispatch(actions.pushPage(path)),
   goBackPage: () => dispatch(actions.goBackPage()),
+  goToUserPage: (id) => dispatch(actions.pushPage(`/users/${id}`)),
   goForwardPage: () => dispatch(actions.goForwardPage())
 });
 

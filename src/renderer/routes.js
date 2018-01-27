@@ -6,7 +6,7 @@ import Me from './containers/Users/Me';
 import App from './components/App';
 import Root from './containers/Root';
 import Login from './containers/Login';
-import Users from './components/pages/User';
+import Users from './containers/Users/User';
 import Search from './components/pages/Search';
 import Mylist from './containers/Mylist/Mylist';
 import Ranking from './components/pages/Ranking';
