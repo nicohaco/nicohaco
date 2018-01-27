@@ -2,6 +2,7 @@
 
 import React from 'react';
 import cx from 'classnames';
+import SubWindow from '../../../containers/Header/SubWindow';
 import Audio from '../../../containers/Player/Audio';
 import AudioInfo from '../../../containers/Player/AudioInfo';
 import AudioController from '../../../containers/Player/AudioController';
@@ -20,6 +21,7 @@ const Header = () => (
           <AudioInfo />
         </div>
         <div className={styles.right}>
+          <SubWindow size="1.4rem" />
         </div>
         <Audio />
       </div>
