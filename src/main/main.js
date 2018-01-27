@@ -37,6 +37,10 @@ app.on('activate', () => {
   if (mainWindow === null) createWindow();
 });
 
+ipcMain.on('controlSubWindow', (e, c) => {
+  setAlwaysOnTop();
+});
+
 ipcMain.on('sendVideoInfoToSubWindow', (e, c) => {
   if (subWindow) subWindow.content().send('addVideo', c);
 });
