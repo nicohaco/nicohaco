@@ -13,21 +13,16 @@ class ShowPage extends React.Component {
     this.state = { bg: 'none' };
 
     this.currentPath = '';
+    this.currentImage = '';
   }
 
-  changeBgColor = () => {
+  changeBgColor = (url) => {
     let v;
 
-    if (Array.isArray(this.props.thumbnailUrl) && this.props.thumbnailUrl.length === 0) {
-      return;
-    }
+    if (Array.isArray(url) && url.length === 0) return;
 
-    if (Array.isArray(this.props.thumbnailUrl)) {
-      v = new Vibrant(this.props.thumbnailUrl[0]);
-    }
-    else if (this.props.thumbnailUrl) {
-      v = new Vibrant(this.props.thumbnailUrl);
-    }
+    if (Array.isArray(url)) v = new Vibrant(url[0]);
+    else if (url) v = new Vibrant(url);
 
     if (v) {
       v.getPalette((err, palette) => {
@@ -47,8 +42,16 @@ class ShowPage extends React.Component {
     }
   }
 
+  // for user page(not me)
+  componentWillReceiveProps(props) {
+    if (props.thumbnailUrl !== this.currentImage) {
+      this.changeBgColor(props.thumbnailUrl);
+      this.currentImage = props.thumbnailUrl;
+    }
+  }
+
   componentDidMount() {
-    this.changeBgColor();
+    if (this.props.thumbnailUrl !== '') this.changeBgColor(this.props.thumbnailUrl);
   }
 
   render() {

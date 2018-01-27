@@ -1,14 +1,17 @@
+// @flow
+
 import React from 'react';
 import styles from './style.css';
 
-class Followers extends React.Component {
+class Followers extends React.PureComponent {
   componentDidMount() {
     this.props.fetchMyFollowing();
   }
 
   render() {
     const {
-      following
+      following,
+      goToUserPage
     } = this.props;
 
     return (
@@ -17,7 +20,10 @@ class Followers extends React.Component {
         <ul className={styles.ul}>
           {
             following.map((user) => (
-              <li>
+              <li
+                id={user.id}
+                onClick={() => goToUserPage(user.id)}
+              >
                 <img src={user.thumbnailUrl} />
                 {user.name}
               </li>
