@@ -61,17 +61,9 @@ function *play(action: Play): Generator<Effect, void, *> {
 
       // co is undefined...(sm is ok)
       const src = yield nico.video.getFLV(videoInfo.videoId);
-      const {
-        poster,
-        viewCount,
-        postedDate,
-        mylistCount,
-        nicoHistory,
-        commentCount,
-        posterThumbnailUrl
-      } = yield nico.video.getVideoData(videoInfo.videoId);
+      const info = yield nico.video.getVideoData(videoInfo.videoId);
 
-      yield ipcRenderer.send('setNicohistory', nicoHistory);
+      yield ipcRenderer.send('setNicohistory', info.nicoHistory);
 
       yield put({
         type   : 'FETCH_FLV_SUCCESS',
@@ -79,12 +71,7 @@ function *play(action: Play): Generator<Effect, void, *> {
           src,
           index: action.index,
           ...Object.assign({}, videoInfo, {
-            poster,
-            viewCount,
-            postedDate,
-            mylistCount,
-            commentCount,
-            posterThumbnailUrl
+            ...info
           })
         }
       });

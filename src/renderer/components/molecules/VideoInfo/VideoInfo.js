@@ -10,8 +10,9 @@ type Props = {
   videoId: string;
   viewCount: string;
   postedDate: string;
-  commentCount: string;
   mylistCount: string;
+  commentCount: string;
+  goToUserPage: () => {};
   posterThumbnailUrl: string;
 };
 
@@ -21,7 +22,10 @@ const VideoInfo = (props: Props) => (
   <div className={styles.container}>
     {
       props.posterThumbnailUrl ? (
-        <div className={styles.box}>
+        <div
+          onClick={props.goToUserPage}
+          className={styles.box}
+        >
           <Image
             src={props.posterThumbnailUrl}
             width="30"

@@ -29,6 +29,7 @@ const Toolbar = (props: Props) => (
           postedDate={props.postedDate}
           mylistCount={props.mylistCount}
           commentCount={props.commentCount}
+          goToUserPage={() => props.goToUserPage(props.posterId)}
           posterThumbnailUrl={props.posterThumbnailUrl}
         />
       ) : null

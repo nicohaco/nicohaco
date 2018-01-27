@@ -9,16 +9,33 @@ import { getNico } from './selectors';
 
 import type { Effect } from 'redux-saga';
 
-function *fetchUserData(): Generator<Effect, void, *> {
+function *fetchUserData(action): Generator<Effect, void, *> {
   try {
     const nico = yield select(getNico);
-    const userData = yield nico.user.getInfo();
+    const userData = yield nico.user.getUserInfo(action.id);
 
     yield put({
       type   : 'FETCH_USER_DATA_SUCCESS',
       payload: {
         userData
       }
+    });
+  } catch (e) {
+    // yield put({ // TODO: fix
+    //   type : 'ERROR',
+    //   error: e
+    // });
+  }
+}
+
+function *fetchUserTimeline(action): Generator<Effect, void, *> {
+  try {
+    const nico = yield select(getNico);
+    const payload = (yield nico.timeline.getUserTimeline(action.id)).data;
+
+    yield put({
+      type   : 'FETCH_USER_TIMELINE_SUCCESS',
+      payload
     });
   } catch (e) {
     // yield put({ // TODO: fix
@@ -67,6 +84,7 @@ function *fetchMyFollowing(): Generator<Effect, void, *> {
  */
 export default function *authProcess(): Generator<Effect, void, *> {
   yield takeLatest('FETCH_USER_DATA', fetchUserData);
+  yield takeLatest('FETCH_USER_TIMELINE', fetchUserTimeline);
   yield takeLatest('FETCH_MY_TIMELINE', fetchMyTimeline);
   yield takeLatest('FETCH_MY_FOLLOWING', fetchMyFollowing);
 }

@@ -5,7 +5,8 @@ import styles from './style.css';
 
 class Timeline extends React.PureComponent {
   componentDidMount() {
-    this.props.fetchMyTimeline();
+    if (this.props.id === 'me') this.props.fetchMyTimeline();
+    else this.props.fetchUserTimeline(this.props.id);
   }
 
   render() {

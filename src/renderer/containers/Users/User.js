@@ -1,8 +1,8 @@
 // @flow
 
 import { connect } from 'react-redux';
-import * as actions from '../../actions/auth';
-import { Me } from '../../components/pages/User';
+import * as actions from '../../actions/users';
+import User from '../../components/pages/User';
 
 import type { State } from '../../types/states';
 
@@ -13,22 +13,22 @@ type MapStateToProps = {
 };
 
 type MapDispatchToProps = {
-  logout: () => void;
 };
 
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  id: state.auth.userData.id,
-  title: state.auth.userData.name,
-  thumbnailUrl: state.auth.userData.thumbnailUrl
+  id: state.router.location.pathname.split('/').slice(-1)[0],
+  title: state.users.user.name,
+  followers: state.users.user.followers,
+  thumbnailUrl: state.users.user.thumbnailUrl
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  logout: () => dispatch(actions.logout())
+  fetchUserData: (id) => dispatch(actions.fetchUserData(id))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Me);
+)(User);
