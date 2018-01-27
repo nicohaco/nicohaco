@@ -23,7 +23,7 @@ const AudioController = (props: Props) => (
     <Button
       icon="left-open-mini"
       size={buttonSize}
-      onClick={props.playPrev}
+      onClick={() => props.playSpecificAudio(props.index - 1)}
       disabled={props.disabled}
       className={styles.button}
     />
@@ -36,7 +36,7 @@ const AudioController = (props: Props) => (
     <Button
       icon="right-open-mini"
       size={buttonSize}
-      onClick={props.playNext}
+      onClick={() => props.playSpecificAudio(props.index + 1)}
       disabled={props.disabled}
       className={styles.button}
     />

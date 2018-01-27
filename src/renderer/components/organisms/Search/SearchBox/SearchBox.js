@@ -65,7 +65,7 @@ class SearchBox extends React.PureComponent<Props, State> {
             onChange={(r) => this.searchProcess(r.value)}
             onInputKeyDown={this.onInputKeyDown}
             options={searchHistory.map((item) => ({
-              label: `${item.text} - 最終更新 ${formatDate(item.date)}`,
+              label: item.text,
               value: item.text
             }))}
           />

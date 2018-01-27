@@ -1,20 +1,30 @@
 @import "../../../styles/variables.css";
 
+.wrapper {
+  height: calc(50px + 40px);
+}
+
 .container {
-  display: flex;
   height: var(--header-main-height);
   -webkit-app-region: drag; /* stylelint-disable-line */
 }
 
-.player {
-  width: 100%;
-}
-
-.user {
+.main {
+  align-items: center;
   display: flex;
-  height: var(--header-main-height);
-  position: absolute;
-  right: 100px;
+  justify-content: space-between;
+  padding: 0 50px;
+  width: 100%;
+
+  & > .left,
+  & > .right {
+    flex: 0 0 auto;
+    width: 300px;
+  }
+
+  & > .center {
+    flex:1 1 auto;
+  }
 }
 
 .sub {

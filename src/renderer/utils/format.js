@@ -52,7 +52,7 @@ export const formatApiSchema = (o: Object): CustomApiSchema => {
     videoId     : obj.videoId || obj.watchId || obj.contentId,
     groupType   : obj.groupType,
     totalTime   : obj.lengthSeconds,
-    viewCount   : obj.viewCounter || obj.commentCount,
+    viewCount   : obj.viewCounter || obj.viewCount,
     updateTime  : obj.updateTime,
     postedDate  : obj.firstRetrieve || obj.postedDate || obj.startTime,
     mylistCount : obj.mylistCounter || obj.mylistCount,

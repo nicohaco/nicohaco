@@ -12,7 +12,8 @@
   background: var(--background-gray);
   display: flex;
   height: var(--content-height);
-  max-width: var(--content-width);
+  /* max-width: var(--content-width); */
+  margin: auto;
 }
 
 .thumbnailBox {
