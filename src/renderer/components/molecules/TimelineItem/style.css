@@ -42,8 +42,8 @@
 
   & > .creatorImg {
     border-radius: 50%;
-    height: 30px;
+    height: 25px;
     margin-right: 5px;
-    width: 30px;
+    width: 25px;
   }
 }

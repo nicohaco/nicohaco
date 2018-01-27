@@ -20,6 +20,10 @@ function *goBackPage(action): Generator<Effect, void, *> {
   yield put(goBack());
 }
 
+function *controlSubWindow(): Generator<Effect, void, *> {
+  yield ipcRenderer.send('controlSubWindow');
+}
+
 /**
  * Root for page
  */
@@ -27,4 +31,5 @@ export default function *pageProcess(): Generator<Effect, void, *> {
   yield takeLatest('PUSH_PAGE', pushPage);
   yield takeLatest('GO_BACK_PAGE', goBackPage);
   yield takeLatest('GO_FORWARD_PAGE', goForwardPage);
+  yield takeLatest('CONTROL_SUB_WINDOW', controlSubWindow);
 }

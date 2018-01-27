@@ -25,6 +25,13 @@
   & > .center {
     flex:1 1 auto;
   }
+
+  & > .right {
+    align-items: center;
+    display: flex;
+    height: var(--header-main-height);
+    padding: 0 20px;
+  }
 }
 
 .sub {

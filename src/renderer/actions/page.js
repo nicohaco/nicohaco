@@ -20,6 +20,10 @@ export const goForwardPage = () => ({
   type: 'GO_FORWARD_PAGE'
 });
 
+export const controlSubWindow = () => ({
+  type: 'CONTROL_SUB_WINDOW'
+});
+
 export const updateSubWindowStatus = (opened: boolean) => ({
   type: 'UPDATE_SUB_WINDOW_STATUS',
   opened
