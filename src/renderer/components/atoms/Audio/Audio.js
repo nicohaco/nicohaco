@@ -34,11 +34,13 @@ class Audio extends React.Component<void, Props, void> {
     }
   }
 
+  notifyEnded = () => {
+    this.props.playSpecificAudio(this.props.index + 1);
+  }
+
   monitorEvents() {
     this.audio.addEventListener('ended', () => {
-      if (typeof this.props.notifyEnded === 'function') {
-        this.props.notifyEnded();
-      }
+      this.notifyEnded();
     }, false);
 
     this.audio.addEventListener('loadedmetadata', () => {
@@ -90,8 +92,7 @@ class Audio extends React.Component<void, Props, void> {
   render() {
     const {
       src,
-      looped,
-      notifyEnded
+      looped
     } = this.props;
 
     return (
@@ -101,7 +102,7 @@ class Audio extends React.Component<void, Props, void> {
         loop={looped}
         autoPlay
         preload="auto"
-        notifyEnded={notifyEnded}
+        notifyEnded={this.notifyEnded}
       />
     );
   }

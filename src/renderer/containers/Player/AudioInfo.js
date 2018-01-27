@@ -3,7 +3,7 @@
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/player';
-import Player from '../../components/organisms/Player';
+import AudioInfo from '../../components/molecules/AudioInfo';
 
 import type { State } from '../../types/states';
 
@@ -17,27 +17,22 @@ type DispatchToProps = {
 };
 
 const mapStateToProps = (state: State) => ({
-  src            : state.player.current.src,
-  loop           : state.player.loop,
-  index          : state.player.current.index,
-  volume         : state.player.volume,
-  status         : state.player.status,
-  videoInfo      : state.player.current,
-  elapsedTime    : state.player.elapsedTime,
+  loop:            state.player.loop,
+  title:           state.player.current.title,
+  disabled:        !state.player.current.src,
+  totalTime:       state.player.current.totalTime,
+  elapsedTime:     state.player.elapsedTime,
+  thumbnailUrl:    state.player.current.thumbnailUrl,
   displayedLoader: state.player.displayedLoader
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
   toggleLoop         : (mode) => dispatch(actions.toggleLoop(mode)),
-  getDuration        : (time) => dispatch(actions.insertDuration(time)),
   toggleStatus       : (status) => dispatch(actions.toggleStatus(status)),
-  changeVolume       : (volume) => dispatch(actions.changeVolume(volume)),
-  playSpecificAudio  : (index) => dispatch(actions.playSpecificAudio(index)),
-  updateElapsedTime  : (time) => dispatch(actions.updateElapsedTime(time)),
-  changeLoadingStatus: (loaded) => dispatch(actions.changeLoadingStatus(loaded))
+  updateElapsedTime  : (time) => dispatch(actions.updateElapsedTime(time))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Player);
+)(AudioInfo);

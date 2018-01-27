@@ -14,10 +14,7 @@ const common = {
   bail  : true,
   target: 'electron-renderer',
   entry: {
-    core: [
-      'babel-polyfill',
-      path.join(__dirname, 'src', 'renderer', 'index.js'),
-    ],
+    core: path.join(__dirname, 'src', 'renderer', 'index.js'),
     sub: path.join(__dirname, 'src', 'renderer', 'SubWindow')
   },
   output: {

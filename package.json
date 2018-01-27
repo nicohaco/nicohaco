@@ -86,7 +86,6 @@
   },
   "dependencies": {
     "@nicohaco/electron-window-manager": "^1.1.1",
-    "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
     "colorthief": "^2.0.2",
     "convert-keys": "^1.2.0",
