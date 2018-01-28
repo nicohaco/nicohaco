@@ -116,10 +116,12 @@ class ShowPage extends React.Component {
               <div className={styles.right}>
                 {
                   info.map((item) => (
-                    <Text
-                      title={item.title}
-                      text={item.text}
-                    />
+                    item ? (
+                      <Text
+                        title={item.title}
+                        text={item.text}
+                      />
+                    ) : null
                   ))
                 }
               </div>

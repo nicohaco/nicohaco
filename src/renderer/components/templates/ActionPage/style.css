@@ -1,3 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .toolbar {
   margin-bottom: 20px;
 }

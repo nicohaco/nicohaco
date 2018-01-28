@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react';
-import SideMenu from '../../../containers/SideMenu';
 import styles from './style.css';
 
 type Props = {
@@ -10,16 +9,13 @@ type Props = {
 };
 
 const MainContainer = (props: Props) => (
-  <div className={styles.container}>
-    <div className={styles.left}>
-      <SideMenu />
-    </div>
-    <div
-      className={styles.right}
-      style={{ padding: props.hasMainBoxPadding ? 20 : 0 }}
-    >
-      {props.children}
-    </div>
+  <div
+    style={{ padding: props.hasMainBoxPadding ? 20 : 0 }}
+    className={styles.container}
+  >
+    {
+      props.children
+    }
   </div>
 );
 
