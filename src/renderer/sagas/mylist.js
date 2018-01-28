@@ -114,11 +114,14 @@ function *removeVideo(action: RemoveVideo): Generator<Effect, void, *> {
  */
 function *loadMylist(action: LoadMylist): Generator<Effect, void, *> {
   try {
+
+    console.log('============')
     yield put({
       type: 'SHOW_MYLIST',
       id  : action.id
     });
 
+    console.log('============')
     const { payload } = yield take('SHOW_MYLIST_SUCCESS');
 
     if (payload.mylistitem.length === 0) {

@@ -30,15 +30,17 @@ class ActionPage extends React.PureComponent<Props, State> {
 
     return (
       <MainContainer>
-        <div className={styles.toolbar}>
-          {
-            toolbar
-          }
-        </div>
-        <div className={styles.main}>
-          {
-            children
-          }
+        <div className={styles.container}>
+          <div className={styles.toolbar}>
+            {
+              toolbar
+            }
+          </div>
+          <div className={styles.main}>
+            {
+              children
+            }
+          </div>
         </div>
       </MainContainer>
     );
