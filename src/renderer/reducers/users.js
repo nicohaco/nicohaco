@@ -6,6 +6,8 @@ import type { Common as Action } from '../types/actions/common';
 const initialState = {
   user: {
     name: '',
+    videos: [],
+    mylists: [],
     timeline: [],
     followers: '0', //TODO: check
     thumbnailUrl: ''
@@ -24,6 +26,22 @@ const reducer = (state: State = initialState, action: Action) => {
         user: {
           ...state.user,
           ...action.payload.userData
+        }
+      };
+    case 'FETCH_USER_VIDEOS_SUCCESS':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          videos: action.payload
+        }
+      };
+    case 'FETCH_USER_MYLISTS_SUCCESS':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          mylists: action.payload
         }
       };
     case 'FETCH_USER_TIMELINE_SUCCESS':
