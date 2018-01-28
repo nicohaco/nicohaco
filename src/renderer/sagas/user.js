@@ -21,6 +21,7 @@ function *fetchUserData(action): Generator<Effect, void, *> {
       }
     });
   } catch (e) {
+    console.error(e);
     // yield put({ // TODO: fix
     //   type : 'ERROR',
     //   error: e
@@ -79,6 +80,26 @@ function *fetchUserVideos(action): Generator<Effect, void, *> {
   }
 }
 
+function *fetchMyData() {
+  try {
+    const nico = yield select(getNico);
+    const userData = yield nico.user.getInfo();
+
+    yield put({
+      type   : 'FETCH_MY_DATA_SUCCESS',
+      payload: {
+        userData
+      }
+    });
+  } catch (e) {
+    console.error(e);
+    // yield put({ // TODO: fix
+    //   type : 'ERROR',
+    //   error: e
+    // });
+  }
+}
+
 function *fetchMyTimeline(): Generator<Effect, void, *> {
   try {
     const nico = yield select(getNico);
@@ -122,6 +143,7 @@ export default function *authProcess(): Generator<Effect, void, *> {
   yield takeLatest('FETCH_USER_MYLISTS', fetchUserMylists);
   yield takeLatest('FETCH_USER_TIMELINE', fetchUserTimeline);
 
+  yield takeLatest('FETCH_MY_DATA', fetchMyData);
   yield takeLatest('FETCH_MY_TIMELINE', fetchMyTimeline);
   yield takeLatest('FETCH_MY_FOLLOWING', fetchMyFollowing);
 }

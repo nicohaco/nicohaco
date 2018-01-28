@@ -10,6 +10,7 @@ class Mylists extends React.Component {
 
   render() {
     const {
+      id,
       mylists,
       goToMylist
     } = this.props;
@@ -23,7 +24,7 @@ class Mylists extends React.Component {
             <MylistItem
               num={mylist.num}
               title={mylist.title}
-              onClick={() => goToMylist(mylist.id)}
+              onClick={() => goToMylist(mylist.id, id)}
             />
           ))
         }
