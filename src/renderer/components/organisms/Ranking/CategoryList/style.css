@@ -3,6 +3,8 @@
 }
 
 .container {
+  width: 100%;
+
   & > ul {
     height: calc(100% - var(--condition-height));
     overflow-y: auto;
