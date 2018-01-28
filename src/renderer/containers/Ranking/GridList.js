@@ -21,7 +21,7 @@ type MapDispatchToProps = {
 
 const mapStateToProps = (state: State): MapStateToProps => ({
   list      : state.ranking.result,
-  actionIcon: state.router.location.pathname === '/ranking' ? 'add' : ''
+  actionIcon: state.router.location.pathname.includes('/ranking') ? 'add' : ''
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
