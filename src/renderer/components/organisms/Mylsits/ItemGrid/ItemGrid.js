@@ -20,15 +20,17 @@ class ItemGrid extends React.PureComponent {
     const {
       id,
       play,
-      list
+      list,
+      actionMylist
     } = this.props;
 
     return (
       <div className={styles.container}>
         <Container
-          actionIcon="add"
+          actionIcon="trash"
           list={list}
           play={play}
+          actionMylist={actionMylist}
         />
       </div>
     );

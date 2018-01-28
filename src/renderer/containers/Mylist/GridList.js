@@ -23,8 +23,7 @@ export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
   id: state.router.location.pathname.split('/').slice(-1)[0],
-  list: state.mylist.mylist,
-  actionIcon: state.router.location.pathname === '/mylist' ? 'trash' : ''
+  list: state.mylist.mylist
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
