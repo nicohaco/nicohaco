@@ -25,7 +25,7 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   fetchUserMylists: (id) => dispatch(actions.fetchUserMylists(id)),
-  goToMylist: (id) => dispatch(pageActions.pushPage(`/mylist/${id}`))
+  goToMylist: (id, userId) => dispatch(pageActions.pushPage(`/mylist/${id}?userId=${userId}`))
 });
 
 export default connect(

@@ -3,6 +3,7 @@
 import type { State } from '../types/states';
 
 export const getNico                   = (state: State) => state.auth.nicoInstance;
+export const getRouter                 = (state: State) => state.router;
 export const getPlayer                 = (state: State) => state.player; // [TODO] rename
 export const getUserData               = (state: State) => state.auth.userData;
 export const getPlaylist               = (state: State) => state.player.playlist;

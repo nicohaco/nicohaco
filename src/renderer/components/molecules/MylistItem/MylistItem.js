@@ -3,9 +3,9 @@
 import React from 'react';
 import styles from './style.css';
 
-    // onClick={props.onClick}
 const MylistItem = (props) => (
   <div
+    onClick={props.onClick}
     className={styles.container}
   >
     <p>{props.title}</p>

@@ -40,13 +40,10 @@ function *login(action: Login): Generator<Effect, void, *> {
         session: userSession
       });
 
-      // move to the mylist page
-      yield put(push('mylist'));
-
-      yield put({ type: 'FETCH_USER_DATA' });
+      yield put({ type: 'FETCH_MY_DATA' });
 
       const nico = yield select(getNico);
-      const { payload } = yield take('FETCH_USER_DATA_SUCCESS');
+      const { payload } = yield take('FETCH_MY_DATA_SUCCESS');
 
       yield put({
         type   : 'INSERT_USER_DATA',
@@ -65,6 +62,7 @@ function *login(action: Login): Generator<Effect, void, *> {
       };
     }
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
@@ -79,11 +77,12 @@ function *logout(): Generator<Effect, void, *> {
   try {
     yield put({
       type: 'PUSH_PAGE',
-      path: 'login'
+      path: '/login'
     });
     yield put({ type: 'DELETE_USER_DATA' });
     yield put({ type: 'RESET' });
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
@@ -110,6 +109,7 @@ function *createNicoInstance(action: CreateNicoInstance):
 
     yield ipcRenderer.send('setCookie', action.session);
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
@@ -140,6 +140,7 @@ function *validateUserSession(): Generator<Effect, void, *> {
       }
     });
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
@@ -159,6 +160,7 @@ function *fetchOwnData(): Generator<Effect, void, *> {
       }
     });
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e

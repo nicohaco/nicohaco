@@ -5,8 +5,9 @@
 
 import { put, take, select, takeLatest } from 'redux-saga/effects';
 import convertKeys from 'convert-keys';
-import { getNico } from './selectors';
+import { getNico, getRouter } from './selectors';
 import {
+  formatDate,
   formatTime,
   formatApiSchema
 } from '../utils/format';
@@ -114,14 +115,11 @@ function *removeVideo(action: RemoveVideo): Generator<Effect, void, *> {
  */
 function *loadMylist(action: LoadMylist): Generator<Effect, void, *> {
   try {
-
-    console.log('============')
     yield put({
       type: 'SHOW_MYLIST',
       id  : action.id
     });
 
-    console.log('============')
     const { payload } = yield take('SHOW_MYLIST_SUCCESS');
 
     if (payload.mylistitem.length === 0) {
@@ -153,9 +151,15 @@ function *loadMylist(action: LoadMylist): Generator<Effect, void, *> {
 function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
   try {
     const nico   = yield select(getNico);
-    const mylist = yield nico.mylist.get(action.id);
 
-    if (mylist.status === 'ok') {
+    // TODO: strict
+    const own = !((yield select(getRouter)).location.search).includes('userId');
+
+    if (own) {
+      const mylist = yield nico.mylist.get(action.id);
+
+      if (mylist.status !== 'ok') throw new Error(mylist.status);
+
       let totalTime = 0;
 
       const mylistitem = mylist.mylistitem.map((item) => {
@@ -165,7 +169,8 @@ function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
 
           // for use when erasing from mylist
           itemId : item.item_id,
-          groupId: action.id
+          groupId: action.id,
+          postedDate: formatDate(item.item_data.length_seconds * 1000)
         }));
       });
 
@@ -193,7 +198,14 @@ function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
       });
     }
     else {
-      throw new Error(mylist.status);
+      const mylist = yield nico.mylist.getUserMylist(action.id);
+
+      yield put({
+        type   : 'FETCH_MYLIST_SUCCESS',
+        payload: {
+          mylistitem: mylist,
+        }
+      });
     }
   } catch (e) {
     yield put({
