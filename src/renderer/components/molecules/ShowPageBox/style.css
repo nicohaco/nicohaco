@@ -1,0 +1,21 @@
+.container {
+
+}
+
+.title {
+  border-bottom: 1px solid #ccc;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.more {
+  font-size: .9rem;
+}

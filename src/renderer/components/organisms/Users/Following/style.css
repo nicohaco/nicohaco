@@ -11,8 +11,10 @@
 }
 
 .ul {
+  height: 390px;
   list-style: none;
   margin: 0;
+  overflow-y: auto;
   padding: 0;
 
   & > li {
