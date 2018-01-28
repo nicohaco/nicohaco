@@ -10,6 +10,16 @@ export const fetchUserTimeline = (id: string) => ({
   id
 });
 
+export const fetchUserMylists = (id: string) => ({
+  type: 'FETCH_USER_MYLISTS',
+  id
+});
+
+export const fetchUserVideos = (id: string) => ({
+  type: 'FETCH_USER_VIDEOS',
+  id
+});
+
 export const fetchMyTimeline = () => ({
   type: 'FETCH_MY_TIMELINE',
 });

@@ -11,7 +11,7 @@ import type { Mylistitem } from '../../types/apis/mylist';
 
 type MapStateToProps = {
   list: any; //TODO: fix
-  actionIcon: 'plus' | '';
+  actionIcon: 'add' | '';
 };
 
 type MapDispatchToProps = {
@@ -21,7 +21,7 @@ type MapDispatchToProps = {
 
 const mapStateToProps = (state: State): MapStateToProps => ({
   list      : state.ranking.result,
-  actionIcon: state.router.location.pathname === '/ranking' ? 'plus' : ''
+  actionIcon: state.router.location.pathname === '/ranking' ? 'add' : ''
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
