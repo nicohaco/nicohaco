@@ -2,10 +2,9 @@
 
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
-import { formatDate } from '../../utils/format';
 import * as actions from '../../actions/player';
 import * as mylistActions from '../../actions/mylist';
-import GridList from '../../components/organisms/ItemGrid';
+import GridList from '../../components/organisms/Mylsits/ItemGrid';
 
 import type { State } from '../../types/states';
 import type { Mylistitem } from '../../types/apis/mylist';
@@ -23,9 +22,8 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  list: state.mylist.mylist.map((item: any) => // TODO: fix
-    ({...item, postedDate: formatDate(item.postedDate * 1000)})
-  ),
+  id: state.router.location.pathname.split('/').slice(-1)[0],
+  list: state.mylist.mylist,
   actionIcon: state.router.location.pathname === '/mylist' ? 'trash' : ''
 });
 
@@ -34,8 +32,8 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
     dispatch(actions.insertToPlaylist(list));
     dispatch(actions.play(type, index));
   },
-  actionMylist: (video) =>
-    dispatch(mylistActions.removeVideo(video.groupId, video.itemId))
+  actionMylist: (video) => dispatch(mylistActions.removeVideo(video.groupId, video.itemId)),
+  fetchMylist: (id) => dispatch(mylistActions.fetchMylist(id))
 });
 
 export default connect(

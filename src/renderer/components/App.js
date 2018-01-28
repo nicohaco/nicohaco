@@ -11,23 +11,31 @@ type Props = {
   children?: React.Component<*>;
 };
 
-const App = (props: Props) => (
-  <div>
-    {
-      history.location.pathname !== '/login' ? (
-        <Header />
-      ) : null
-    }
-    <div className={styles.container}>
-      <div className={styles.left}>
-        <SideMenu />
-      </div>
+const App = (props: Props) => {
+  const path = history.location.pathname;
+
+  return (
+    <div>
       {
-        props.children
+        path !== '/login' && path !== '/' ? (
+          <Header />
+        ) : null
       }
-      <VideoPlayer />
+      <div className={styles.container}>
+        {
+          path !== '/login' && path !== '/' ? (
+            <div className={styles.left}>
+              <SideMenu />
+            </div>
+          ) : null
+        }
+        {
+          props.children
+        }
+        <VideoPlayer />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
