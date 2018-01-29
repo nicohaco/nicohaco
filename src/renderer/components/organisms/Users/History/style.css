@@ -1,6 +1,15 @@
 .container {
+  margin: 0 20px 20px 20px;
+}
+
+.ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, 220px);
   grid-gap: 0;
   justify-content: space-evenly;
+}
+
+.watchInfo {
+  color: #999;
+  font-size: .8rem;
 }

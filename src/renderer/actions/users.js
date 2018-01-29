@@ -20,8 +20,12 @@ export const fetchUserVideos = (id: string) => ({
   id
 });
 
+export const fetchMyHistory = () => ({
+  type: 'FETCH_MY_HISTORY'
+});
+
 export const fetchMyTimeline = () => ({
-  type: 'FETCH_MY_TIMELINE',
+  type: 'FETCH_MY_TIMELINE'
 });
 
 export const fetchMyFollowing = () => ({
