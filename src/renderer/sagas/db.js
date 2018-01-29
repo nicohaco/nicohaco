@@ -131,7 +131,8 @@ function *showMylist(action: ShowMylist): Generator<Effect, void, *> {
     let mylistitem;
 
     yield db.mylistgroup.get(action.id, (item) => {
-      mylistitem = JSON.parse(item.mylist || '[]');
+      if (item === undefined) mylistitem = [];
+      else mylistitem = JSON.parse(item.mylist || '[]');
     });
 
     yield put({

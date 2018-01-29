@@ -6,13 +6,12 @@ import styles from './style.css';
 
 class ItemGrid extends React.PureComponent {
   componentWillMount() {
-    this.props.fetchMylist(this.props.id);
+    this.props.loadMylist(this.props.id);
   }
 
-  componentwillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.id !== nextProps.id) {
-      console.log(nextProps.id);
-    // this.props.fetchUserVideos(this.props.id);
+      this.props.loadMylist(nextProps.id);
     }
   }
 

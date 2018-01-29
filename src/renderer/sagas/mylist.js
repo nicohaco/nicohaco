@@ -68,6 +68,7 @@ function *addVideo(action: AddVideo): Generator<Effect, void, *> {
 
     yield put({ type: 'CLOSE_MODAL' });
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
@@ -102,6 +103,7 @@ function *removeVideo(action: RemoveVideo): Generator<Effect, void, *> {
       mylist: mylistitem
     });
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
@@ -137,6 +139,7 @@ function *loadMylist(action: LoadMylist): Generator<Effect, void, *> {
       });
     }
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
@@ -208,6 +211,7 @@ function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
       });
     }
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
@@ -233,6 +237,7 @@ function *createMylist(action: CreateMylist) {
 
     yield put({ type: 'FETCH_MYLISTGROUP' });
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
@@ -264,6 +269,7 @@ function *fetchMylistgroup(): Generator<Effect, void, *> {
       }
     });
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e

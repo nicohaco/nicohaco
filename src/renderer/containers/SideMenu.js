@@ -35,10 +35,7 @@ const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
   reload      : () => dispatch(actions.fetchMylistgroup()),
   pushPage    : (path) => dispatch(pageActions.pushPage(path)),
   createMylist: (name) => dispatch(actions.createMylist(name)),
-  selectMylist: (id) => {
-    dispatch(pageActions.pushPage(`/mylist/${id}`));
-    dispatch(actions.loadMylist(id));
-  }
+  selectMylist: (id) => dispatch(pageActions.pushPage(`/mylist/${id}`))
 });
 
 export default connect(
