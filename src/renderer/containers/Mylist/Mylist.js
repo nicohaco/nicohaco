@@ -32,6 +32,8 @@ const mapStateToProps = (state: State) => {
     group = state.users.user.mylists.find((mylist) => mylist.id === id);
   }
 
+  group.totalVideos = state.mylist.mylist.length;
+
   return {
     list : state.mylist.mylist,
     id,

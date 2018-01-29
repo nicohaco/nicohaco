@@ -100,6 +100,13 @@ function *showMylistgroup(): Generator<Effect, void, *> {
 function *updateMylistgroup(action: UpdateMylistgroup): Generator<Effect, void, *> {
   try {
     yield db.mylistgroup.update(action.groupId, action.items);
+
+    yield put({
+      type: 'UPDATE_MYLISTGROUP_SUCCESS',
+      payload: action.items,
+      groupId: action.groupId
+    });
+
   } catch (e) {
     console.error(e);
   }

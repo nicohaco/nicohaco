@@ -54,7 +54,7 @@ export const formatApiSchema = (o: Object): CustomApiSchema => {
     totalTime   : obj.lengthSeconds,
     viewCount   : obj.viewCounter || obj.viewCount,
     updateTime  : obj.updateTime,
-    postedDate  : obj.firstRetrieve || obj.postedDate || obj.startTime,
+    postedDate  : obj.postedDate || obj.firstRetrieve || obj.startTime,
     mylistCount : obj.mylistCounter || obj.mylistCount,
     lastResBody : obj.lastResBody,
     thumbnailUrl: obj.thumbnailUrl,

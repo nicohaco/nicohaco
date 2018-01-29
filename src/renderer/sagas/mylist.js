@@ -132,6 +132,19 @@ function *loadMylist(action: LoadMylist): Generator<Effect, void, *> {
 
       const { payload } = yield take('FETCH_MYLIST_SUCCESS');
 
+      const own = !(yield select(getRouter)).location.search.includes('userId');
+
+      // e.g. after loading mylistgroup
+      if (own) {
+        yield put({
+          type: 'UPDATE_MYLISTGROUP',
+          items: {
+            img: payload.mylistitem.map((item) => item.thumbnailUrl).slice(0, 4)
+          },
+          groupId: payload.groupId
+        });
+      }
+
       yield put({
         type  : 'INSERT_MYLIST',
         id    : action.id,
@@ -153,10 +166,10 @@ function *loadMylist(action: LoadMylist): Generator<Effect, void, *> {
  */
 function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
   try {
-    const nico   = yield select(getNico);
+    const nico = yield select(getNico);
 
     // TODO: strict
-    const own = !((yield select(getRouter)).location.search).includes('userId');
+    const own = !(yield select(getRouter)).location.search.includes('userId');
 
     if (own) {
       const mylist = yield nico.mylist.get(action.id);
@@ -168,13 +181,13 @@ function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
       const mylistitem = mylist.mylistitem.map((item) => {
         totalTime += ~~item.item_data.length_seconds;
 
-        return formatApiSchema(Object.assign(item.item_data, {
-
+        return formatApiSchema({
+          ...item.item_data,
           // for use when erasing from mylist
           itemId : item.item_id,
           groupId: action.id,
-          postedDate: formatDate(item.item_data.length_seconds * 1000)
-        }));
+          postedDate: formatDate(item.item_data.first_retrieve * 1000)
+        });
       });
 
       const totalVideos = mylistitem.length;

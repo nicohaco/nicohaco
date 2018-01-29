@@ -17,6 +17,13 @@ const reducer = (state: State = initialState, action: Action) => {
         group: action.payload.mylistgroup,
         ready: true
       });
+    case 'UPDATE_MYLISTGROUP_SUCCESS':
+      return Object.assign({}, state, {
+        group: state.group.map((group) => {
+          if (group.id === action.groupId) return { ...group, ...action.payload };
+          else return group;
+        })
+      });
     case 'SHOW_MYLIST_SUCCESS':
     case 'FETCH_MYLIST_SUCCESS':
       return Object.assign({}, state, {
@@ -50,7 +57,6 @@ const reducer = (state: State = initialState, action: Action) => {
     case 'FETCH_MYLISTGROUP':
     case 'INSERT_MYLISTGROUP':
     case 'UPDATE_MYLISTGROUP':
-      return state;
     default:
       (action: empty);
       return state;
