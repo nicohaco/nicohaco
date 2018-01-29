@@ -9,17 +9,17 @@ import GridList from '../../../containers/Mylist/GridList';
 import type { Props } from '../../../containers/Mylist/Mylist';
 
 class Mylist extends React.Component {
-  componentWillMount() {
-    if (Object.keys(this.props.group).length === 0) {
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.pathname !== nextProps.pathname) {
-      if (Object.keys(nextProps.group).length === 0) {
-      }
-    }
-  }
+  // componentWillMount() {
+  //   if (Object.keys(this.props.group).length === 0) {
+  //   }
+  // }
+  //
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.pathname !== nextProps.pathname) {
+  //     if (Object.keys(nextProps.group).length === 0) {
+  //     }
+  //   }
+  // }
 
   render() {
     const {
