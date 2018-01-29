@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
     dispatch(actions.play(type, index));
   },
   actionMylist: (video) => dispatch(mylistActions.removeVideo(video.groupId, video.itemId)),
-  fetchMylist: (id) => dispatch(mylistActions.fetchMylist(id))
+  loadMylist: (id) => dispatch(mylistActions.loadMylist(id))
 });
 
 export default connect(
