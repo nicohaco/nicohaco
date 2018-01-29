@@ -9,7 +9,8 @@ const {
   app,
   ipcMain,
   session,
-  BrowserWindow
+  BrowserWindow,
+  globalShortcut
 } = require('electron');
 const createMenu = require('./menu');
 
@@ -122,6 +123,10 @@ function createWindow() {
 
   session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
     callback({ cancel: true });
+  });
+
+  const ret = globalShortcut.register('MediaPlayPause', () => {
+    mainWindow.content().send('updateAudioStatus');
   });
 }
 
