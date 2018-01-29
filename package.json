@@ -92,7 +92,7 @@
     "dexie": "^2.0.1",
     "electron-devtools-installer": "^2.2.0",
     "electron-google-analytics": "0.0.24",
-    "nico-api": "^0.13.0",
+    "nico-api": "^0.14.0",
     "nico-value": "^0.1.1",
     "node-vibrant": "^3.0.0",
     "photon": "https://github.com/connors/photon",
