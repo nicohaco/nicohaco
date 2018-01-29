@@ -100,6 +100,23 @@ function *fetchMyData() {
   }
 }
 
+function *fetchMyHistory(): Generator<Effect, void, *> {
+  try {
+    const nico = yield select(getNico);
+    const payload = yield nico.user.getMyHistory();
+
+    yield put({
+      type   : 'FETCH_MY_HISTORY_SUCCESS',
+      payload
+    });
+  } catch (e) {
+    // yield put({ // TODO: fix
+    //   type : 'ERROR',
+    //   error: e
+    // });
+  }
+}
+
 function *fetchMyTimeline(): Generator<Effect, void, *> {
   try {
     const nico = yield select(getNico);
@@ -144,6 +161,7 @@ export default function *authProcess(): Generator<Effect, void, *> {
   yield takeLatest('FETCH_USER_TIMELINE', fetchUserTimeline);
 
   yield takeLatest('FETCH_MY_DATA', fetchMyData);
+  yield takeLatest('FETCH_MY_HISTORY', fetchMyHistory);
   yield takeLatest('FETCH_MY_TIMELINE', fetchMyTimeline);
   yield takeLatest('FETCH_MY_FOLLOWING', fetchMyFollowing);
 }

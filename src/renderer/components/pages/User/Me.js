@@ -5,6 +5,7 @@ import { shell } from 'electron';
 import ShowPage from '../../templates/ShowPage';
 import Timeline from '../../../containers/Users/Timeline';
 import Following from '../../../containers/Users/Following'
+import History from '../../../containers/Users/History';
 import styles from './style.css';
 
 import type { Props } from '../../../containers/Users/Me';
@@ -34,6 +35,7 @@ const Users = (props: Props) =>(
       <Timeline />
       <Following />
     </div>
+    <History />
   </ShowPage>
 );
 
