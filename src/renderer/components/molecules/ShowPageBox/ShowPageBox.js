@@ -21,7 +21,8 @@ class ShowPageBox extends React.PureComponent {
       items,
       title,
       limitNum,
-      className
+      className,
+      ulClassName
     } = this.props;
 
     const items5 = !this.state.expanded ? items.slice().splice(0, limitNum) : items;
@@ -29,7 +30,7 @@ class ShowPageBox extends React.PureComponent {
     return (
       <div className={cx(styles.container, className)}>
         <h2 className={styles.title}>{title}</h2>
-        <ul className={styles.ul}>
+        <ul className={cx(styles.ul, ulClassName)}>
           {
             items5
           }

@@ -59,6 +59,9 @@ const ItemBox = (props: Props) => (
             <span>コメ {Number(props.commentCount).toLocaleString()}</span>
           ) : null
         }
+        {
+          props.children
+        }
       </div>
     </div>
   </section>

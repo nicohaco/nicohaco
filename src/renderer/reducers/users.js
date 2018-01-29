@@ -13,6 +13,7 @@ const initialState = {
     thumbnailUrl: ''
   },
   me: {
+    history: [],
     timeline: [],
     following: []
   }
@@ -50,6 +51,14 @@ const reducer = (state: State = initialState, action: Action) => {
         user: {
           ...state.user,
           timeline: action.payload
+        }
+      };
+    case 'FETCH_MY_HISTORY_SUCCESS':
+      return {
+        ...state,
+        me: {
+          ...state.me,
+          history: action.payload
         }
       };
     case 'FETCH_MY_TIMELINE_SUCCESS':
