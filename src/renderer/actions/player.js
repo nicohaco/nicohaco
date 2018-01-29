@@ -22,8 +22,7 @@ export const toggleLoop = (mode: 'none' | 'one' | 'all'): ToggleLoop => ({
   mode
 });
 
-export const insertToPlaylist =  // [TODO] rename to `insertPlaylist`
-  (playlist: Array<Mylistitem>): InsertToPlaylist => ({
+export const insertToPlaylist =  (playlist: Array<Mylistitem>): InsertToPlaylist => ({
     type: 'INSERT_TO_PLAYLIST',
     playlist
   });

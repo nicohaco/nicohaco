@@ -17,6 +17,10 @@ class Root extends React.PureComponent<Props, void> {
     ipcRenderer.on('subWindow', (event, opened) => {
       this.props.updateSubWindowStatus(opened);
     });
+
+    ipcRenderer.on('updateAudioStatus', () => {
+      this.props.toggleStatus();
+    });
   }
 
   render() {
