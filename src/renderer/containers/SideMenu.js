@@ -25,7 +25,7 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  group: state.mylist.group.sort((a, b) => a.id - b.id),
+  group: state.mylist.group.sort((a, b) => Number(a.id) - Number(b.id)),
   ready: state.mylist.ready,
   pathname: state.router.location.pathname
 });

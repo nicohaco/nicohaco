@@ -5,6 +5,10 @@ import type {
   ResultSchema
 } from '../apis/search';
 
+export type Reset = {
+  type: 'RESET';
+};
+
 export type SearchAction = {
   type: 'SEARCH';
   params: Params;
@@ -29,23 +33,19 @@ export type DeleteSearchHistory = {
 
 export type SearchSuccess = {
   type: 'SEARCH_SUCCESS';
-  payload: {
-    result: Array<ResultSchema>;
-  };
+  payload: ResultSchema[];
 };
 
 export type ShowSearchHistorySuccess = {
   type: 'SHOW_SEARCH_HISTORY_SUCCESS';
   payload: {
-    history: Array<{
-      id: number;
-      text: string;
-      date: number;
-    }>;
-  };
+    text: string;
+    date: number;
+  }[];
 };
 
 export type Search =
+  Reset |
   SearchAction |
   SearchSuccess |
   ShowSearchHistory |

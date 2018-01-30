@@ -212,7 +212,7 @@ function *showSearchHistory(): Generator<Effect, void, *> {
 /**
  * delete search history from indexedDB
  */
-function *deleteSearchHistory() {
+function *deleteSearchHistory(): Generator<Effect, void, *> {
   try {
     yield db.history.clear();
   } catch (e) {
@@ -223,7 +223,7 @@ function *deleteSearchHistory() {
 /**
  * delete(truncate) db
  */
-function *deleteDB() {
+function *deleteDB(): Generator<Effect, void, *> {
   try {
     yield db.delete();
   } catch (e) {

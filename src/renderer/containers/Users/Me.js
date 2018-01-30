@@ -1,5 +1,6 @@
 // @flow
 
+import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
 import { Me } from '../../components/pages/User';
@@ -13,7 +14,7 @@ type MapStateToProps = {
 };
 
 type MapDispatchToProps = {
-  logout: () => void;
+  logout: () => {};
 };
 
 export type Props = MapStateToProps & MapDispatchToProps;

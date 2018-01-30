@@ -11,7 +11,7 @@ import type { FetchRanking } from '../types/actions/ranking';
  * fetch ranking from niconico
  * @param {FetchRanking} action
  */
-function *fetchRanking(action: FetchRanking) {
+function *fetchRanking(action: FetchRanking): Generator<Effect, void, *> {
   try {
     const nico = yield select(getNico);
     let ranking = yield nico.video.getRanking(

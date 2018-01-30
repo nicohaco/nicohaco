@@ -8,7 +8,7 @@ import { history } from '../store/configureStore';
 import styles from '../styles/app.css';
 
 type Props = {
-  children?: React.Component<*>;
+  children?: React$Node;
 };
 
 const App = (props: Props) => {

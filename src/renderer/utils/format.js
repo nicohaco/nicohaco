@@ -2,7 +2,7 @@
 
 import convertKeys from 'convert-keys';
 
-import type { CustomApiSchema } from '../type/customSchema';
+import type { CustomApiSchema } from '../types/customSchema';
 import type { Params } from '../types/apis/search';
 
 export const formatTime = (time: number): string => {

@@ -5,7 +5,7 @@ import type { Auth as Action } from '../types/actions/auth';
 
 const initialState = {
   userData: { // [TODO] create user.js when `user` relation becomes bloated...
-    id          : -1,
+    id          : '',
     name        : '',
     session     : '',
     description : '',

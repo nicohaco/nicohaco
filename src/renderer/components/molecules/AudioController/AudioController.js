@@ -5,16 +5,7 @@ import Slider from 'rc-slider';
 import { Icon as Button } from '../../atoms/Button';
 import styles from './style.css';
 
-type Props = {
-  status: boolean;
-  volume: number;
-  disabled: boolean;
-  playPrev: () => {};
-  playNext: () => {};
-  putLoading: (boolean) => {};
-  changeVolume: () => {};
-  toggleStatus: () => {};
-};
+import type { Props } from '../../../containers/Player/AudioController';
 
 const buttonSize = '2rem';
 

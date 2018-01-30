@@ -7,16 +7,25 @@ import Audio from '../../components/atoms/Audio';
 
 import type { State } from '../../types/states';
 
-type DispatchToProps = {
-  toggleLoop: ('none' | 'one' | 'all') => {};
-  getDuration: (number) => {};
-  toggleStatus: (boolean) => {};
-  changeVolume: (number) => {};
-  playSpecificAudio: (number) => {};
-  updateElapsedTime: (number) => {};
+type MapStateToProps = {
+  src: string;
+  index: number;
+  looped: boolean;
+  status: boolean;
+  volume: number;
+  elapsedTime: number;
 };
 
-const mapStateToProps = (state: State) => ({
+type MapDispatchToProps = {
+  getDuration: (number) => {};
+  playSpecificAudio: (number) => {};
+  updateElapsedTime: (number) => {};
+  changeLoadingStatus: (boolean) => {};
+};
+
+export type Props = MapStateToProps & MapDispatchToProps;
+
+const mapStateToProps = (state: State): MapStateToProps => ({
   src            : state.player.current.src,
   index          : state.player.current.index,
   looped: state.player.loop === 'one',
@@ -25,7 +34,7 @@ const mapStateToProps = (state: State) => ({
   elapsedTime    : state.player.elapsedTime,
 });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   getDuration        : (time) => dispatch(actions.insertDuration(time)),
   playSpecificAudio  : (index) => dispatch(actions.playSpecificAudio(index)),
   updateElapsedTime  : (time) => dispatch(actions.updateElapsedTime(time)),

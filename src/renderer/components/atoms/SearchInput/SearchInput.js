@@ -4,13 +4,13 @@ import React from 'react';
 import photon from '../../../styles/photon';
 
 type Props = {
-  onEnter: () => {};
-  onChange: () => {};
+  onEnter: (string) => {};
+  onChange: (SyntheticInputEvent<*>) => {};
   placeholder: string;
 };
 
-class SearchBox extends React.Component<void, Props, void> {
-  handleChange = (e: SyntheticInputEvent) => {
+class SearchBox extends React.PureComponent<Props, void> {
+  handleChange = (e: SyntheticInputEvent<*>) => {
     if (e.key === 'Enter' && typeof this.props.onEnter === 'function') {
       this.props.onEnter(e.target.value);
     }

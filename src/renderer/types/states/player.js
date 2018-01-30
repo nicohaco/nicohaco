@@ -1,6 +1,6 @@
 // @flow
 
-import type { Mylistitem } from '../apis/mylist';
+import type { MylistitemList } from './mylist';
 
 export type Current = {
   src: string;
@@ -8,6 +8,7 @@ export type Current = {
   index: number;
   poster: string;
   videoId: string;
+  posterId: string;
   totalTime: number;
   viewCount: number;
   postedDate: string;
@@ -22,7 +23,8 @@ export type Player = {
   current: Current;
   volume: number;
   status: boolean;
-  playlist: Array<Mylistitem>;
+  playlist: MylistitemList;
   elapsedTime: number;
   displayedLoader: boolean;
+  playType: 'music' | 'video'
 };

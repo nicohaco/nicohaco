@@ -1,5 +1,6 @@
 // @flow
 
+import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/users';
 import * as playerActions from '../../actions/player';
@@ -9,11 +10,12 @@ import type { State } from '../../types/states';
 
 type MapStateToProps = {
   id: string;
-  title: string;
-  thumbnailUrl: string;
+  videos: Object[]; // TODO: fix
 };
 
 type MapDispatchToProps = {
+  play: ('video' | 'audio', number, Object[]) => void; // TODO: fix
+  fetchUserVideos: (string) => {};
 };
 
 export type Props = MapStateToProps & MapDispatchToProps;

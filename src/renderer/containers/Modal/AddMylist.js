@@ -7,7 +7,7 @@ import * as mylistActions from '../../actions/mylist';
 import Modal from '../../components/organisms/Modal/AddMylist';
 
 import type { State } from '../../types/states';
-import type { GroupArray } from '../../types/states/mylist';
+import type { Mylistgroup } from '../../types/states/mylist';
 
 type MapStateToProps = {
   video: {
@@ -15,7 +15,7 @@ type MapStateToProps = {
     contentId: string;
   };
   opened: boolean;
-  mylistgroup: GroupArray;
+  mylistgroup: Mylistgroup;
 };
 
 type MapDispatchToProps = {

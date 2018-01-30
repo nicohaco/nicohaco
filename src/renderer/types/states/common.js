@@ -5,4 +5,7 @@ export type Common = {
     data: Object; // eslint-disable-line flowtype/no-weak-types
     opened: boolean;
   };
+  subWindow: {
+    opened: boolean;
+  };
 };

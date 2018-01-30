@@ -1,7 +1,6 @@
 // @flow
 
 /* eslint-disable camelcase */
-/* eslint-disable no-console */
 
 import { put, take, select, takeLatest } from 'redux-saga/effects';
 import convertKeys from 'convert-keys';
@@ -236,7 +235,7 @@ function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
  * create new mylist
  * @param {CreateMylist} action
  */
-function *createMylist(action: CreateMylist) {
+function *createMylist(action: CreateMylist): Generator<Effect, void, *> {
   try {
     const nico = yield select(getNico);
 

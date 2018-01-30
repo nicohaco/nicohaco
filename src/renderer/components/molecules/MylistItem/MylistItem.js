@@ -3,7 +3,13 @@
 import React from 'react';
 import styles from './style.css';
 
-const MylistItem = (props) => (
+type Props = {
+  num: number;
+  title: string;
+  onClick: () => {};
+};
+
+const MylistItem = (props: Props) => (
   <div
     onClick={props.onClick}
     className={styles.container}

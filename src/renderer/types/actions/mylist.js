@@ -5,21 +5,6 @@ import type {
   Mylistgroup
 } from '../apis/mylist';
 
-export type Setup = {
-  type: 'SETUP_MYLIST';
-};
-
-export type ShowMylist = {
-  type: 'SHOW_MYLIST';
-  id: string;
-};
-
-export type InsertMylist = {
-  type: 'INSERT_MYLIST';
-  id: number;
-  mylist: Array<Mylistitem>;
-};
-
 export type FetchMylistgroup = {
   type: 'FETCH_MYLISTGROUP';
 };
@@ -28,21 +13,34 @@ export type ShowMylistgroup = {
   type: 'SHOW_MYLISTGROUP';
 };
 
+export type UpdateMylistgroup = {
+  type: 'UPDATE_MYLISTGROUP';
+  groupId: string;
+  items: Array<Mylistgroup>;
+};
+
+export type Setup = {
+  type: 'SETUP_MYLIST';
+};
+
+export type InsertMylist = {
+  type: 'INSERT_MYLIST';
+  id: number;
+  mylist: {
+    title: string;
+    videoId: string;
+    thumbnailUrl: string;
+  }[];
+};
+
 export type CreateMylist = {
   type: 'CREATE_MYLIST';
   name: string;
 };
 
-export type AddVideo = {
-  type: 'ADD_VIDEO';
-  videoId: string;
-  groupId: string;
-};
-
-export type RemoveVideo = {
-  type: 'REMOVE_VIDEO';
-  itemId: string;
-  groupId: string;
+export type ShowMylist = {
+  type: 'SHOW_MYLIST';
+  id: string;
 };
 
 export type LoadMylist = {
@@ -55,10 +53,16 @@ export type FetchMylist = {
   id: number;
 };
 
-export type UpdateMylistgroup = {
-  type: 'UPDATE_MYLISTGROUP';
+export type AddVideo = {
+  type: 'ADD_VIDEO';
+  videoId: string;
   groupId: string;
-  items: Array<Mylistgroup>;
+};
+
+export type RemoveVideo = {
+  type: 'REMOVE_VIDEO';
+  itemId: string;
+  groupId: string;
 };
 
 /**
@@ -106,6 +110,12 @@ export type InsertMylistgroup = {
   };
 };
 
+export type UpdateMylistgroupSuccess = {
+  type: 'UPDATE_MYLISTGROUP_SUCCESS';
+  groupId: string;
+  payload: {};
+};
+
 export type Mylist =
   Setup |
   AddVideo |
@@ -122,4 +132,5 @@ export type Mylist =
   ShowMylistSuccess |
   FetchMylistSuccess |
   ShowMylistgroupSuccess |
-  FetchMylistgroupSuccess;
+  FetchMylistgroupSuccess |
+  UpdateMylistgroupSuccess;

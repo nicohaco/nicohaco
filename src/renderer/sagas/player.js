@@ -98,9 +98,7 @@ function *play(action: Play): Generator<Effect, void, *> {
  * play specified video
  * @param {Playspecificaudio} action
  */
-function *playSpecificAudio(action: PlaySpecificAudio):
-  Generator<Effect, void, *>
-{
+function *playSpecificAudio(action: PlaySpecificAudio): Generator<Effect, void, *> {
   const loop            = (yield select(getPlayer)).loop;
   const currentPlaylist = yield select(getPlaylist);
   const newVideo        = currentPlaylist[action.index];
@@ -131,7 +129,7 @@ function *playSpecificAudio(action: PlaySpecificAudio):
 /**
  * reset current video info
  */
-function *resetCurrentAudio() {
+function *resetCurrentAudio(): Generator<Effect, void, *> {
   yield put({
     type   : 'INSERT_CURRENT_AUDIO',
     payload: {
