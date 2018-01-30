@@ -5,7 +5,9 @@ import ShowPageBox from '../../../molecules/ShowPageBox';
 import ItemBox from '../../../molecules/ItemBox';
 import styles from './style.css';
 
-class History extends React.PureComponent {
+import type { Props } from '../../../../containers/Users/History';
+
+class History extends React.PureComponent<Props, void> {
   componentWillMount() {
     this.props.fetchMyHistory();
   }

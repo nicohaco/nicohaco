@@ -1,7 +1,7 @@
 // @flow
 
-import type { Common as State } from '../types/states/common';
-import type { Common as Action } from '../types/actions/common';
+import type { Users as State } from '../types/states/users';
+import type { Users as Action } from '../types/actions/users';
 
 const initialState = {
   user: {
@@ -9,7 +9,7 @@ const initialState = {
     videos: [],
     mylists: [],
     timeline: [],
-    followers: '0', //TODO: check
+    followers: '0',
     thumbnailUrl: ''
   },
   me: {
@@ -78,7 +78,6 @@ const reducer = (state: State = initialState, action: Action) => {
         }
       };
     default:
-      (action: empty);
       return state;
   }
 };

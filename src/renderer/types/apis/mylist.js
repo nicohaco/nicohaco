@@ -1,33 +1,35 @@
 // @flow
 
-export type Mylistgroup = {
+// getUserMylists
+export type GetUserMylists = {
   id: string;
-  name: string;
-  iconId: string;
-  public: string;
-  userId: string;
-  sortOrder: string;
-  updateTime: number;
+  num: string;
+  title: string;
+  thumbnailUrls: string[];
+}[];
+
+// getUserMylist
+export type GetUserMylist = {
+  title: string;
+  videoId: string;
+  totalTime: string; // 00:00
+  postedDate: string;
+  thumbnailUrl: string;
+}[];
+
+// all
+export type GetMylistgroup = {
   createTime: number;
   defaultSort: string;
   description: string;
-};
-
-export type Mylistitem = {
-  title: string;
-  itemId: string;
-  numRes: string;
-  videoId: string;
-  watchId: string;
-  deleted: string;
-  groupId: string;
-  groupType: string;
-  contentId?: string;
+  iconId: string;
+  id: string;
+  name: string;
+  public: string;
+  sortOrder: string;
   updateTime: number;
-  lastResBody: string;
-  viewCounter: string;
-  thumbnailUrl: string;
-  firstRetrieve: number;
-  lengthSeconds: string;
-  mylistCounter: string;
-};
+  userId: number;
+
+  totalTime: string;
+  totalVideos: number;
+}[];

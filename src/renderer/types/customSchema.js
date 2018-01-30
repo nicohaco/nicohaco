@@ -5,11 +5,11 @@ export type CustomApiSchema = {
   itemId: number;
   groupId: number;
   deleted: number;
-  viodeId: string;
-  groupYpe: string;
+  videoId: string;
+  groupType: string;
   totalTime: string | number;
   viewCount: number;
-  updateTIme: string;
+  updateTime: string;
   postedDate: string | number;
   mylistCount: number;
   lastResBody: string;

@@ -7,6 +7,7 @@ import type { Mylistitem } from '../apis/mylist';
 export type Play = {
   type: 'PLAY';
   index: number;
+  playType: 'audio' | 'video';
 };
 
 export type ToggleLoop = {

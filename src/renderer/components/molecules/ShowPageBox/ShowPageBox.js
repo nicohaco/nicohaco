@@ -5,7 +5,25 @@ import cx from 'classnames';
 import MoreIcon from 'react-icons/lib/md/expand-more';
 import styles from './style.css';
 
-class ShowPageBox extends React.PureComponent {
+type State = {
+  expanded: boolean;
+};
+
+type Props = {
+  items: Object[]; // TODO: fix
+  title: string;
+  limitNum: number;
+  className: string;
+  ulClassName: string;
+};
+
+class ShowPageBox extends React.PureComponent<Props, State> {
+  state: State;
+
+  static defaultProps = {
+    limitNum: 5
+  };
+
   onClick = () => {
     this.setState({ expanded: true });
   };
@@ -50,9 +68,5 @@ class ShowPageBox extends React.PureComponent {
     );
   }
 }
-
-ShowPageBox.defaultProps = {
-  limitNum: 5
-};
 
 export default ShowPageBox;

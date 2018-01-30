@@ -7,7 +7,12 @@ import { formatTime } from '../../../utils/format';
 import ItemBox from '../../molecules/ItemBox';
 import styles from './style.css';
 
-import type { Props } from '../../../containers/Mylist/GridList';
+type Props = {
+  list: Object[]; // TODO: fix
+  play: ('video' | 'audio', number, Object[]) => {}; // TODO: fix
+  actionIcon: 'add' | string;
+  actionMylist: (Object) => {}; // TODO: listと同じ
+};
 
 const ItemGrid = (props: Props) => (
   <div className={styles.container}>

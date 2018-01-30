@@ -15,7 +15,10 @@ type Props = {
   watchId: string;
   onClick: () => {};
   totalTime: string;
-  postedDate: string;
+  postedDate?: string;
+  viewCount?: string;
+  commentCount?: string;
+  children?: React$Node;
 };
 
 const ItemBox = (props: Props) => (

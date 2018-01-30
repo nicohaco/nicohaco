@@ -4,12 +4,14 @@ import React from 'react';
 import Container from '../../ItemGrid';
 import styles from './style.css';
 
-class ItemGrid extends React.PureComponent {
+import type { Props } from '../../../../containers/Mylist/GridList';
+
+class ItemGrid extends React.PureComponent<Props, void> {
   componentWillMount() {
     this.props.loadMylist(this.props.id);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
     if (this.props.id !== nextProps.id) {
       this.props.loadMylist(nextProps.id);
     }

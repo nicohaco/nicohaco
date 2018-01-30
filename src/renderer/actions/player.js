@@ -5,13 +5,15 @@ import type {
   ToggleLoop,
   ChangeVolume,
   ToggleStatus,
+  InsertDuration,
   InsertToPlaylist,
   UpdateElapsedTime,
-  PlaySpecificAudio
+  PlaySpecificAudio,
+  ChangeLoadingStatus
 } from '../types/actions/player';
-import type { Mylistitem } from '../types/apis/mylist';
+import type { Mylistitem } from '../types/states/Mylist';
 
-export const play = (playType, index: number): Play => ({
+export const play = (playType: 'audio' | 'video', index: number): Play => ({
   type: 'PLAY',
   playType,
   index
@@ -22,10 +24,10 @@ export const toggleLoop = (mode: 'none' | 'one' | 'all'): ToggleLoop => ({
   mode
 });
 
-export const insertToPlaylist =  (playlist: Array<Mylistitem>): InsertToPlaylist => ({
-    type: 'INSERT_TO_PLAYLIST',
-    playlist
-  });
+export const insertToPlaylist =  (playlist: any): InsertToPlaylist => ({ // TODO: fix
+  type: 'INSERT_TO_PLAYLIST',
+  playlist
+});
 
 export const toggleStatus = (status?: boolean): ToggleStatus => ({
   type: 'TOGGLE_STATUS',
@@ -47,12 +49,12 @@ export const changeVolume = (volume: number): ChangeVolume => ({
   volume
 });
 
-export const changeLoadingStatus = (loaded: boolean) => ({
+export const changeLoadingStatus = (loaded: boolean): ChangeLoadingStatus => ({
   type: 'CHANGE_LOADING_STATUS',
   loaded
 });
 
-export const insertDuration = (duration: number) => ({ // [TODO] rename
+export const insertDuration = (duration: number): InsertDuration => ({ // [TODO] rename
   type: 'INSERT_TOTAL_TIME',
   duration
 });
@@ -61,3 +63,16 @@ export const closeVideoPlayer = () => ({
   type    : 'SET_PLAY_TYPE',
   playType: 'music'
 });
+
+import {ExtractReturn} from '../types/ExtractReturn';
+export type Actions =
+    ExtractReturn<typeof play> |
+    ExtractReturn<typeof toggleLoop> |
+    ExtractReturn<typeof insertToPlaylist> |
+    ExtractReturn<typeof toggleStatus> |
+    ExtractReturn<typeof updateElapsedTime> |
+    ExtractReturn<typeof playSpecificAudio> |
+    ExtractReturn<typeof changeVolume> |
+    ExtractReturn<typeof changeLoadingStatus> |
+    ExtractReturn<typeof insertDuration> |
+    ExtractReturn<typeof closeVideoPlayer>;

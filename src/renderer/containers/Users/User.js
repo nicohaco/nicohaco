@@ -1,5 +1,6 @@
 // @flow
 
+import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/users';
 import User from '../../components/pages/User';
@@ -9,10 +10,12 @@ import type { State } from '../../types/states';
 type MapStateToProps = {
   id: string;
   title: string;
+  followers: string;
   thumbnailUrl: string;
 };
 
 type MapDispatchToProps = {
+  fetchUserData: (string) => {};
 };
 
 export type Props = MapStateToProps & MapDispatchToProps;

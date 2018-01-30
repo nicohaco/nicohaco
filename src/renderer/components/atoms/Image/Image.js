@@ -10,12 +10,16 @@ type Props = {
 };
 
 const Image = (props: Props) => {
-  let el;
+  let el: {
+    src: string;
+  };
 
   return (
     <img
       src={props.src}
-      ref={(img) => el = img}
+      ref={(img) => {
+        if (img) el = img;
+      }}
       onError={() => el.src = el.src.split('.M')[0]}
       className={cx(styles.container, props.className)}
     />

@@ -5,20 +5,28 @@ import { connect } from 'react-redux';
 import SubWindow from 'react-icons/lib/md/launch';
 import * as actions from '../../actions/page';
 
-type MapDispatchToProps = {
-  updateSubWindowStatus: (boolean) => {};
+import type { State } from '../../types/states';
+
+type MapStateToProps = {
+  style: {
+    color: '#999' | '#333';
+  };
 };
 
-export type Props = MapDispatchToProps;
+type MapDispatchToProps = {
+  onClick: () => {};
+};
 
-const mapStateToProps = (state) => ({
+export type Props = MapDispatchToProps & MapDispatchToProps;
+
+const mapStateToProps = (state: State): MapStateToProps => ({
   style: {
     color: state.common.subWindow.opened ? '#999' : '#333'
   }
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  onClick: () => dispatch(actions.controlSubWindow(true))
+  onClick: () => dispatch(actions.controlSubWindow())
 });
 
 export default connect(

@@ -11,3 +11,4 @@
 module.file_ext=.js
 module.file_ext=.css
 esproposal.class_static_fields=enable
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe

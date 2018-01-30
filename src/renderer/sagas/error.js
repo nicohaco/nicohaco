@@ -48,7 +48,7 @@ function *routeError(action: Error): Generator<Effect, void, *> {
 /**
  * catch user sesson error and then goes to login page
  */
-function *errorNoauth() {
+function *errorNoauth(): Generator<Effect, void, *> {
   alert('セッションが切れました.');
 
   yield put({ type: 'DELETE_USER_DATA' });
@@ -61,42 +61,42 @@ function *errorNoauth() {
 /**
  * server error
  */
-function errorServer() {
+function *errorServer(): Generator<Effect, void, *> {
   alert('サーバーが混み合っています');
 }
 
 /**
  * invalid mail address or password when logging in
  */
-function errorLogin() {
+function *errorLogin(): Generator<Effect, void, *> {
   alert('メールアドレスかパスワードが間違えています');
 }
 
 /**
  * already exists the video in this mylist
  */
-function errorExist() {
+function *errorExist(): Generator<Effect, void, *> {
   alert('すでにマイリストに動画が存在しています');
 }
 
 /**
  * the video was deleted
  */
-function errorDeleted() {
+function *errorDeleted() : Generator<Effect, void, *> {
   alert('削除された動画です');
 }
 
 /**
  * network error
  */
-function errorNotfound() {
+function *errorNotfound(): Generator<Effect, void, *> {
   alert('ネットワークに問題があります');
 }
 
 /**
  * access denied
  */
-function errorAccessDenied() {
+function *errorAccessDenied() : Generator<Effect, void, *> {
   alert('アクセスできない動画です');
 }
 

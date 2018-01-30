@@ -6,16 +6,17 @@ import * as mylistActions from '../../actions/mylist';
 import Mylist from '../../components/pages/Mylist';
 
 import type { State } from '../../types/states';
-import type { MylistArray } from '../../types/states/mylist';
+import type { MylistitemList, Mylistgroup } from '../../types/states/mylist';
 
 type MapStateToProps = {
-  list: MylistArray;
-  group: any; // TODO: fix
+  id: string;
+  list: MylistitemList;
+  group: Mylistgroup;
   pathname: string;
 };
 
 type MapDispatchToProps = {
-  play: ('video' | 'music', number, MylistArray) => void;
+  play: ('video' | 'music', number, MylistitemList) => void;
 };
 
 export type Props = MapStateToProps & MapDispatchToProps;
@@ -32,7 +33,9 @@ const mapStateToProps = (state: State) => {
     group = state.users.user.mylists.find((mylist) => mylist.id === id);
   }
 
-  group.totalVideos = state.mylist.mylist.length;
+  if (group && !group.totalVideos) {
+    group.totalVideos = state.mylist.mylist.length;
+  }
 
   return {
     list : state.mylist.mylist,

@@ -2,7 +2,9 @@
 
 import type {
   Login,
-  Logout
+  Logout,
+  CreateNicoInstance,
+  ValidateUserSession
 } from '../types/actions/auth';
 
 export const login = (mail: string, password: string): Login => ({
@@ -15,11 +17,11 @@ export const logout = (): Logout => ({
   type: 'LOGOUT'
 });
 
-export const createNicoInstance = (session: string) => ({
+export const createNicoInstance = (session: string): CreateNicoInstance => ({
   type: 'CREATE_NICO_INSTANCE',
   session
 });
 
-export const validateUserSession = () => ({
+export const validateUserSession = (): ValidateUserSession => ({
   type: 'VALIDATE_USER_SESSION'
 });

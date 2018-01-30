@@ -9,7 +9,7 @@ type State = {
   videoId: string;
 };
 
-class SubWindow extends React.PureComponent<void, State> {
+class SubWindow extends React.PureComponent<{}, State> {
   state: State;
 
   constructor() {

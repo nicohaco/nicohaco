@@ -1,10 +1,14 @@
+// @flow
+
 import React from 'react';
 import ShowPageBox from '../../../molecules/ShowPageBox';
 import { formatDateOfISO8601 } from '../../../../utils/format';
 import TimelineItem from '../../../molecules/TimelineItem';
 import styles from './style.css';
 
-class Timeline extends React.PureComponent {
+import type { Props } from '../../../../containers/Users/Timeline';
+
+class Timeline extends React.PureComponent<Props, void> {
   componentDidMount() {
     if (this.props.id === 'me') this.props.fetchMyTimeline();
     else this.props.fetchUserTimeline(this.props.id);

@@ -19,7 +19,7 @@ type Props = {
   elapsedTime: number;
   thumbnailUrl: string;
   toggleStatus: (?boolean) => {};
-  updateElapsedTime: () => {};
+  updateElapsedTime: (number) => {};
 };
 
 const AudioInfo = (props: Props) => (
