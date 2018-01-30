@@ -68,6 +68,7 @@ function *fetchUserVideos(action): Generator<Effect, void, *> {
     const nico = yield select(getNico);
     const payload = yield nico.video.getUserVideos(action.id);
 
+    console.log(payload)
     yield put({
       type   : 'FETCH_USER_VIDEOS_SUCCESS',
       payload
@@ -80,7 +81,7 @@ function *fetchUserVideos(action): Generator<Effect, void, *> {
   }
 }
 
-function *fetchMyData() {
+function *fetchMyData(): Generator<Effect, void, *> {
   try {
     const nico = yield select(getNico);
     const userData = yield nico.user.getInfo();

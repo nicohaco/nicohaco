@@ -8,7 +8,7 @@ import GridList from '../../../containers/Mylist/GridList';
 
 import type { Props } from '../../../containers/Mylist/Mylist';
 
-class Mylist extends React.Component {
+class Mylist extends React.PureComponent<Props, void> {
   // componentWillMount() {
   //   if (Object.keys(this.props.group).length === 0) {
   //   }

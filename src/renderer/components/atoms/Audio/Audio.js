@@ -1,19 +1,9 @@
 // @flow
 
 import React from 'react';
+import type { Props } from '../../../containers/Player/Audio';
 
-type Props = {
-  src: string;
-  looped: boolean;
-  status: boolean;
-  volume: number;
-  elapsedTime: number;
-  notifyEnded: () => {};
-  updateElapsedTime: () => {};
-  changeLoadingStatus: (boolean) => {};
-};
-
-class Audio extends React.Component<void, Props, void> {
+class Audio extends React.PureComponent<Props, void> {
   audio: HTMLAudioElement;
 
   play() {
@@ -97,7 +87,9 @@ class Audio extends React.Component<void, Props, void> {
 
     return (
       <audio
-        ref={(audio) => this.audio = audio}
+        ref={(audio) => {
+          if (audio) this.audio = audio;
+        }}
         src={src}
         loop={looped}
         autoPlay

@@ -3,7 +3,7 @@
 /* eslint-disable flowtype/space-after-type-colon */
 
 import { ipcRenderer } from 'electron';
-import { takeEvery, effects } from 'redux-saga';
+import { put, take, select, takeLatest } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import Nico from 'nico-api';
 import { getNico } from './selectors';
@@ -13,12 +13,6 @@ import type {
   Login,
   CreateNicoInstance
 } from '../types/actions/auth';
-
-const {
-  put,
-  take,
-  select
-} = effects;
 
 /**
  * login
@@ -94,9 +88,7 @@ function *logout(): Generator<Effect, void, *> {
  * create new Nico instance
  * @param {Createnicoinstance} action
  */
-function *createNicoInstance(action: CreateNicoInstance):
-  Generator<Effect, void, *>
-{
+function *createNicoInstance(action: CreateNicoInstance): Generator<Effect, void, *> {
   try {
     const nico = new Nico({ cookie: action.session });
 
@@ -172,9 +164,9 @@ function *fetchOwnData(): Generator<Effect, void, *> {
  * Root for auth
  */
 export default function *authProcess(): Generator<Effect, void, *> {
-  yield takeEvery('LOGIN', login);
-  yield takeEvery('LOGOUT', logout);
-  yield takeEvery('FETCH_OWN_DATA', fetchOwnData);
-  yield takeEvery('CREATE_NICO_INSTANCE', createNicoInstance);
-  yield takeEvery('VALIDATE_USER_SESSION', validateUserSession);
+  yield takeLatest('LOGIN', login);
+  yield takeLatest('LOGOUT', logout);
+  yield takeLatest('FETCH_OWN_DATA', fetchOwnData);
+  yield takeLatest('CREATE_NICO_INSTANCE', createNicoInstance);
+  yield takeLatest('VALIDATE_USER_SESSION', validateUserSession);
 }

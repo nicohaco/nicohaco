@@ -1,7 +1,9 @@
 // @flow
 
 import type { Player as State } from '../types/states/player';
-import type { Player as Action } from '../types/actions/player';
+// import type { Player as Action } from '../types/actions/player';
+
+import type { Actions } from '../actions/player';
 
 const initialState = {
   loop   : 'none',
@@ -11,7 +13,7 @@ const initialState = {
     index             : 0,
     poster            : '',
     videoId           : '',
-    posterId          : 0,
+    posterId          : '',
     totalTime         : 0,
     viewCount         : 0,
     postedDate        : '',
@@ -29,7 +31,7 @@ const initialState = {
   playType: 'music' // music, video
 };
 
-const reducer = (state: State = initialState, action: Action) => {
+const reducer = (state: State = initialState, action: Actions) => {
   switch (action.type) {
     case 'FETCH_FLV_SUCCESS': // [TODO] combine fetch_flv_success and reset.... name is insertCurrentAudio
       return Object.assign({}, state, {
@@ -56,6 +58,7 @@ const reducer = (state: State = initialState, action: Action) => {
           title             : action.payload.title,
           index             : action.payload.index,
           poster            : action.payload.poster,
+          posterId          : action.payload.posterId,
           videoId           : action.payload.videoId,
           totalTime         : action.payload.lengthSeconds,
           viewCount         : action.payload.viewCount,
@@ -98,7 +101,7 @@ const reducer = (state: State = initialState, action: Action) => {
       });
     case 'CHANGE_LOADING_STATUS':
       return Object.assign({}, state, {
-        displayedLoader: !action.loaded
+        displayedLoader: !action.loaded.aa
       });
     case 'RESET':
       return initialState;

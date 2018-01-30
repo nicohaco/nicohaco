@@ -1,6 +1,4 @@
 // @flow
-/* eslint-disable no-console */
-
 'use strict';
 
 const path = require('path');
@@ -85,9 +83,9 @@ function createWindow() {
 
     // Install redux-devtools and react-developer-tools.
     const {
-      default: installExtension,
-      REDUX_DEVTOOLS,
-      REACT_DEVELOPER_TOOLS
+ default: installExtension,
+   REDUX_DEVTOOLS,
+   REACT_DEVELOPER_TOOLS
     } = require('electron-devtools-installer');
 
     installExtension([
@@ -99,7 +97,7 @@ function createWindow() {
   }
 
   mainWindow = windowManager.open('main', 'NicoHaco', html, false, {
-    frame : false,
+    frame : false, // TODO: windowの時、ダメ
     width : 1250,
     height: 800,
     minWidth: 850,
@@ -107,7 +105,7 @@ function createWindow() {
     resizable: true,
     alwaysOnTop   : false,
     showDevTools: process.env.NODE_ENV !== 'production',
-    titleBarStyle : 'hidden',
+    titleBarStyle : 'hidden', // TODO: windowsの時、ダメ？
     webPreferences: {
       webSecurity: false
     }
@@ -119,13 +117,13 @@ function createWindow() {
   });
 
   // block ads
-  const filter = { urls: ['http://ads.nicovideo.jp/*'] };
-
-  session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
+  session.defaultSession.webRequest.onBeforeSendHeaders({
+    urls: ['http://ads.nicovideo.jp/*']
+  }, (details, callback) => {
     callback({ cancel: true });
   });
 
-  const ret = globalShortcut.register('MediaPlayPause', () => {
+  globalShortcut.register('MediaPlayPause', () => {
     mainWindow.content().send('updateAudioStatus');
   });
 }

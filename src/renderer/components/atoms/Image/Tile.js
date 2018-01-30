@@ -4,19 +4,28 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './tile.style.css';
 
+type ImgProps = {
+  src: string;
+};
+
 type Props = {
   src: string[];
   size: number;
   isCircle: boolean;
+  className: string;
 };
 
-const Img = (props: Props) => {
-  let el;
+const Img = (props: ImgProps) => {
+  let el: {
+    src: string;
+  };
 
   return (
     <img
       src={props.src}
-      ref={(img) => el = img}
+      ref={(img) => {
+        if (img) el = img;
+      }}
       width="100%"
       height="100%"
       onError={() => el.src = el.src.split('.M')[0]}

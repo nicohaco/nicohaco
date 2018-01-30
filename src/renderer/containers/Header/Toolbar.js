@@ -10,6 +10,7 @@ import type { State } from '../../types/states/';
 type MapStateToProps = {
   poster: string;
   videoId: string;
+  posterId: string;
   viewCount: number;
   postedDate: string;
   mylistCount: number;
@@ -18,8 +19,8 @@ type MapStateToProps = {
 };
 
 type MapDispatchToProps = {
-  pushPage: (string) => {};
   goBackPage: () => {};
+  goToUserPage: (string) => {};
   goForwardPage: () => {};
 };
 
@@ -37,7 +38,6 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  pushPage: (path) => dispatch(actions.pushPage(path)),
   goBackPage: () => dispatch(actions.goBackPage()),
   goToUserPage: (id) => dispatch(actions.pushPage(`/users/${id}`)),
   goForwardPage: () => dispatch(actions.goForwardPage())

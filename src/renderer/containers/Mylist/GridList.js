@@ -7,16 +7,17 @@ import * as mylistActions from '../../actions/mylist';
 import GridList from '../../components/organisms/Mylsits/ItemGrid';
 
 import type { State } from '../../types/states';
-import type { Mylistitem } from '../../types/apis/mylist';
+import type { Mylistitem, MylistitemList } from '../../types/states/Mylist';
 
 type MapStateToProps = {
-  list: Object[]; // TODO: fix
-  actionIcon: string;
+  id: string;
+  list: MylistitemList
 };
 
 type MapDispatchToProps = {
-  play: ('video' | 'audio', number, Array<Mylistitem>) => void;
+  play: ('video' | 'audio', number, MylistitemList) => void;
   actionMylist: (Mylistitem) => {};
+  loadMylist: (string) => {};
 };
 
 export type Props = MapStateToProps & MapDispatchToProps;

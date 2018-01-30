@@ -46,3 +46,14 @@ export const removeVideo = (groupId: string, itemId: string) => ({
   groupId,
   itemId
 });
+
+import {ExtractReturn} from '../types/ExtractReturn';
+
+export type Actions =
+  ExtractReturn<typeof setup> |
+  ExtractReturn<typeof fetchMylistgroup> |
+  ExtractReturn<typeof createMylist> |
+  ExtractReturn<typeof loadMylist> |
+  ExtractReturn<typeof fetchMylist> |
+  ExtractReturn<typeof addVideo> |
+  ExtractReturn<typeof removeVideo>;

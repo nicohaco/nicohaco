@@ -1,5 +1,4 @@
 // @flow
-/* eslint-disable no-console */
 
 'use strict';
 
@@ -17,8 +16,8 @@ autoUpdater.on('update-downloaded', () => {
   console.log('downloaded');
 
   const index = dialog.showMessageBox({
-    message: 'アップデートあり',
-    detail : '再起動してインストールできます。',
+    detail : '再起動してインストールできます',
+    message: 'アップデートがあります',
     buttons: ['再起動', '後で']
   });
 

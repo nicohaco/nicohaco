@@ -8,9 +8,9 @@ import Mylists from '../../../containers/Users/Mylists';
 import ItemGrid from '../../../containers/Users/ItemGrid';
 import styles from './style.css';
 
-import type { Props } from '../../../containers/Users/Me';
+import type { Props } from '../../../containers/Users/User';
 
-class User extends React.PureComponent {
+class User extends React.PureComponent<Props, void> {
   componentWillMount() {
     this.props.fetchUserData(this.props.id);
   }

@@ -7,16 +7,25 @@ import AudioInfo from '../../components/molecules/AudioInfo';
 
 import type { State } from '../../types/states';
 
-type DispatchToProps = {
+type MapStateToProps = {
+  loop: 'none' | 'one' | 'all';
+  title: string;
+  disabled: boolean;
+  totalTime: number;
+  elapsedTime: number;
+  thumbnailUrl: string;
+  displayedLoader: boolean;
+};
+
+type MapDispatchToProps = {
   toggleLoop: ('none' | 'one' | 'all') => {};
-  getDuration: (number) => {};
   toggleStatus: (boolean) => {};
-  changeVolume: (number) => {};
-  playSpecificAudio: (number) => {};
   updateElapsedTime: (number) => {};
 };
 
-const mapStateToProps = (state: State) => ({
+export type Props = MapStateToProps & MapDispatchToProps;
+
+const mapStateToProps = (state: State): MapStateToProps => ({
   loop:            state.player.loop,
   title:           state.player.current.title,
   disabled:        !state.player.current.src,
@@ -26,7 +35,7 @@ const mapStateToProps = (state: State) => ({
   displayedLoader: state.player.displayedLoader
 });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): DispatchToProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   toggleLoop         : (mode) => dispatch(actions.toggleLoop(mode)),
   toggleStatus       : (status) => dispatch(actions.toggleStatus(status)),
   updateElapsedTime  : (time) => dispatch(actions.updateElapsedTime(time))

@@ -3,7 +3,9 @@
 import React from 'react';
 import styles from './style.css';
 
-class Followers extends React.PureComponent {
+import type { Props } from '../../../../containers/Users/Following';
+
+class Followers extends React.PureComponent<Props, void> {
   componentDidMount() {
     this.props.fetchMyFollowing();
   }

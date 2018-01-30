@@ -6,7 +6,7 @@ import styles from './style.css';
 
 type Props = {
   onClick: () => {};
-  children: React.Component<*>;
+  children: React$Node;
   className: string;
 };
 

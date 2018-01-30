@@ -1,5 +1,3 @@
-// @flow
-
 'use strict';
 
 const { app, Menu, shell } = require('electron');
@@ -67,7 +65,6 @@ const window = ({ setAlwaysOnTop }) => {
     label  : 'window',
     submenu: [
       {
-        // type: 'checkbox',
         label: 'Use Video Player with AlwaysOnTop',
         click: (flag) => setAlwaysOnTop(flag.checked)
       }
@@ -103,9 +100,6 @@ const dev = {
   ]
 };
 
-/**
- * create the menu
- */
 function createMenu(funcs) {
   const common = [about, edit, window(funcs), help(funcs)];
   const template = process.env.NODE_ENV === 'production' ? common : [...common, dev];

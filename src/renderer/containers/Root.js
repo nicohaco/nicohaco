@@ -10,6 +10,7 @@ import Root from '../components/pages/Root';
 type MapDispatchToProps = {
   deleteDB: () => void;
   routePage: () => {};
+  toggleStatus: () => {};
   updateSubWindowStatus: (boolean) => {};
 };
 

@@ -3,7 +3,7 @@
 /* eslint-disable flowtype/no-weak-types */
 
 export type UserData = {
-  id: number;
+  id: string;
   name: string;
   session: string;
   description: string;

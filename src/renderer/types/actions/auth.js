@@ -1,5 +1,6 @@
 // @flow
 
+import type { OwnData } from '../apis/user';
 import type { UserData } from '../states/auth';
 
 export type Login = {
@@ -10,6 +11,10 @@ export type Login = {
 
 export type Logout = {
   type: 'LOGOUT';
+};
+
+export type Reset = {
+  type: 'RESET';
 };
 
 export type CreateNicoInstance = {
@@ -47,11 +52,20 @@ export type ValidateUserSessionResult = {
   type: 'VALIDATE_USER_SESSION_RESULT';
 };
 
+export type FetchOwnDataSuccess = {
+  type: 'FETCH_OWN_DATA_SUCCESS';
+  payload: {
+    userData: OwnData;
+  };
+};
+
 export type Auth =
   Login |
   Logout |
+  Reset |
   RoutePage |
   InsertUserSession |
   CreateNicoInstance |
   ValidateUserSession |
+  FetchOwnDataSuccess |
   ValidateUserSessionResult;

@@ -7,16 +7,16 @@ import * as commonActions from '../../actions/common';
 import GridList from '../../components/organisms/ItemGrid';
 
 import type { State } from '../../types/states';
-import type { Mylistitem } from '../../types/apis/mylist';
+import type { MylistitemList, Mylistitem } from '../../types/states/mylist';
 
 type MapStateToProps = {
-  list: any; //TODO: fix
+  list: MylistitemList;
   actionIcon: 'add' | '';
 };
 
 type MapDispatchToProps = {
-  play: ('video' | 'audio', number, Array<Mylistitem>) => void;
-  actionMylist: (any) => {}; // TODO fix
+  play: ('video' | 'audio', number, MylistitemList) => void;
+  actionMylist: (Mylistitem) => {};
 };
 
 const mapStateToProps = (state: State): MapStateToProps => ({

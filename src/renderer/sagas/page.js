@@ -2,7 +2,6 @@
 
 import { ipcRenderer } from 'electron';
 import { put, takeLatest } from 'redux-saga/effects';
-import { takeEvery, effects } from 'redux-saga';
 import { push, goBack, goForward } from 'react-router-redux';
 
 import type { Effect } from 'redux-saga';
