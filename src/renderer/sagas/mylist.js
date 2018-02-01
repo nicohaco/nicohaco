@@ -170,58 +170,57 @@ function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
     // TODO: strict
     const own = !(yield select(getRouter)).location.search.includes('userId');
 
-    if (own) {
-      const mylist = yield nico.mylist.get(action.id);
+    const mylist = own ?
+      yield nico.mylist.get(action.id) :
+      yield nico.mylist.getUserMylist(action.id);
 
-      if (mylist.status !== 'ok') throw new Error(mylist.status);
+    // own has mylist.mylistitem, and user has only mylist
+    const res = own ? mylist.mylistitem : mylist;
 
-      let totalTime = 0;
+    let totalTime = 0;
 
-      const mylistitem = mylist.mylistitem.map((item) => {
-        totalTime += ~~item.item_data.length_seconds;
+    const mylistitem = res.map((item) => {
+      const data = own ? item.item_data : item;
 
-        return formatApiSchema({
-          ...item.item_data,
+      if (own) {
+        totalTime += ~~data.length_seconds;
+
+        return own ? formatApiSchema({
+          ...data,
           // for use when erasing from mylist
           itemId : item.item_id,
           groupId: action.id,
           postedDate: formatDate(item.item_data.first_retrieve * 1000)
-        });
-      });
+        }) : data;
+      }
+      return data;
+    });
 
-      const totalVideos = mylistitem.length;
-      totalTime = formatTime(totalTime);
+    const totalVideos = mylistitem.length;
+    totalTime = formatTime(totalTime);
 
+    if (own) {
       // insert totalTime and totalVideos in this mylist
       yield put({
         type : 'UPDATE_MYLISTGROUP',
         items: {
+          img: mylistitem.map((item) => item.thumbnailUrl).slice(0, 4),
           totalTime,
           totalVideos
         },
         groupId: action.id
       });
-
-      yield put({
-        type   : 'FETCH_MYLIST_SUCCESS',
-        payload: {
-          totalTime,
-          mylistitem,
-          totalVideos,
-          groupId: action.id
-        }
-      });
     }
-    else {
-      const mylist = yield nico.mylist.getUserMylist(action.id);
 
-      yield put({
-        type   : 'FETCH_MYLIST_SUCCESS',
-        payload: {
-          mylistitem: mylist,
-        }
-      });
-    }
+    yield put({
+      type   : 'FETCH_MYLIST_SUCCESS',
+      payload: {
+        totalTime,
+        mylistitem,
+        totalVideos,
+        groupId: action.id
+      }
+    });
   } catch (e) {
     console.error(e);
     yield put({
