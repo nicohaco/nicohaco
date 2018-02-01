@@ -100,7 +100,7 @@ function createWindow() {
     frame : false, // TODO: windowの時、ダメ
     width : 1250,
     height: 800,
-    minWidth: 850,
+    minWidth: 1000,
     minHeight: 450,
     resizable: true,
     alwaysOnTop   : false,

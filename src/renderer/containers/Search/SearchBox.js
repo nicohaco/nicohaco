@@ -3,6 +3,7 @@
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/search';
+import * as pageActions from '../../actions/page';
 import SearchBox from '../../components/organisms/Search/SearchBox';
 
 import type { State } from '../../types/states';
@@ -16,7 +17,7 @@ type MapStateToProps = {
 };
 
 type MapDispatchToProps = {
-  search: (Params) => {}; // fix
+  search: (Params) => void;
   showSearchHistory: () => {};
   insertSearchHistory: (string) => {};
 };
@@ -28,7 +29,10 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  search             : (params) => dispatch(actions.search(params)),
+  search             : (params) => {
+    dispatch(actions.search(params));
+    dispatch(pageActions.pushPage('/search'));
+  },
   showSearchHistory  : () => dispatch(actions.showSearchHistory()),
   insertSearchHistory: (text) => dispatch(actions.insertSearchHistory(text))
 });

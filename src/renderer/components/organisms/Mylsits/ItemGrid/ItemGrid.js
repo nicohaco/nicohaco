@@ -20,6 +20,7 @@ class ItemGrid extends React.PureComponent<Props, void> {
   render() {
     const {
       id,
+      me,
       play,
       list,
       actionMylist
@@ -28,7 +29,7 @@ class ItemGrid extends React.PureComponent<Props, void> {
     return (
       <div className={styles.container}>
         <Container
-          actionIcon="trash"
+          actionIcon={me ? 'trash' : 'add'}
           list={list}
           play={play}
           actionMylist={actionMylist}

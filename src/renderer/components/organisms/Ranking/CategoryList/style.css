@@ -12,9 +12,10 @@
 }
 
 .condition {
+  align-items: center;
   display: flex;
   height: 35px;
-  width: 300px;
+  width: 400px;
 
   & > div {
     border-radius: none;
@@ -28,12 +29,27 @@
 }
 
 .category {
+  cursor: pointer;
   padding: 5px 10px;
   text-align: center;
   width: 150px;
+
+  &:hover {
+    background: #e5e5e5;
+  }
+}
+
+.categoryDetail {
+  text-align: left;
 }
 
 .active {
   background: #ccc;
   color: #666;
+}
+
+.detail {
+  color: #333;
+  font-size: 1.4rem;
+  margin-left: 20px;
 }

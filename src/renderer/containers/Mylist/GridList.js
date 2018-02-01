@@ -2,8 +2,10 @@
 
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
+import { history } from '../../store/configureStore';
 import * as actions from '../../actions/player';
 import * as mylistActions from '../../actions/mylist';
+import * as commonActions from '../../actions/common';
 import GridList from '../../components/organisms/Mylsits/ItemGrid';
 
 import type { State } from '../../types/states';
@@ -24,15 +26,23 @@ export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
   id: state.router.location.pathname.split('/').slice(-1)[0],
+  me: !state.router.location.search.includes('userId'),
   list: state.mylist.mylist
 });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>, state): MapDispatchToProps => ({
   play: (type, index, list) => {
     dispatch(actions.insertToPlaylist(list));
     dispatch(actions.play(type, index));
   },
-  actionMylist: (video) => dispatch(mylistActions.removeVideo(video.groupId, video.itemId)),
+  actionMylist: (item) => {
+    if (!history.location.search.includes('userId')) { // my mylist
+      dispatch(mylistActions.removeVideo(item.groupId, item.itemId));
+    }
+    else {
+      dispatch(commonActions.openModal(item)); // add
+    }
+  },
   loadMylist: (id) => dispatch(mylistActions.loadMylist(id))
 });
 
