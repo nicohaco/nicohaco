@@ -1,6 +1,7 @@
 // @flow
 
 import { connect } from 'react-redux';
+import { formatTime } from '../../utils/format';
 import * as actions from '../../actions/player';
 import * as mylistActions from '../../actions/mylist';
 import Mylist from '../../components/pages/Mylist';
@@ -33,8 +34,16 @@ const mapStateToProps = (state: State) => {
     group = state.users.user.mylists.find((mylist) => mylist.id === id);
   }
 
+  // groupは自分が登録しているマイリストしかみてないためmylist.mylistから情報を取得する
+  // なのでsagaではなくここで処理が行われる
   if (group && !group.totalVideos) {
     group.totalVideos = state.mylist.mylist.length;
+    group.totalTime = 0;
+    state.mylist.mylist.forEach((item) => {
+      group.totalTime += item.totalTime.split(':').reduce((acc,time) => (60 * acc) + +time);
+    });
+
+    group.totalTime = formatTime(group.totalTime);
   }
 
   return {

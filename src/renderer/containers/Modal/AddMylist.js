@@ -2,7 +2,9 @@
 
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
+import { history } from '../../store/configureStore';
 import * as actions from '../../actions/common';
+import * as pageActions from '../../actions/page';
 import * as mylistActions from '../../actions/mylist';
 import Modal from '../../components/organisms/Modal/AddMylist';
 
@@ -19,7 +21,7 @@ type MapStateToProps = {
 };
 
 type MapDispatchToProps = {
-  add: (string, string) => {};
+  add: (string, string) => void;
   launch: () => {};
   closeModal: () => {};
 };
@@ -33,7 +35,13 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  add: (groupId, videoId) => dispatch(mylistActions.addVideo(groupId, videoId)),
+  add: (groupId, videoId) => {
+    dispatch(mylistActions.addVideo(groupId, videoId));
+
+    if (history.location.search.includes('userId')) { // user mylist
+      dispatch(pageActions.pushPage(`/mylist/${groupId}`));
+    }
+  },
   launch    : () => dispatch(mylistActions.fetchMylistgroup()),
   closeModal: () => dispatch(actions.closeModal())
 });
