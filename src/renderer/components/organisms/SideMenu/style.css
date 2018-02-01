@@ -20,11 +20,16 @@
   }
 }
 
+.item {
+  cursor: pointer;
+}
+
 .mylistItems {
   padding: 0;
   list-style: none;
 
-  & > li {
+  & > .mylistItem {
+    cursor: pointer;
     font-size: .9rem;
     padding: 5px 20px;
   }

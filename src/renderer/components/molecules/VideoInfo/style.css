@@ -18,3 +18,11 @@
     margin-right: 10px;
   }
 }
+
+.link {
+  cursor: pointer;
+
+  & > * {
+    cursor: pointer;
+  }
+}

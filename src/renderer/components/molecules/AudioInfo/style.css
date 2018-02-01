@@ -29,6 +29,7 @@
 .mainBoxTop {
   height: calc(var(--content-height) - var(--seekbar-height));
   margin: auto;
+  overflow: hidden;
   position: relative;
   width: calc(100% - 2 * 5px); /* margin is 5px */
 }

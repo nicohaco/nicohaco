@@ -2,6 +2,7 @@
 
 import { shell } from 'electron';
 import React from 'react';
+import cx from 'classnames';
 import { Circle as Image } from '../../atoms/Image';
 import styles from './style.css';
 
@@ -24,7 +25,7 @@ const VideoInfo = (props: Props) => (
       props.posterThumbnailUrl ? (
         <div
           onClick={props.goToUserPage}
-          className={styles.box}
+          className={cx(styles.box, styles.link)}
         >
           <Image
             src={props.posterThumbnailUrl}
@@ -38,7 +39,7 @@ const VideoInfo = (props: Props) => (
       ) : null
     }
     <div
-      className={styles.box}
+      className={cx(styles.box, styles.link)}
       onClick={() => shell.openExternal(`${prefix}/watch/${props.videoId}`)}i
     >
       <span title="videoID">ID {props.videoId}</span>

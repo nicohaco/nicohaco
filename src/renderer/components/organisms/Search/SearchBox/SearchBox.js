@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Select from 'react-select';
+import SearchIcon from 'react-icons/lib/md/search';
 import {
   formatDate,
   createSearchParams
@@ -61,7 +62,11 @@ class SearchBox extends React.PureComponent<Props, State> {
         <div className={styles.searchBox}>
           <Select
             value={this.state.word}
-            placeholder="Search from niconico"
+            placeholder={
+              <span>
+                <SearchIcon /> Search from Niconico
+              </span>
+            }
             onChange={(r) => this.searchProcess(r.value)}
             onInputKeyDown={this.onInputKeyDown}
             options={searchHistory.map((item) => ({

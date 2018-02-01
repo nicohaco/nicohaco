@@ -10,6 +10,8 @@ import Toolbar from '../../../containers/Header/Toolbar';
 import photon from '../../../styles/photon';
 import styles from './header.style.css';
 
+import SearchBox from '../../../containers/Search/SearchBox';
+
 const Header = () => (
   <header className={styles.wrapper}>
     <div className={cx(photon.toolbar, photon['toolbar-header'], styles.container)}>
@@ -22,6 +24,7 @@ const Header = () => (
         </div>
         <div className={styles.right}>
           <SubWindow size="1.4rem" />
+          <SearchBox />
         </div>
         <Audio />
       </div>
