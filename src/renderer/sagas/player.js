@@ -85,8 +85,15 @@ function *play(action: Play): Generator<Effect, void, *> {
         type  : 'TOGGLE_STATUS',
         status: true
       });
+
+      new Notification(info.title, {
+        body: info.poster,
+        icon: videoInfo.thumbnailUrl,
+        silent: true
+      });
     }
   } catch (e) {
+    console.error(e);
     yield put({
       type : 'ERROR',
       error: e
