@@ -5,6 +5,7 @@ import { shell } from 'electron';
 import { formatDate } from '../../../utils/format';
 import ShowPage from '../../templates/ShowPage';
 import GridList from '../../../containers/Mylist/GridList';
+import Modal from '../../../containers/Modal/AddMylist';
 
 import type { Props } from '../../../containers/Mylist/Mylist';
 
@@ -65,6 +66,7 @@ class Mylist extends React.PureComponent<Props, void> {
         ]}
       >
         <GridList />
+        <Modal />
       </ShowPage>
     );
   }

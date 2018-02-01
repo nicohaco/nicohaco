@@ -2,6 +2,8 @@
 
 import React from 'react';
 import cx from 'classnames';
+import DetailIcon from 'react-icons/lib/md/expand-more';
+import ExpandLessIcon from 'react-icons/lib/md/expand-less';
 import Select from 'react-select';
 import { categoryList as categories, ranking } from 'nico-value';
 import List from '../../../atoms/List';
@@ -39,7 +41,8 @@ class CategoryList extends React.PureComponent<Props, State> {
 
     this.state = {
       period : period[1],
-      target : target[0]
+      target : target[0],
+      expanded: false
     };
 
     this.categoryName = 'all';
@@ -59,7 +62,7 @@ class CategoryList extends React.PureComponent<Props, State> {
     // this.props.changeCategory(path, this.state.target.value, this.state.period.value); // TODO: bug
 
     this.props.changeCategory(path); // TODO: bug
-  }
+  };
 
   changeTarget = (target: {
     label: string;
@@ -68,7 +71,7 @@ class CategoryList extends React.PureComponent<Props, State> {
     this.setState({ target });
 
     this.props.fetchCategory(this.categoryName, target.value, this.state.period.value);
-  }
+  };
 
   changePeriod = (period: {
     label: string;
@@ -77,7 +80,11 @@ class CategoryList extends React.PureComponent<Props, State> {
     this.setState({ period });
 
     this.props.fetchCategory(this.categoryName, this.state.target.value, period.value);
-  }
+  };
+
+  expandCategory = () => {
+    this.setState({ expanded: !this.state.expanded });
+  };
 
   componentDidMount() {
     this.props.fetchCategory(
@@ -121,14 +128,27 @@ class CategoryList extends React.PureComponent<Props, State> {
             searchable={false}
             placeholder="期間"
           />
+          {
+            this.state.expanded ? (
+              <ExpandLessIcon
+                onClick={this.expandCategory}
+                className={styles.detail}
+              />
+            ) : (
+              <DetailIcon
+                onClick={this.expandCategory}
+                className={styles.detail}
+              />
+            )
+          }
         </div>
         <div className={styles.categories}>
           {
             categories.map((category) => (
               <div
                 style={{
-                  height: 50,
-                  overflow: 'hidden'
+                  height: this.state.expanded ? 'auto' : 50,
+                  overflow: this.state.expanded ? 'none' : 'hidden'
                 }}
               >
                 {
@@ -151,6 +171,7 @@ class CategoryList extends React.PureComponent<Props, State> {
                         onClick={() => this.changePath(c.key)}
                         className={cx(
                           styles.category,
+                          styles.categoryDetail,
                           c.key === this.categoryName ? styles.active : undefined
                         )}
                       >

@@ -5,7 +5,6 @@ import cx from 'classnames';
 import CreateMylistModal from '../Modal/Input'; // TODO delete
 import MyIcon from 'react-icons/lib/md/account-circle';
 import AddIcon from 'react-icons/lib/md/add-circle-outline';
-import SearchIcon from 'react-icons/lib/md/search';
 import ReloadIcon from 'react-icons/lib/md/autorenew';
 import TimelineIcon from 'react-icons/lib/md/timeline';
 import styles from './style.css';
@@ -14,6 +13,23 @@ import type {Props} from '../../../containers/SideMenu';
 
 type State = {
   openedCreateMylistModal: boolean;
+};
+
+const Item = (props) => (
+  <p
+    onClick={props.onClick}
+    className={
+      cx(styles.item, props.pathname.includes(props.myPath) ? styles.active : undefined)
+    }
+  >
+    {
+      props.children
+    }
+  </p>
+);
+
+Item.defaultProps = {
+  pathname: ''
 };
 
 class SideMenu extends React.PureComponent<Props, State> {
@@ -43,9 +59,10 @@ class SideMenu extends React.PureComponent<Props, State> {
       <div className={styles.container}>
         <div className={styles.main}>
           <h1 className={styles.title}>MAIN</h1>
-          <p
+          <Item
             onClick={() => pushPage('/users/me')}
-            className={pathname.includes('/users/me') ? styles.active : undefined}
+            pathname={pathname}
+            myPath="/users/me"
           >
             <MyIcon
               size="1.5rem"
@@ -54,22 +71,11 @@ class SideMenu extends React.PureComponent<Props, State> {
               }}
             />
             My Page
-          </p>
-          <p
-            onClick={() => pushPage('/search')}
-            className={pathname.includes('/search') ? styles.active : undefined}
-          >
-            <SearchIcon
-              size="1.5rem"
-              style={{
-                marginRight: 5
-              }}
-            />
-            Search
-          </p>
-          <p
+          </Item>
+          <Item
             onClick={() => pushPage('/ranking/all')}
-            className={pathname.includes('/ranking') ? styles.active : undefined}
+            pathname={pathname}
+            myPath="/ranking/all"
           >
             <TimelineIcon
               size="1.5rem"
@@ -78,7 +84,7 @@ class SideMenu extends React.PureComponent<Props, State> {
               }}
             />
             Ranking
-          </p>
+          </Item>
         </div>
         <div className={styles.mylist}>
           <h1 className={styles.title}>MYLISTS</h1>
@@ -99,7 +105,7 @@ class SideMenu extends React.PureComponent<Props, State> {
           </ul>
         </div>
         <div className={styles.mylistController}>
-          <p onClick={() => this.setState({ openedCreateMylistModal: true })}>
+          <Item onClick={() => this.setState({ openedCreateMylistModal: true })}>
             <AddIcon
               size="1.5rem"
               style={{
@@ -107,8 +113,8 @@ class SideMenu extends React.PureComponent<Props, State> {
               }}
             />
             Create Mylist
-          </p>
-          <p onClick={reload}>
+          </Item>
+          <Item onClick={reload}>
             <ReloadIcon
               size="1.5rem"
               style={{
@@ -116,7 +122,7 @@ class SideMenu extends React.PureComponent<Props, State> {
               }}
             />
             Update Mylist
-          </p>
+          </Item>
         </div>
         {/* TODO: delete */}
         <CreateMylistModal
