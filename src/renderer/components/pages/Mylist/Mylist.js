@@ -31,7 +31,7 @@ class Mylist extends React.PureComponent<Props, void> {
       pathname
     } = this.props;
 
-    if (group && Object.keys(group).length === 0) return null;
+    if (group === undefined || group && Object.keys(group).length === 0) return null;
 
     return (
       <ShowPage
