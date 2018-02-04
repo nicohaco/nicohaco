@@ -74,7 +74,7 @@ function *errorServer(): Generator<Effect, void, *> {
  * invalid mail address or password when logging in
  */
 function *errorLogin(): Generator<Effect, void, *> {
-  alert('メールアドレスかパスワードが間違えています');
+  alert('メールアドレスかパスワードを間違えています');
 }
 
 /**

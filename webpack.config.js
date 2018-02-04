@@ -41,10 +41,12 @@ const common = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'NicoHaco',
       chunks: ['core'],
       filename: 'core.html'
     }),
     new HtmlWebpackPlugin({
+      title: 'NicoHaco',
       chunks: ['sub'],
       filename: 'sub.html'
     }),

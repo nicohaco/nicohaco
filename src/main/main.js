@@ -83,9 +83,9 @@ function createWindow() {
 
     // Install redux-devtools and react-developer-tools.
     const {
- default: installExtension,
-   REDUX_DEVTOOLS,
-   REACT_DEVELOPER_TOOLS
+      default: installExtension,
+      REDUX_DEVTOOLS,
+      REACT_DEVELOPER_TOOLS
     } = require('electron-devtools-installer');
 
     installExtension([
@@ -97,15 +97,15 @@ function createWindow() {
   }
 
   mainWindow = windowManager.open('main', 'NicoHaco', html, false, {
-    frame : false, // TODO: windowの時、ダメ
+    frame : !(process.platform === 'darwin'),
     width : 1250,
     height: 800,
-    minWidth: 1000,
+    minWidth: 1050,
     minHeight: 450,
     resizable: true,
     alwaysOnTop   : false,
     showDevTools: process.env.NODE_ENV !== 'production',
-    titleBarStyle : 'hidden', // TODO: windowsの時、ダメ？
+    titleBarStyle: process.platform === 'darwin' ? 'hidden' : 'hidden-inset',
     webPreferences: {
       webSecurity: false
     }
@@ -136,11 +136,11 @@ function createSubWindow() {
   subWindow = windowManager.open('sub', 'NicoHaco', url, false, {
     width : 640,
     height: 480,
-    frame : false,
+    frame : !(process.platform === 'darwin'),
+    position: 'bottomRight',
     resizable: true,
     alwaysOnTop   : true,
-    position: 'bottomRight',
-    titleBarStyle : 'hidden',
+    titleBarStyle: 'hidden',
     webPreferences: {
       webSecurity: false
     }

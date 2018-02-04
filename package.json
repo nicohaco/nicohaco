@@ -127,6 +127,7 @@
       "identity": null
     },
     "win": {
+      "icon": "images/nicohaco.ico",
       "target": "nsis"
     }
   }
