@@ -5,6 +5,14 @@
   width: 850px;
 }
 
+.link {
+  cursor: pointer;
+
+  & > * {
+    cursor: pointer;
+  }
+}
+
 .box {
   align-items: center;
   display: flex;
@@ -16,13 +24,5 @@
 
   & > *:first-child {
     margin-right: 10px;
-  }
-}
-
-.link {
-  cursor: pointer;
-
-  & > * {
-    cursor: pointer;
   }
 }

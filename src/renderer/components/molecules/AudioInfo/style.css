@@ -12,7 +12,6 @@
   background: var(--background-gray);
   display: flex;
   height: var(--content-height);
-  /* max-width: var(--content-width); */
   margin: auto;
 }
 
@@ -38,7 +37,7 @@
   height: var(--seekbar-height);
 
   & > div {
-    background: transparent !important;
+    background: transparent !important; /* stylelint-disable */
   }
 }
 

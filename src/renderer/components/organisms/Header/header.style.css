@@ -5,8 +5,8 @@
 }
 
 .container {
-  height: var(--header-main-height);
   -webkit-app-region: drag; /* stylelint-disable-line */
+  height: var(--header-main-height);
 }
 
 .main {
@@ -23,7 +23,7 @@
   }
 
   & > .center {
-    flex:1 1 auto;
+    flex: 1 1 auto;
   }
 
   & > .right {
