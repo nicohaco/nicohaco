@@ -7,6 +7,7 @@ import * as actions from '../../actions/player';
 import * as mylistActions from '../../actions/mylist';
 import * as commonActions from '../../actions/common';
 import GridList from '../../components/organisms/Mylsits/ItemGrid';
+import WrapperComponent from '../../components/WrapperComponent';
 
 import type { State } from '../../types/states';
 import type { Mylistitem, MylistitemList } from '../../types/states/Mylist';
@@ -35,6 +36,7 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
     dispatch(actions.insertToPlaylist(list));
     dispatch(actions.play(type, index));
   },
+  setup: (id) => dispatch(mylistActions.loadMylist(id)),
   actionMylist: (item) => {
     if (!history.location.search.includes('userId')) { // my mylist
       dispatch(mylistActions.removeVideo(item.groupId, item.itemId));
@@ -42,11 +44,10 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
     else {
       dispatch(commonActions.openModal(item)); // add
     }
-  },
-  loadMylist: (id) => dispatch(mylistActions.loadMylist(id))
+  }
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GridList);
+)(WrapperComponent(GridList));

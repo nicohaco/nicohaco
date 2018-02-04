@@ -7,13 +7,9 @@ import styles from './style.css';
 import type { Props } from '../../../../containers/Mylist/GridList';
 
 class ItemGrid extends React.PureComponent<Props, void> {
-  componentWillMount() {
-    this.props.loadMylist(this.props.id);
-  }
-
   componentWillReceiveProps(nextProps: Props) {
     if (this.props.id !== nextProps.id) {
-      this.props.loadMylist(nextProps.id);
+      this.props.setup(nextProps.id);
     }
   }
 

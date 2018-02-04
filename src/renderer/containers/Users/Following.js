@@ -4,6 +4,7 @@ import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/users';
 import * as pageActions from '../../actions/page';
+import WrapperComponent from '../../components/WrapperComponent';
 import Following from '../../components/organisms/Users/Following';
 
 import type { State } from '../../types/states';
@@ -24,11 +25,11 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  goToUserPage    : (id) => dispatch(pageActions.pushPage(`/users/${id}`)),
-  fetchMyFollowing: () => dispatch(actions.fetchMyFollowing())
+  setup: () => dispatch(actions.fetchMyFollowing()),
+  goToUserPage    : (id) => dispatch(pageActions.pushPage(`/users/${id}`))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Following);
+)(WrapperComponent(Following));

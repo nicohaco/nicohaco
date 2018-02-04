@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/users';
 import * as pageActions from '../../actions/page';
 import Mylists from '../../components/organisms/Users/Mylists';
+import WrapperComponent from '../../components/WrapperComponent';
 
 import type { State } from '../../types/states';
 
@@ -26,12 +27,11 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  goToMylist: (id, userId) =>
-    dispatch(pageActions.pushPage(`/mylist/${id}?userId=${userId}`)),
-  fetchUserMylists: (id) => dispatch(actions.fetchUserMylists(id))
+  setup: (id) => dispatch(actions.fetchUserMylists(id)),
+  goToMylist: (id, userId) => dispatch(pageActions.pushPage(`/mylist/${id}?userId=${userId}`))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Mylists);
+)(WrapperComponent(Mylists));

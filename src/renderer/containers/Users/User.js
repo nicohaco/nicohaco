@@ -4,6 +4,7 @@ import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/users';
 import User from '../../components/pages/User';
+import WrapperComponent from '../../components/WrapperComponent';
 
 import type { State } from '../../types/states';
 
@@ -28,10 +29,10 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  fetchUserData: (id) => dispatch(actions.fetchUserData(id))
+  setup: (id) => dispatch(actions.fetchUserData(id))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(User);
+)(WrapperComponent(User));

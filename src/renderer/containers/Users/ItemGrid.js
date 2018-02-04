@@ -6,6 +6,7 @@ import * as actions from '../../actions/users';
 import * as commonActions from '../../actions/common';
 import * as playerActions from '../../actions/player';
 import ItemGrid from '../../components/organisms/Users/ItemGrid';
+import WrapperComponent from '../../components/WrapperComponent';
 
 import type { State } from '../../types/states';
 
@@ -31,11 +32,11 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
     dispatch(playerActions.insertToPlaylist(list));
     dispatch(playerActions.play(type, index));
   },
-  actionMylist   : (item) => dispatch(commonActions.openModal(item)), // add
-  fetchUserVideos: (id) => dispatch(actions.fetchUserVideos(id))
+  setup: (id) => dispatch(actions.fetchUserVideos(id)),
+  actionMylist   : (item) => dispatch(commonActions.openModal(item)) // add
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ItemGrid);
+)(WrapperComponent(ItemGrid));

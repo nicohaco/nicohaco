@@ -26,7 +26,7 @@ class SearchBox extends React.PureComponent<Props, State> {
     this.props.insertSearchHistory(text);
 
     setTimeout(() => {
-      this.props.showSearchHistory();
+      this.props.setup();
     }, 100);
     this.props.search(createSearchParams(text));
   };
@@ -35,10 +35,6 @@ class SearchBox extends React.PureComponent<Props, State> {
     super();
 
     this.state = { word: '' };
-  }
-
-  componentWillMount() {
-    this.props.showSearchHistory();
   }
 
   onInputKeyDown = (e: Object) => { // TODO: weak
