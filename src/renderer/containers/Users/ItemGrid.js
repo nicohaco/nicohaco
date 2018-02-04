@@ -3,6 +3,7 @@
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/users';
+import * as commonActions from '../../actions/common';
 import * as playerActions from '../../actions/player';
 import ItemGrid from '../../components/organisms/Users/ItemGrid';
 
@@ -30,10 +31,7 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
     dispatch(playerActions.insertToPlaylist(list));
     dispatch(playerActions.play(type, index));
   },
-  actionMylist: () => {
-
-    // dispatch(c)
-  },
+  actionMylist   : (item) => dispatch(commonActions.openModal(item)), // add
   fetchUserVideos: (id) => dispatch(actions.fetchUserVideos(id))
 });
 

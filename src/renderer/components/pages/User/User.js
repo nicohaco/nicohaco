@@ -6,6 +6,7 @@ import ShowPage from '../../templates/ShowPage';
 import Timeline from '../../../containers/Users/Timeline';
 import Mylists from '../../../containers/Users/Mylists';
 import ItemGrid from '../../../containers/Users/ItemGrid';
+import Modal from '../../../containers/Modal/AddMylist';
 import styles from './style.css';
 
 import type { Props } from '../../../containers/Users/User';
@@ -49,6 +50,7 @@ class User extends React.PureComponent<Props, void> {
           <Mylists />
         </div>
         <ItemGrid />
+        <Modal />
       </ShowPage>
     );
   }
