@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/users';
 import * as playerActions from '../../actions/player';
 import History from '../../components/organisms/Users/History';
+import WrapperComponent from '../../components/WrapperComponent';
 
 import type { State } from '../../types/states';
 
@@ -24,14 +25,14 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
+  setup: () => dispatch(actions.fetchMyHistory()),
   play: (type, index, list) => {
     dispatch(playerActions.insertToPlaylist(list));
     dispatch(playerActions.play(type, index));
-  },
-  fetchMyHistory: () => dispatch(actions.fetchMyHistory())
+  }
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(History);
+)(WrapperComponent(History));

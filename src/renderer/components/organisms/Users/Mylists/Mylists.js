@@ -1,35 +1,23 @@
+// @fow
+
 import React from 'react';
 import ShowPageBox from '../../../molecules/ShowPageBox';
 import MylistItem from '../../../molecules/MylistItem';
 
-class Mylists extends React.Component {
-  componentWillMount() {
-    this.props.fetchUserMylists(this.props.id);
-  }
-
-  render() {
-    const {
-      id,
-      mylists,
-      goToMylist
-    } = this.props;
-
-    return (
-      <ShowPageBox
-        title="Mylists"
-        limitNum={10}
-        items={
-          mylists.map((mylist) => (
-            <MylistItem
-              num={mylist.num}
-              title={mylist.title}
-              onClick={() => goToMylist(mylist.id, id)}
-            />
-          ))
-        }
-      />
-    );
-  }
-}
+const Mylists = (props) => (
+  <ShowPageBox
+    title="Mylists"
+    limitNum={10}
+    items={
+      props.mylists.map((mylist) => (
+        <MylistItem
+          num={mylist.num}
+          title={mylist.title}
+          onClick={() => props.goToMylist(mylist.id, props.id)}
+        />
+      ))
+    }
+  />
+);
 
 export default Mylists;

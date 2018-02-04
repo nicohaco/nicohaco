@@ -11,49 +11,34 @@ import styles from './style.css';
 
 import type { Props } from '../../../containers/Users/User';
 
-class User extends React.PureComponent<Props, void> {
-  componentWillMount() {
-    this.props.fetchUserData(this.props.id);
-  }
-
-  render() {
-    const {
-      id,
-      title,
-      followers,
-      thumbnailUrl
-    } = this.props;
-
-    return (
-      <ShowPage
-        title={title}
-        thumbnailUrl={thumbnailUrl}
-        buttons={[
-          {
-            title  : 'SITE',
-            onClick: () => shell.openExternal(`http://www.nicovideo.jp/user/${id}`)
-          }
-        ]}
-        info={[
-          {
-            title: 'Id',
-            text : id
-          },
-          {
-            title: 'Followers',
-            text : followers
-          }
-        ]}
-      >
-        <div className={styles.container}>
-          <Timeline />
-          <Mylists />
-        </div>
-        <ItemGrid />
-        <Modal />
-      </ShowPage>
-    );
-  }
-}
+const User = (props: Props) => (
+  <ShowPage
+    title={props.title}
+    thumbnailUrl={props.thumbnailUrl}
+    buttons={[
+      {
+        title  : 'SITE',
+        onClick: () => shell.openExternal(`http://www.nicovideo.jp/user/${props.id}`)
+      }
+    ]}
+    info={[
+      {
+        title: 'Id',
+        text : props.id
+      },
+      {
+        title: 'Followers',
+        text : props.followers
+      }
+    ]}
+  >
+    <div className={styles.container}>
+      <Timeline />
+      <Mylists />
+    </div>
+    <ItemGrid />
+    <Modal />
+  </ShowPage>
+);
 
 export default User;
