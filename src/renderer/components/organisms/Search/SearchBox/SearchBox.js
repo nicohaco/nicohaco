@@ -19,6 +19,10 @@ type State = {
 class SearchBox extends React.PureComponent<Props, State> {
   state: State;
 
+  initWord = () => {
+    this.setState({ word: '' });
+  };
+
   searchProcess = (text: string) => {
     if (text === '') return;
 
@@ -27,9 +31,9 @@ class SearchBox extends React.PureComponent<Props, State> {
 
     setTimeout(() => {
       this.props.showSearchHistory();
-    }, 100); // TODO: fix
+    }, 100);
     this.props.search(createSearchParams(text));
-  }
+  };
 
   onInputKeyDown = (e: Object) => { // TODO: weak
 
@@ -40,7 +44,7 @@ class SearchBox extends React.PureComponent<Props, State> {
       this.searchProcess(text);
       event.preventDefault();
     }
-  }
+  };
 
   constructor() {
     super();
@@ -67,7 +71,10 @@ class SearchBox extends React.PureComponent<Props, State> {
                 <SearchIcon /> Search from Niconico
               </span>
             }
-            onChange={(r) => this.searchProcess(r.value)}
+            onChange={(r) => {
+              if (r === null) this.initWord(); // delete button
+              else this.searchProcess(r.value);
+            }}
             onInputKeyDown={this.onInputKeyDown}
             options={searchHistory.map((item) => ({
               label: item.text,
