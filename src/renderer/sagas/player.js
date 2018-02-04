@@ -35,6 +35,14 @@ function *play(action: Play): Generator<Effect, void, *> {
     });
 
     if (action.playType === 'video') {
+
+      // stop current audio
+      yield put({ type: 'RESET_CURRENT_AUDIO' });
+      yield put({
+        type  : 'TOGGLE_STATUS',
+        status: false
+      });
+
       const payload = {
         title       : videoInfo.title,
         videoId     : videoInfo.videoId,
@@ -145,6 +153,7 @@ function *resetCurrentAudio(): Generator<Effect, void, *> {
       index             : 0,
       poster            : '',
       videoId           : '',
+      posterId          : '',
       totalTime         : 0,
       viewCount         : 0,
       postedDate        : '',
