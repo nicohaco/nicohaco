@@ -32,8 +32,8 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
     dispatch(playerActions.insertToPlaylist(list));
     dispatch(playerActions.play(type, index));
   },
-  setup: (id) => dispatch(actions.fetchUserVideos(id)),
-  actionMylist   : (item) => dispatch(commonActions.openModal(item)) // add
+  setup       : (id) => dispatch(actions.fetchUserVideos(id)),
+  actionMylist: (item) => dispatch(commonActions.openModal(item)) // add
 });
 
 export default connect(

@@ -1,4 +1,4 @@
-// @fow
+// @flow
 
 import React from 'react';
 import ShowPageBox from '../../../molecules/ShowPageBox';

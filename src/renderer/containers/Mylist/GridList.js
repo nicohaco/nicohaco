@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
     dispatch(actions.insertToPlaylist(list));
     dispatch(actions.play(type, index));
   },
-  setup: (id) => dispatch(mylistActions.loadMylist(id)),
+  setup       : (id) => dispatch(mylistActions.loadMylist(id)),
   actionMylist: (item) => {
     if (!history.location.search.includes('userId')) { // my mylist
       dispatch(mylistActions.removeVideo(item.groupId, item.itemId));

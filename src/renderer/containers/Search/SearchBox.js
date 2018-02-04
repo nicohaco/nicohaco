@@ -30,7 +30,7 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  setup: () => dispatch(actions.showSearchHistory()),
+  setup : () => dispatch(actions.showSearchHistory()),
   search: (params) => {
     dispatch(actions.search(params));
     dispatch(pageActions.pushPage('/search'));
