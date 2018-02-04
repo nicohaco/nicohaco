@@ -98,8 +98,9 @@ class ShowPage extends React.Component {
             <div className={styles.info}>
               <div className={styles.left}>
                 {
-                  buttons.map((item) => (
+                  buttons.map((item, i) => (
                     <Button
+                      key={i}
                       onClick={item.onClick}
                       className={styles.site}
                     >
@@ -110,11 +111,12 @@ class ShowPage extends React.Component {
               </div>
               <div className={styles.right}>
                 {
-                  info.map((item) => (
+                  info.map((item, i) => (
                     item ? (
                       <Text
-                        title={item.title}
+                        key={i}
                         text={item.text}
+                        title={item.title}
                       />
                     ) : null
                   ))

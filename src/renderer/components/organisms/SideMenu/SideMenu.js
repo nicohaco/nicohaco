@@ -92,6 +92,7 @@ class SideMenu extends React.PureComponent<Props, State> {
             {
               group.map((item) => (
                 <li
+                  key={item.id}
                   onClick={() => selectMylist(item.id)}
                   className={cx(
                     styles.mylistItem,

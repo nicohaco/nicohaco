@@ -26,7 +26,7 @@ class Timeline extends React.PureComponent<Props, void> {
         title="Timeline"
         items={
           items.map((item) => (
-            <li>
+            <li key={item.id}>
               <TimelineItem
                 id={item.id}
                 action="Uploaded"
