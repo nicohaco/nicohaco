@@ -4,7 +4,6 @@
 
 import { ipcRenderer } from 'electron';
 import { put, take, select, takeLatest } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
 import Nico from 'nico-api';
 import { getNico } from './selectors';
 

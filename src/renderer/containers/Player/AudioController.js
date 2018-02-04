@@ -23,16 +23,16 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State) => ({
-  index          : state.player.current.index,
-  volume         : state.player.volume,
-  status         : state.player.status,
-  disabled       : !state.player.current.src || !state.player.displayedLoader
+  index   : state.player.current.index,
+  volume  : state.player.volume,
+  status  : state.player.status,
+  disabled: !state.player.current.src || !state.player.displayedLoader
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  toggleStatus       : (status) => dispatch(actions.toggleStatus(status)),
-  changeVolume       : (volume) => dispatch(actions.changeVolume(volume)),
-  playSpecificAudio  : (index) => dispatch(actions.playSpecificAudio(index))
+  toggleStatus     : (status) => dispatch(actions.toggleStatus(status)),
+  changeVolume     : (volume) => dispatch(actions.changeVolume(volume)),
+  playSpecificAudio: (index) => dispatch(actions.playSpecificAudio(index))
 });
 
 export default connect(

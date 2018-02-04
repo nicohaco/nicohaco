@@ -136,7 +136,7 @@ function *loadMylist(action: LoadMylist): Generator<Effect, void, *> {
       // e.g. after loading mylistgroup
       if (own) {
         yield put({
-          type: 'UPDATE_MYLISTGROUP',
+          type : 'UPDATE_MYLISTGROUP',
           items: {
             img: payload.mylistitem.map((item) => item.thumbnailUrl).slice(0, 4)
           },
@@ -187,9 +187,10 @@ function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
 
         return own ? formatApiSchema({
           ...data,
+
           // for use when erasing from mylist
-          itemId : item.item_id,
-          groupId: action.id,
+          itemId    : item.item_id,
+          groupId   : action.id,
           postedDate: formatDate(item.item_data.first_retrieve * 1000)
         }) : data;
       }
@@ -200,6 +201,7 @@ function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
     totalTime = formatTime(totalTime);
 
     if (own) {
+
       // insert totalTime and totalVideos in this mylist
       yield put({
         type : 'UPDATE_MYLISTGROUP',

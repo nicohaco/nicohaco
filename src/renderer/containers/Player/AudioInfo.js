@@ -26,19 +26,19 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  loop:            state.player.loop,
-  title:           state.player.current.title,
-  disabled:        !state.player.current.src,
-  totalTime:       state.player.current.totalTime,
-  elapsedTime:     state.player.elapsedTime,
-  thumbnailUrl:    state.player.current.thumbnailUrl,
+  loop           : state.player.loop,
+  title          : state.player.current.title,
+  disabled       : !state.player.current.src,
+  totalTime      : state.player.current.totalTime,
+  elapsedTime    : state.player.elapsedTime,
+  thumbnailUrl   : state.player.current.thumbnailUrl,
   displayedLoader: state.player.displayedLoader
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  toggleLoop         : (mode) => dispatch(actions.toggleLoop(mode)),
-  toggleStatus       : (status) => dispatch(actions.toggleStatus(status)),
-  updateElapsedTime  : (time) => dispatch(actions.updateElapsedTime(time))
+  toggleLoop       : (mode) => dispatch(actions.toggleLoop(mode)),
+  toggleStatus     : (status) => dispatch(actions.toggleStatus(status)),
+  updateElapsedTime: (time) => dispatch(actions.updateElapsedTime(time))
 });
 
 export default connect(

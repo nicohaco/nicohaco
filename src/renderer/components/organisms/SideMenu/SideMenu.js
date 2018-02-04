@@ -9,7 +9,7 @@ import ReloadIcon from 'react-icons/lib/md/autorenew';
 import TimelineIcon from 'react-icons/lib/md/timeline';
 import styles from './style.css';
 
-import type {Props} from '../../../containers/SideMenu';
+import type { Props } from '../../../containers/SideMenu';
 
 type State = {
   openedCreateMylistModal: boolean;

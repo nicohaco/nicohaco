@@ -11,11 +11,11 @@ function *pushPage(action: PushPage): Generator<Effect, void, *> {
   yield put(push(action.path));
 }
 
-function *goForwardPage(action): Generator<Effect, void, *> {
+function *goForwardPage(): Generator<Effect, void, *> {
   yield put(goForward());
 }
 
-function *goBackPage(action): Generator<Effect, void, *> {
+function *goBackPage(): Generator<Effect, void, *> {
   yield put(goBack());
 }
 

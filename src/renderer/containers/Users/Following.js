@@ -23,8 +23,8 @@ const mapStateToProps = (state: State): MapStateToProps => ({
   following: state.users.me.following
 });
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  goToUserPage: (id) => dispatch(pageActions.pushPage(`/users/${id}`)),
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
+  goToUserPage    : (id) => dispatch(pageActions.pushPage(`/users/${id}`)),
   fetchMyFollowing: () => dispatch(actions.fetchMyFollowing())
 });
 

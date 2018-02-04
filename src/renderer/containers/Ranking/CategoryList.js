@@ -23,7 +23,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   changeCategory: (category) => dispatch(pageActions.pushPage(`/ranking/${category}`)),
-  fetchCategory: (category, target, period) =>
+  fetchCategory : (category, target, period) =>
     dispatch(actions.fetchRanking(category, target, period))
 });
 

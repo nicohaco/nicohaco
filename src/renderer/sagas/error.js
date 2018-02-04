@@ -67,42 +67,42 @@ function *errorNoauth(): Generator<Effect, void, *> {
  * server error
  */
 function *errorServer(): Generator<Effect, void, *> {
-  alert('サーバーが混み合っています');
+  yield alert('サーバーが混み合っています');
 }
 
 /**
  * invalid mail address or password when logging in
  */
 function *errorLogin(): Generator<Effect, void, *> {
-  alert('メールアドレスかパスワードを間違えています');
+  yield alert('メールアドレスかパスワードを間違えています');
 }
 
 /**
  * already exists the video in this mylist
  */
 function *errorExist(): Generator<Effect, void, *> {
-  alert('すでにマイリストに動画が存在しています');
+  yield alert('すでにマイリストに動画が存在しています');
 }
 
 /**
  * the video was deleted
  */
-function *errorDeleted() : Generator<Effect, void, *> {
-  alert('削除された動画です');
+function *errorDeleted(): Generator<Effect, void, *> {
+  yield alert('削除された動画です');
 }
 
 /**
  * network error
  */
 function *errorNotfound(): Generator<Effect, void, *> {
-  alert('ネットワークに問題があります');
+  yield alert('ネットワークに問題があります');
 }
 
 /**
  * access denied
  */
-function *errorAccessDenied() : Generator<Effect, void, *> {
-  alert('アクセスできない動画です');
+function *errorAccessDenied(): Generator<Effect, void, *> {
+  yield alert('アクセスできない動画です');
 }
 
 /**

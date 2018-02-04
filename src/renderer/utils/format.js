@@ -31,6 +31,7 @@ export const formatDate = (unixTime: number): string => {
 };
 
 export const formatDateOfISO8601 = (date: string): string => {
+
   // 2018-01-24T01:15:43+09:00
   const splitedDate = date.split('T');
 
@@ -38,7 +39,7 @@ export const formatDateOfISO8601 = (date: string): string => {
   const [hour, min] = splitedDate[1].split(':');
 
   return `${year}/${month}/${day} ${hour}:${min}`;
-}
+};
 
 // eslint-disable-next-line flowtype/no-weak-types
 export const formatApiSchema = (o: Object): CustomApiSchema => {
@@ -66,7 +67,7 @@ export const createSearchParams = (text: string): Params => ({
   q       : text,
   _sort   : '-viewCounter',
   _limit  : 100,
-  fields  : 'contentId,title,description,tags,categoryTags,viewCounter,mylistCounter,commentCounter,startTime,thumbnailUrl',
+  fields  : 'contentId,title,description,tags,categoryTags,viewCounter,mylistCounter,commentCounter,startTime,thumbnailUrl', // eslint-disable-line max-len
   targets : 'title',
   _context: 'nicoapi'
 });

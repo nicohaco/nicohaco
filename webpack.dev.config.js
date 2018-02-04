@@ -1,6 +1,5 @@
 'use strict';
 
-const path                    = require('path');
 const webpack                 = require('webpack');
 const Dashboard               = require('webpack-dashboard');
 const DashboardPlugin         = require('webpack-dashboard/plugin');

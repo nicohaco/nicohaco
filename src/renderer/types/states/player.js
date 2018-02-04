@@ -26,5 +26,5 @@ export type Player = {
   playlist: MylistitemList;
   elapsedTime: number;
   displayedLoader: boolean;
-  playType: 'music' | 'video'
+  playType: 'music' | 'video',
 };

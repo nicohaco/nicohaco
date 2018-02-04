@@ -4,30 +4,30 @@ import React from 'react';
 import { shell } from 'electron';
 import ShowPage from '../../templates/ShowPage';
 import Timeline from '../../../containers/Users/Timeline';
-import Following from '../../../containers/Users/Following'
+import Following from '../../../containers/Users/Following';
 import History from '../../../containers/Users/History';
 import styles from './style.css';
 
 import type { Props } from '../../../containers/Users/Me';
 
-const Users = (props: Props) =>(
+const Users = (props: Props) => (
   <ShowPage
     title={props.title}
     thumbnailUrl={props.thumbnailUrl}
     buttons={[
       {
-        title: 'SITE',
+        title  : 'SITE',
         onClick: () => shell.openExternal('http://www.nicovideo.jp/my')
       },
       {
-        title: 'LOGOUT',
+        title  : 'LOGOUT',
         onClick: props.logout
       }
     ]}
     info={[
       {
         title: 'Id',
-        text: props.id
+        text : props.id
       }
     ]}
   >

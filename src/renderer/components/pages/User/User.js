@@ -29,18 +29,18 @@ class User extends React.PureComponent<Props, void> {
         thumbnailUrl={thumbnailUrl}
         buttons={[
           {
-            title: 'SITE',
+            title  : 'SITE',
             onClick: () => shell.openExternal(`http://www.nicovideo.jp/user/${id}`)
           }
         ]}
         info={[
           {
             title: 'Id',
-            text: id
+            text : id
           },
           {
             title: 'Followers',
-            text: followers
+            text : followers
           }
         ]}
       >

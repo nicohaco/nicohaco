@@ -5,16 +5,16 @@ import type { Users as Action } from '../types/actions/users';
 
 const initialState = {
   user: {
-    name: '',
-    videos: [],
-    mylists: [],
-    timeline: [],
-    followers: '0',
+    name        : '',
+    videos      : [],
+    mylists     : [],
+    timeline    : [],
+    followers   : '0',
     thumbnailUrl: ''
   },
   me: {
-    history: [],
-    timeline: [],
+    history  : [],
+    timeline : [],
     following: []
   }
 };

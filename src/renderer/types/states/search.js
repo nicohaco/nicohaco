@@ -8,4 +8,5 @@ export type Search = {
     text: string;
     date: number;
   }>;
+  searchWord: string;
 };

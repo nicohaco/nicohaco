@@ -10,6 +10,7 @@ import Modal from '../../../containers/Modal/AddMylist';
 import type { Props } from '../../../containers/Mylist/Mylist';
 
 class Mylist extends React.PureComponent<Props, void> {
+
   // componentWillMount() {
   //   if (Object.keys(this.props.group).length === 0) {
   //   }
@@ -40,11 +41,11 @@ class Mylist extends React.PureComponent<Props, void> {
         thumbnailUrl={group.img || group.thumbnailUrls}
         buttons={[
           {
-            title: 'SITE',
+            title  : 'SITE',
             onClick: () => shell.openExternal(`http://www.nicovideo.jp/my/mylist/#/${id}`)
           },
           {
-            title: 'PLAY',
+            title  : 'PLAY',
             onClick: () => play('music', 0, list)
           }
         ]}
@@ -52,16 +53,16 @@ class Mylist extends React.PureComponent<Props, void> {
           group.updateTime ? (
             {
               title: 'UpdatedAt',
-              text: formatDate(group.updateTime * 1000)
+              text : formatDate(group.updateTime * 1000)
             }
           ) : undefined,
           {
             title: 'TotalVideos',
-            text: group.totalVideos
+            text : group.totalVideos
           },
           {
             title: 'TotalTime',
-            text: group.totalTime
+            text : group.totalTime
           }
         ]}
       >

@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import cx from 'classnames';
 import Icon from '../../atoms/Icon';
@@ -9,17 +11,21 @@ type Props = {
   opened: boolean;
 };
 
-class VideoPlayer extends React.PureComponent {
-  constructor() {
-    super();
+type State = {
+  isSmall: boolean;
+};
 
-    this.state = {
-      isSmall: false
-    };
-  }
+class VideoPlayer extends React.PureComponent<Props, state> {
+  state: State;
 
   changeSize = () => {
     this.setState({ isSmall: !this.state.isSmall });
+  }
+
+  constructor() {
+    super();
+
+    this.state = { isSmall: false };
   }
 
   render() {

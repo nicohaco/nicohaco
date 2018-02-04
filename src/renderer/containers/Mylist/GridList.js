@@ -13,7 +13,7 @@ import type { Mylistitem, MylistitemList } from '../../types/states/Mylist';
 
 type MapStateToProps = {
   id: string;
-  list: MylistitemList
+  list: MylistitemList,
 };
 
 type MapDispatchToProps = {
@@ -25,12 +25,12 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  id: state.router.location.pathname.split('/').slice(-1)[0],
-  me: !state.router.location.search.includes('userId'),
+  id  : state.router.location.pathname.split('/').slice(-1)[0],
+  me  : !state.router.location.search.includes('userId'),
   list: state.mylist.mylist
 });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<*>, state): MapDispatchToProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   play: (type, index, list) => {
     dispatch(actions.insertToPlaylist(list));
     dispatch(actions.play(type, index));

@@ -1,9 +1,9 @@
 // @flow
 
+import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import { formatTime } from '../../utils/format';
 import * as actions from '../../actions/player';
-import * as mylistActions from '../../actions/mylist';
 import Mylist from '../../components/pages/Mylist';
 
 import type { State } from '../../types/states';
@@ -40,21 +40,21 @@ const mapStateToProps = (state: State) => {
     group.totalVideos = state.mylist.mylist.length;
     group.totalTime = 0;
     state.mylist.mylist.forEach((item) => {
-      group.totalTime += item.totalTime.split(':').reduce((acc,time) => (60 * acc) + +time);
+      group.totalTime += item.totalTime.split(':').reduce((acc, time) => (60 * acc) + +time);
     });
 
     group.totalTime = formatTime(group.totalTime);
   }
 
   return {
-    list : state.mylist.mylist,
+    list: state.mylist.mylist,
     id,
     group,
     pathname
   };
-}
+};
 
-const mapDispatchToProps = (dispatch, a) => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>) => ({
   play: (type, index, list) => {
     dispatch(actions.insertToPlaylist(list));
     dispatch(actions.play(type, index));

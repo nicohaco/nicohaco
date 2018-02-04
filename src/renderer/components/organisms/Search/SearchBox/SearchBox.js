@@ -3,11 +3,7 @@
 import React from 'react';
 import Select from 'react-select';
 import SearchIcon from 'react-icons/lib/md/search';
-import {
-  formatDate,
-  createSearchParams
-} from '../../../../utils/format';
-import List from '../../../atoms/List';
+import { createSearchParams } from '../../../../utils/format';
 import styles from './style.css';
 
 import type { Props } from '../../../../containers/Search/SearchBox';
@@ -26,24 +22,13 @@ class SearchBox extends React.PureComponent<Props, State> {
   searchProcess = (text: string) => {
     if (text === '') return;
 
-    this.setState({word: text});
+    this.setState({ word: text });
     this.props.insertSearchHistory(text);
 
     setTimeout(() => {
       this.props.showSearchHistory();
     }, 100);
     this.props.search(createSearchParams(text));
-  };
-
-  onInputKeyDown = (e: Object) => { // TODO: weak
-
-    // enter
-    if (e.keyCode === 13) {
-      const text = e.nativeEvent.target.attributes.value.value;
-
-      this.searchProcess(text);
-      event.preventDefault();
-    }
   };
 
   constructor() {
@@ -55,6 +40,17 @@ class SearchBox extends React.PureComponent<Props, State> {
   componentWillMount() {
     this.props.showSearchHistory();
   }
+
+  onInputKeyDown = (e: Object) => { // TODO: weak
+
+    // enter
+    if (e.keyCode === 13) {
+      const text = e.nativeEvent.target.attributes.value.value;
+
+      this.searchProcess(text);
+      event.preventDefault();
+    }
+  };
 
   render() {
     const {

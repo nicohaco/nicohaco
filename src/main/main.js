@@ -1,13 +1,13 @@
 // @flow
+
 'use strict';
 
 const path = require('path');
 const windowManager = require('@nicohaco/electron-window-manager');
 const {
   app,
-  ipcMain,
   session,
-  BrowserWindow,
+  ipcMain,
   globalShortcut
 } = require('electron');
 const createMenu = require('./menu');
@@ -36,7 +36,7 @@ app.on('activate', () => {
   if (mainWindow === null) createWindow();
 });
 
-ipcMain.on('controlSubWindow', (e, c) => {
+ipcMain.on('controlSubWindow', () => {
   setAlwaysOnTop();
 });
 
@@ -97,15 +97,15 @@ function createWindow() {
   }
 
   mainWindow = windowManager.open('main', 'NicoHaco', html, false, {
-    frame : !(process.platform === 'darwin'),
-    width : 1250,
-    height: 800,
-    minWidth: 1050,
-    minHeight: 450,
-    resizable: true,
+    frame         : !(process.platform === 'darwin'),
+    width         : 1250,
+    height        : 800,
+    minWidth      : 1050,
+    minHeight     : 450,
+    resizable     : true,
     alwaysOnTop   : false,
-    showDevTools: process.env.NODE_ENV !== 'production',
-    titleBarStyle: process.platform === 'darwin' ? 'hidden' : 'hidden-inset',
+    showDevTools  : process.env.NODE_ENV !== 'production',
+    titleBarStyle : process.platform === 'darwin' ? 'hidden' : 'hidden-inset',
     webPreferences: {
       webSecurity: false
     }
@@ -134,13 +134,13 @@ function createSubWindow() {
     `file://${path.join(__dirname, '..', 'dist', 'sub.html')}`;
 
   subWindow = windowManager.open('sub', 'NicoHaco', url, false, {
-    width : 640,
-    height: 480,
-    frame : !(process.platform === 'darwin'),
-    position: 'bottomRight',
-    resizable: true,
+    width         : 640,
+    height        : 480,
+    frame         : !(process.platform === 'darwin'),
+    position      : 'bottomRight',
+    resizable     : true,
     alwaysOnTop   : true,
-    titleBarStyle: 'hidden',
+    titleBarStyle : 'hidden',
     webPreferences: {
       webSecurity: false
     }

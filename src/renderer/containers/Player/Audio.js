@@ -26,12 +26,12 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  src            : state.player.current.src,
-  index          : state.player.current.index,
-  looped: state.player.loop === 'one',
-  status: state.player.status && state.player.current.src !== '',
-  volume         : state.player.volume,
-  elapsedTime    : state.player.elapsedTime,
+  src        : state.player.current.src,
+  index      : state.player.current.index,
+  looped     : state.player.loop === 'one',
+  status     : state.player.status && state.player.current.src !== '',
+  volume     : state.player.volume,
+  elapsedTime: state.player.elapsedTime
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({

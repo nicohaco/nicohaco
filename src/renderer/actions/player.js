@@ -11,7 +11,6 @@ import type {
   PlaySpecificAudio,
   ChangeLoadingStatus
 } from '../types/actions/player';
-import type { Mylistitem } from '../types/states/Mylist';
 
 export const play = (playType: 'audio' | 'video', index: number): Play => ({
   type: 'PLAY',
@@ -64,7 +63,7 @@ export const closeVideoPlayer = () => ({
   playType: 'music'
 });
 
-import {ExtractReturn} from '../types/ExtractReturn';
+import { ExtractReturn } from '../types/ExtractReturn';
 export type Actions =
     ExtractReturn<typeof play> |
     ExtractReturn<typeof toggleLoop> |

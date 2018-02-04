@@ -20,8 +20,8 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  id: state.auth.userData.id,
-  title: state.auth.userData.name,
+  id          : state.auth.userData.id,
+  title       : state.auth.userData.name,
   thumbnailUrl: state.auth.userData.thumbnailUrl
 });
 
