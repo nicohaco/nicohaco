@@ -23,6 +23,7 @@ class History extends React.PureComponent<Props, void> {
       videoId: item.videoId.replace('watch/', '')
     }));
 
+    console.log(list)
     return (
       <ShowPageBox
         items={
@@ -34,6 +35,7 @@ class History extends React.PureComponent<Props, void> {
               actions={[]}
               watchId={item.videoId}
               onClick={(type) => play(type, 0, [list[i]])}
+              viewCount={item.viewCount}
               commentCount={item.commentCount}
               postedDate={item.postedDate}
               totalTime={item.totalTime}
