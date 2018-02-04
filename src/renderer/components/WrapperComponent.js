@@ -8,7 +8,7 @@ const WrapperComponent = (ComposedComponent) => class extends React.Component {
   }
 
   render() {
-    return <ComposedComponent {...this.props} />
+    return <ComposedComponent {...this.props} />;
   }
 };
 

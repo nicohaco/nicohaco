@@ -26,7 +26,7 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   setup: () => dispatch(actions.fetchMyHistory()),
-  play: (type, index, list) => {
+  play : (type, index, list) => {
     dispatch(playerActions.insertToPlaylist(list));
     dispatch(playerActions.play(type, index));
   }

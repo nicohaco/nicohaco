@@ -7,7 +7,7 @@ import styles from './style.css';
 
 import type { Props } from '../../../../containers/Users/History';
 
-const History = (props) => {
+const History = (props: Props) => {
   const list = props.history.map((item) => ({
     ...item,
     videoId: item.videoId.replace('watch/', '')
@@ -41,6 +41,6 @@ const History = (props) => {
       ulClassName={styles.ul}
     />
   );
-}
+};
 
 export default History;

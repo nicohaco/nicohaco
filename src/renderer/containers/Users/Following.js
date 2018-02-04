@@ -25,8 +25,8 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  setup: () => dispatch(actions.fetchMyFollowing()),
-  goToUserPage    : (id) => dispatch(pageActions.pushPage(`/users/${id}`))
+  setup       : () => dispatch(actions.fetchMyFollowing()),
+  goToUserPage: (id) => dispatch(pageActions.pushPage(`/users/${id}`))
 });
 
 export default connect(
