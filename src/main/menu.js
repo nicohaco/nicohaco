@@ -1,3 +1,5 @@
+/* eslint-disable flowtype/require-parameter-type, spaced-comment */
+
 'use strict';
 
 const { app, Menu, shell } = require('electron');
@@ -100,7 +102,7 @@ const dev = {
   ]
 };
 
-function createMenu(funcs) {
+function createMenu(funcs /* :: Function */) {
   const common = [about, edit, window(funcs), help(funcs)];
   const template = process.env.NODE_ENV === 'production' ? common : [...common, dev];
 

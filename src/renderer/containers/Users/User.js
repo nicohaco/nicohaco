@@ -21,9 +21,9 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  id: state.router.location.pathname.split('/').slice(-1)[0],
-  title: state.users.user.name,
-  followers: state.users.user.followers,
+  id          : state.router.location.pathname.split('/').slice(-1)[0],
+  title       : state.users.user.name,
+  followers   : state.users.user.followers,
   thumbnailUrl: state.users.user.thumbnailUrl
 });
 

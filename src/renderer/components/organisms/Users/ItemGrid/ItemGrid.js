@@ -10,16 +10,18 @@ class ItemGrid extends React.Component {
   render() {
     const {
       play,
-      videos
+      videos,
+      actionMylist
     } = this.props;
 
     return (
       <div className={styles.container}>
         <h2 className={styles.title}>Videos</h2>
         <Container
-          actionIcon="add"
           list={videos}
           play={play}
+          actionIcon="add"
+          actionMylist={actionMylist}
         />
       </div>
     );

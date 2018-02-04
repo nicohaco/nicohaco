@@ -43,7 +43,7 @@ const ItemBoxOverlay = (props: Props) => (
         props.actions.map((Icon, i) => (
           <div
             key={i}
-            style={{fontSize: '1.8rem'}}
+            style={{ fontSize: '1.8rem' }}
           >
             {Icon}
           </div>

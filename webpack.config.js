@@ -13,9 +13,9 @@ const config = process.env.NODE_ENV !== 'production' ?
 const common = {
   bail  : true,
   target: 'electron-renderer',
-  entry: {
+  entry : {
     core: path.join(__dirname, 'src', 'renderer', 'index.js'),
-    sub: path.join(__dirname, 'src', 'renderer', 'SubWindow')
+    sub : path.join(__dirname, 'src', 'renderer', 'SubWindow')
   },
   output: {
     path    : path.resolve(__dirname, 'dist'),
@@ -41,13 +41,13 @@ const common = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'NicoHaco',
-      chunks: ['core'],
+      title   : 'NicoHaco',
+      chunks  : ['core'],
       filename: 'core.html'
     }),
     new HtmlWebpackPlugin({
-      title: 'NicoHaco',
-      chunks: ['sub'],
+      title   : 'NicoHaco',
+      chunks  : ['sub'],
       filename: 'sub.html'
     }),
     new webpack.DefinePlugin({

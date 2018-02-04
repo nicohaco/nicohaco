@@ -2,7 +2,7 @@
 
 import type {
   Mylistitem,
-  Mylistgroup
+  GetMylistgroup
 } from '../apis/mylist';
 
 export type FetchMylistgroup = {
@@ -16,7 +16,7 @@ export type ShowMylistgroup = {
 export type UpdateMylistgroup = {
   type: 'UPDATE_MYLISTGROUP';
   groupId: string;
-  items: Array<Mylistgroup>;
+  items: GetMylistgroup;
 };
 
 export type Setup = {
@@ -72,14 +72,14 @@ export type RemoveVideo = {
 export type FetchMylistgroupSuccess = {
   type: 'FETCH_MYLISTGROUP_SUCCESS';
   payload: {
-    mylistgroup: Array<Mylistgroup>;
+    mylistgroup: GetMylistgroup;
   };
 };
 
 export type ShowMylistgroupSuccess = {
   type: 'SHOW_MYLISTGROUP_SUCCESS';
   payload: {
-    mylistgroup: Array<Mylistgroup>;
+    mylistgroup: GetMylistgroup;
   };
 };
 
@@ -106,7 +106,7 @@ export type ShowMylistSuccess = {
 export type InsertMylistgroup = {
   type: 'INSERT_MYLISTGROUP';
   payload: {
-    mylistgroup: Array<Mylistgroup>;
+    mylistgroup: GetMylistgroup;
   };
 };
 

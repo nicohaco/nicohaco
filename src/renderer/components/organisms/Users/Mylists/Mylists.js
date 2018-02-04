@@ -1,7 +1,6 @@
 import React from 'react';
 import ShowPageBox from '../../../molecules/ShowPageBox';
 import MylistItem from '../../../molecules/MylistItem';
-import styles from './style.css';
 
 class Mylists extends React.Component {
   componentWillMount() {

@@ -33,16 +33,16 @@ const mapStateToProps = (state: State): MapStateToProps => {
   };
 };
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
   play: (type, index, item: any) => { // TODO: fix
     dispatch(playerActions.insertToPlaylist([{
-      title: item.title,
-      videoId: item.id,
+      title       : item.title,
+      videoId     : item.id,
       thumbnailUrl: item.thumbnailUrl.normal
     }]));
     dispatch(playerActions.play(type, index));
   },
-  fetchMyTimeline: () => dispatch(actions.fetchMyTimeline()),
+  fetchMyTimeline  : () => dispatch(actions.fetchMyTimeline()),
   fetchUserTimeline: (id) => dispatch(actions.fetchUserTimeline(id))
 });
 

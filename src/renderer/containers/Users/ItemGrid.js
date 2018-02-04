@@ -21,7 +21,7 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  id: state.router.location.pathname.split('/').slice(-1)[0],
+  id    : state.router.location.pathname.split('/').slice(-1)[0],
   videos: state.users.user.videos
 });
 
@@ -29,6 +29,10 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
   play: (type, index, list) => {
     dispatch(playerActions.insertToPlaylist(list));
     dispatch(playerActions.play(type, index));
+  },
+  actionMylist: () => {
+
+    // dispatch(c)
   },
   fetchUserVideos: (id) => dispatch(actions.fetchUserVideos(id))
 });

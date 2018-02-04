@@ -1,6 +1,7 @@
 // @flow
 
 import type { Player as State } from '../types/states/player';
+
 // import type { Player as Action } from '../types/actions/player';
 
 import type { Actions } from '../actions/player';
@@ -33,7 +34,9 @@ const initialState = {
 
 const reducer = (state: State = initialState, action: Actions) => {
   switch (action.type) {
-    case 'FETCH_FLV_SUCCESS': // [TODO] combine fetch_flv_success and reset.... name is insertCurrentAudio
+
+    // [TODO] combine fetch_flv_success and reset.... name is insertCurrentAudio
+    case 'FETCH_FLV_SUCCESS':
       return Object.assign({}, state, {
         current: {
           src               : action.payload.src,

@@ -4,7 +4,6 @@ import React from 'react';
 import ShowPageBox from '../../../molecules/ShowPageBox';
 import { formatDateOfISO8601 } from '../../../../utils/format';
 import TimelineItem from '../../../molecules/TimelineItem';
-import styles from './style.css';
 
 import type { Props } from '../../../../containers/Users/Timeline';
 

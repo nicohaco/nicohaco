@@ -1,6 +1,7 @@
 // @flow
 
 import type { Mylist as State } from '../types/states/mylist';
+
 // import type { Mylist as Action } from '../types/actions/mylist';
 
 import type { Actions } from '../actions/mylist';

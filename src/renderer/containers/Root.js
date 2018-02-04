@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => 
     dispatch(dbActions.deleteDB());
     dispatch(actions.pushPage('/login'));
   },
-  routePage: () => dispatch(actions.routePage()),
-  toggleStatus: () => dispatch(playerActions.toggleStatus()),
+  routePage            : () => dispatch(actions.routePage()),
+  toggleStatus         : () => dispatch(playerActions.toggleStatus()),
   updateSubWindowStatus: (flag) => dispatch(actions.updateSubWindowStatus(flag))
 });
 

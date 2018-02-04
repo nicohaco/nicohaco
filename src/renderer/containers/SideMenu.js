@@ -25,13 +25,13 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  group: state.mylist.group.sort((a, b) => Number(a.id) - Number(b.id)),
-  ready: state.mylist.ready,
+  group   : state.mylist.group.sort((a, b) => Number(a.id) - Number(b.id)),
+  ready   : state.mylist.ready,
   pathname: state.router.location.pathname
 });
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  setup: () => dispatch(actions.setup()), // for loading mylistgroup
+  setup       : () => dispatch(actions.setup()), // for loading mylistgroup
   reload      : () => dispatch(actions.fetchMylistgroup()),
   pushPage    : (path) => dispatch(pageActions.pushPage(path)),
   createMylist: (name) => dispatch(actions.createMylist(name)),

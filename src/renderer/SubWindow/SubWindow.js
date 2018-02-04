@@ -16,7 +16,7 @@ class SubWindow extends React.PureComponent<{}, State> {
     super();
 
     this.state = {
-      title: '',
+      title  : '',
       videoId: ''
     };
   }
@@ -24,7 +24,7 @@ class SubWindow extends React.PureComponent<{}, State> {
   componentDidMount() {
     ipcRenderer.on('addVideo', (e, c) => {
       this.setState({
-        title: c.title,
+        title  : c.title,
         videoId: c.videoId
       });
     });

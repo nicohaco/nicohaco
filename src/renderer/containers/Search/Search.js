@@ -1,8 +1,6 @@
 // @flow
 
-import * as Redux from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/auth';
 import Search from '../../components/pages/Search';
 
 import type { State } from '../../types/states';

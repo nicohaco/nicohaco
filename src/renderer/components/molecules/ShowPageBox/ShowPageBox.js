@@ -24,15 +24,15 @@ class ShowPageBox extends React.PureComponent<Props, State> {
     limitNum: 5
   };
 
-  onClick = () => {
-    this.setState({ expanded: true });
-  };
-
   constructor() {
     super();
 
     this.state = { expanded: false };
   }
+
+  onClick = () => {
+    this.setState({ expanded: true });
+  };
 
   render() {
     const {

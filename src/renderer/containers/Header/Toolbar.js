@@ -38,8 +38,8 @@ const mapStateToProps = (state: State): MapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  goBackPage: () => dispatch(actions.goBackPage()),
-  goToUserPage: (id) => dispatch(actions.pushPage(`/users/${id}`)),
+  goBackPage   : () => dispatch(actions.goBackPage()),
+  goToUserPage : (id) => dispatch(actions.pushPage(`/users/${id}`)),
   goForwardPage: () => dispatch(actions.goForwardPage())
 });
 

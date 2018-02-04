@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 // @flow
 
 import Dexie from 'dexie';

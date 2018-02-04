@@ -6,13 +6,11 @@ import DetailIcon from 'react-icons/lib/md/expand-more';
 import ExpandLessIcon from 'react-icons/lib/md/expand-less';
 import Select from 'react-select';
 import { categoryList as categories, ranking } from 'nico-value';
-import List from '../../../atoms/List';
 import styles from './style.css';
 
 import type { Props } from '../../../../containers/Ranking/CategoryList';
 
 type State = {
-  period: string;
   period: {
     value: string; // TODO: fix
     label: string; // TODO: fix
@@ -36,32 +34,8 @@ const target = ranking.target.map((item) => ({
 class CategoryList extends React.PureComponent<Props, State> {
   categoryName: string; // TODO: fix
 
-  constructor() {
-    super();
-
-    this.state = {
-      period : period[1],
-      target : target[0],
-      expanded: false
-    };
-
-    this.categoryName = 'all';
-  }
-
-  componentWillReceiveProps(props: Props, nextProps: Props) {
-    if (!props.category.includes(this.categoryName)) {
-      this.props.fetchCategory(
-        props.category.split('/ranking/')[1],
-        this.state.target.value,
-        this.state.period.value
-      );
-    }
-  }
-
   changePath = (path: string) => {
-    // this.props.changeCategory(path, this.state.target.value, this.state.period.value); // TODO: bug
-
-    this.props.changeCategory(path); // TODO: bug
+    this.props.changeCategory(path);
   };
 
   changeTarget = (target: {
@@ -86,12 +60,34 @@ class CategoryList extends React.PureComponent<Props, State> {
     this.setState({ expanded: !this.state.expanded });
   };
 
+  constructor() {
+    super();
+
+    this.state = {
+      period  : period[1],
+      target  : target[0],
+      expanded: false
+    };
+
+    this.categoryName = 'all';
+  }
+
   componentDidMount() {
     this.props.fetchCategory(
       this.props.category.split('/ranking/')[1],
       this.state.target.value,
       this.state.period.value
     );
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    if (!nextProps.category.includes(this.categoryName)) {
+      this.props.fetchCategory(
+        nextProps.category.split('/ranking/')[1],
+        this.state.target.value,
+        this.state.period.value
+      );
+    }
   }
 
   render() {
@@ -147,7 +143,7 @@ class CategoryList extends React.PureComponent<Props, State> {
             categories.map((category) => (
               <div
                 style={{
-                  height: this.state.expanded ? 'auto' : 50,
+                  height  : this.state.expanded ? 'auto' : 50,
                   overflow: this.state.expanded ? 'none' : 'hidden'
                 }}
               >

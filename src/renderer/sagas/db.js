@@ -102,7 +102,7 @@ function *updateMylistgroup(action: UpdateMylistgroup): Generator<Effect, void, 
     yield db.mylistgroup.update(action.groupId, action.items);
 
     yield put({
-      type: 'UPDATE_MYLISTGROUP_SUCCESS',
+      type   : 'UPDATE_MYLISTGROUP_SUCCESS',
       payload: action.items,
       groupId: action.groupId
     });
@@ -170,7 +170,7 @@ function *insertSearchHistory(action: InsertSearchHistory): Generator<Effect, vo
 
     if (item) {
       yield db.history.put({
-        id: item.id,
+        id  : item.id,
         text: item.text,
         date: payload.date
       });

@@ -53,15 +53,15 @@ const Tile = (props: Props) => {
         width          : props.size,
         height         : props.size,
         minWidth       : props.size,
-        borderRadius: props.isCircle ? '50%' : '0',
+        borderRadius   : props.isCircle ? '50%' : '0',
         backgroundColor: props.src[0] ? 'transparent' : '#3968db'
       }}
       className={cx(styles.container, props.className)}
     >
       <div
         style={{
-          width : props.size,
-          height: props.src.length <= 2 ? props.size : props.size / 2,
+          width  : props.size,
+          height : props.src.length <= 2 ? props.size : props.size / 2,
           display: 'flex'
         }}
       >
@@ -69,8 +69,8 @@ const Tile = (props: Props) => {
           props.src[0] ? (
             <div
               style={{
-                width: props.src.length === 1 ? props.size : props.size / 2,
-                height: props.src.length <= 2 ? props.size : props.size / 2,
+                width   : props.src.length === 1 ? props.size : props.size / 2,
+                height  : props.src.length <= 2 ? props.size : props.size / 2,
                 overflow: 'hidden'
               }}
             >
@@ -82,8 +82,8 @@ const Tile = (props: Props) => {
           props.src[1] ? (
             <div
               style={{
-                width: props.size / 2,
-                height: props.src.length <= 2 ? props.size : props.size / 2,
+                width   : props.size / 2,
+                height  : props.src.length <= 2 ? props.size : props.size / 2,
                 overflow: 'hidden'
               }}
             >
@@ -94,8 +94,8 @@ const Tile = (props: Props) => {
       </div>
       <div
         style={{
-          width : props.size,
-          height: props.size / 2,
+          width  : props.size,
+          height : props.size / 2,
           display: 'flex'
         }}
       >
@@ -103,8 +103,8 @@ const Tile = (props: Props) => {
           props.src[2] ? (
             <div
               style={{
-                width: props.src.length === 3 ? props.size : props.size / 2,
-                height: props.size / 2,
+                width   : props.src.length === 3 ? props.size : props.size / 2,
+                height  : props.size / 2,
                 overflow: 'hidden'
               }}
             >
@@ -116,8 +116,8 @@ const Tile = (props: Props) => {
           props.src[3] ? (
             <div
               style={{
-                width: props.size / 2,
-                height: props.size / 2,
+                width   : props.size / 2,
+                height  : props.size / 2,
                 overflow: 'hidden'
               }}
             >

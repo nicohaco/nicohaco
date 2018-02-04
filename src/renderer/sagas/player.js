@@ -58,7 +58,7 @@ function *play(action: Play): Generator<Effect, void, *> {
       }
 
       yield put({ // TODO: fix
-        type   : 'INSERT_CURRENT_AUDIO',
+        type: 'INSERT_CURRENT_AUDIO',
         payload
       });
 
@@ -95,8 +95,8 @@ function *play(action: Play): Generator<Effect, void, *> {
       });
 
       new Notification(info.title, {
-        body: info.poster,
-        icon: videoInfo.thumbnailUrl,
+        body  : info.poster,
+        icon  : videoInfo.thumbnailUrl,
         silent: true
       });
     }

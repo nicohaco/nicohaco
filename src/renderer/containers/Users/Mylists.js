@@ -21,12 +21,13 @@ type MapDispatchToProps = {
 export type Props = MapStateToProps & MapDispatchToProps;
 
 const mapStateToProps = (state: State): MapStateToProps => ({
-  id: state.router.location.pathname.split('/').slice(-1)[0],
+  id     : state.router.location.pathname.split('/').slice(-1)[0],
   mylists: state.users.user.mylists
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<*>): MapDispatchToProps => ({
-  goToMylist: (id, userId) => dispatch(pageActions.pushPage(`/mylist/${id}?userId=${userId}`)),
+  goToMylist: (id, userId) =>
+    dispatch(pageActions.pushPage(`/mylist/${id}?userId=${userId}`)),
   fetchUserMylists: (id) => dispatch(actions.fetchUserMylists(id))
 });
 
