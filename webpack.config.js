@@ -40,6 +40,7 @@ const common = {
     ]
   },
   plugins: [
+    new webpack.IgnorePlugin(/vertx/),
     new HtmlWebpackPlugin({
       title   : 'NicoHaco',
       chunks  : ['core'],

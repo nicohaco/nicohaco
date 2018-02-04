@@ -5,7 +5,7 @@ import styles from './style.css';
 
 import type { Props } from '../../../../containers/Users/Following';
 
-class Followers extends React.PureComponent<Props, void> {
+class Following extends React.PureComponent<Props, void> {
   componentDidMount() {
     this.props.fetchMyFollowing();
   }
@@ -24,6 +24,7 @@ class Followers extends React.PureComponent<Props, void> {
             following.map((user) => (
               <li
                 id={user.id}
+                key={user.id}
                 onClick={() => goToUserPage(user.id)}
               >
                 <img src={user.thumbnailUrl} />
@@ -37,4 +38,4 @@ class Followers extends React.PureComponent<Props, void> {
   }
 }
 
-export default Followers;
+export default Following;
