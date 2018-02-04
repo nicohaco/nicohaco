@@ -155,6 +155,8 @@ function createSubWindow() {
 
 function deleteDB() {
   mainWindow.content().send('deleteDB');
+
+  app.relaunch();
 }
 
 function setAlwaysOnTop() {
