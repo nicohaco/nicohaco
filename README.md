@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/abouthiroppy/nicohaco.svg?branch=master)](https://travis-ci.org/abouthiroppy/nicohaco)
 
-今現在、バージョンはβです。
+サイト: https://nicohaco.github.io/site/
 
 ## 問い合わせ
 [@about_hiroppy](https://twitter.com/about_hiroppy)の方に連絡をするか、[Issues](https://github.com/abouthiroppy/nicocako/issues)の方へ起票してください。
@@ -85,7 +85,7 @@ NicoBoxと同様に、ニコニコ動画を音楽として聞くことに特化�
 ## Changelog
 [CHANGELOG.md](https://github.com/abouthiroppy/nicohaco/blob/master/CHANGELOG.md)
 
-## スペシャルサンクス
+## 謝辞
 Icon: [@mi77](https://github.com/mi77jp)  
 デバッグに協力してくださった皆さん
 
