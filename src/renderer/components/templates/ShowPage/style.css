@@ -1,5 +1,6 @@
 .container {
-  padding: 70px 20px 30px 20px;
+  height: 400px;
+  padding: 70px 20px 0 20px;
 }
 
 .img {

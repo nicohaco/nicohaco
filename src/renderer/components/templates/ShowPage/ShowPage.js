@@ -13,25 +13,19 @@ class ShowPage extends React.Component {
     this.state = { bg: 'none' };
 
     this.currentPath = '';
-    this.currentImage = '';
   }
 
   changeBgColor = (url) => {
-    let v;
-
     if (Array.isArray(url) && url.length === 0) return;
 
-    if (Array.isArray(url)) v = new Vibrant(url[0]);
-    else if (url) v = new Vibrant(url);
+    const v = Array.isArray(url) ? (new Vibrant(url[0]) ): (new Vibrant(url));
 
     if (v) {
       v.getPalette((err, palette) => {
-        if (palette.LightVibrant) {
-          this.setState({ bg: palette.LightVibrant.getHex() });
-        }
-        else if (palette.Vibrant) {
-          this.setState({ bg: palette.Vibrant.getHex() });
-        }
+        if (!palette) return;
+
+        if (palette.LightVibrant) this.setState({ bg: palette.LightVibrant.getHex() });
+        else if (palette.Vibrant) this.setState({ bg: palette.Vibrant.getHex() });
         // console.log(palette.DarkMuted.getHex());
         // console.log(palette.DarkVibrant.getHex());
         // console.log(palette.LightMuted.getHex());
@@ -43,10 +37,9 @@ class ShowPage extends React.Component {
   }
 
   // for user page(not me)
-  componentWillReceiveProps(props) {
-    if (props.thumbnailUrl !== this.currentImage) {
-      this.changeBgColor(props.thumbnailUrl);
-      this.currentImage = props.thumbnailUrl;
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.thumbnailUrl !== this.props.thumbnailUrl) {
+      this.changeBgColor(nextProps.thumbnailUrl);
     }
   }
 
@@ -64,12 +57,6 @@ class ShowPage extends React.Component {
       thumbnailUrl
     } = this.props;
 
-    // can't put on componentWillReceiveProps
-    if (pathname !== this.currentPath) {
-      this.changeBgColor();
-      this.currentPath = pathname;
-    }
-
     return (
       <MainContainer hasMainBoxPadding={false}>
         <div>
@@ -77,28 +64,28 @@ class ShowPage extends React.Component {
             style={{ background: `linear-gradient(to bottom, ${this.state.bg}, #fff` }}
             className={styles.container}
           >
-            <div className={styles.img}>
-              {
-                Array.isArray(thumbnailUrl) ? (
-
-                  <Tile
-                    src={Array.isArray(thumbnailUrl) ?
-                      thumbnailUrl.map((src) => `${src}.M`) :
-                      []
-                    }
-                    size={180}
-                    isCircle
-                    className={styles.tile}
-                  />
-                ) : (
-                  <img
-                    src={thumbnailUrl}
-                    width="150px"
-                    height="150px"
-                  />
-                )
-              }
-            </div>
+            {
+              thumbnailUrl ? (
+                <div className={styles.img}>
+                  {
+                    Array.isArray(thumbnailUrl) ? (
+                      <Tile
+                        src={Array.isArray(thumbnailUrl) ? thumbnailUrl.map((src) => `${src}.M`) : []}
+                        size={180}
+                        isCircle
+                        className={styles.tile}
+                      />
+                    ) : (
+                      <img
+                        src={thumbnailUrl}
+                        width="150px"
+                        height="150px"
+                      />
+                    )
+                  }
+                </div>
+              ) : null
+            }
             <h1>{title}</h1>
             <div className={styles.info}>
               <div className={styles.left}>
@@ -127,9 +114,7 @@ class ShowPage extends React.Component {
               </div>
             </div>
           </div>
-          <div className={styles.main}>
-            {children}
-          </div>
+          <div className={styles.main}>{children}</div>
         </div>
       </MainContainer>
     );
