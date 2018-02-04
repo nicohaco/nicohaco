@@ -64,9 +64,10 @@ class ShowPage extends React.Component {
             style={{ background: `linear-gradient(to bottom, ${this.state.bg}, #fff` }}
             className={styles.container}
           >
+            <div className={styles.img}>
             {
               thumbnailUrl ? (
-                <div className={styles.img}>
+                <React.Fragment>
                   {
                     Array.isArray(thumbnailUrl) ? (
                       <Tile
@@ -83,9 +84,10 @@ class ShowPage extends React.Component {
                       />
                     )
                   }
-                </div>
+                </React.Fragment>
               ) : null
             }
+          </div>
             <h1>{title}</h1>
             <div className={styles.info}>
               <div className={styles.left}>
