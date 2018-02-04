@@ -1,6 +1,6 @@
 .container {
   height: 400px;
-  padding: 70px 20px 0 20px;
+  padding: 70px 20px 0;
 }
 
 .img {
@@ -17,11 +17,11 @@
   border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
-  padding: 0 0 15px 0;
+  padding: 0 0 15px;
 
   & > .left {
     & > .site {
-      font-size: 1.0rem;
+      font-size: 1rem;
       width: 100px;
     }
 

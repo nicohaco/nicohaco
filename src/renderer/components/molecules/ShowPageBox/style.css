@@ -1,18 +1,14 @@
-.container {
-
-}
-
 .title {
   border-bottom: 1px solid #ccc;
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: normal;
   margin: 0;
   padding-bottom: 5px;
 }
 
 .ul {
-  margin: 0;
   list-style: none;
+  margin: 0;
   padding: 0;
 }
 

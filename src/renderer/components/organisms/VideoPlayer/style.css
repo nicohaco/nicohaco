@@ -31,7 +31,9 @@
   right: 0;
   width: 480px;
 
+  /* stylelint-disable */
   & > webview {
     height: calc(100% - 30px) !important;
   }
+  /* stylelint-enable */
 }

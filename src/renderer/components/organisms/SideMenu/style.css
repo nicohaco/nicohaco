@@ -6,15 +6,15 @@
 .title {
   border-bottom: 1px solid #aaa;
   font-size: 1.1rem;
-  margin: 10px;
   letter-spacing: .1rem;
+  margin: 10px;
   padding: 10px 0;
 }
 
 .main {
   & > p {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: normal;
     margin: 0;
     padding: 5px 20px;
   }
@@ -25,8 +25,8 @@
 }
 
 .mylistItems {
-  padding: 0;
   list-style: none;
+  padding: 0;
 
   & > .mylistItem {
     cursor: pointer;
@@ -43,7 +43,7 @@
     align-items: center;
     display: flex;
     font-size: 1.1rem;
-    font-weight: 400;
+    font-weight: normal;
     margin: 0;
     padding: 5px 20px;
   }

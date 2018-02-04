@@ -20,15 +20,19 @@
 }
 
 .info {
-  margin: 10px 0 15px 0;
+  margin: 10px 0 15px;
 
   & .title {
+
+    /* stylelint-disable */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     display: -webkit-box;
+    /* stylelint-enable */
+
     margin: 0;
     overflow: hidden;
     text-align: left;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
   }
 
   & .infoDetail {
