@@ -1,0 +1,7 @@
+.title {
+  border-bottom: 1px solid #ccc;
+
+  & > h1 {
+    margin: 0;
+  }
+}

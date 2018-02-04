@@ -13,13 +13,16 @@ import type { SearchAction as Search } from '../types/actions/search';
 function *search(action: Search): Generator<Effect, void, *> {
   try {
     const nico = yield select(getNico);
-    let search = yield nico.video.search(action.params);
+    let result = yield nico.video.search(action.params);
 
-    search = search.map((item) => formatApiSchema(item));
+    result = result.map((item) => formatApiSchema(item));
 
     yield put({
       type   : 'SEARCH_SUCCESS',
-      payload: search
+      payload: {
+        result,
+        searchWord: action.params.q
+      }
     });
   } catch (e) {
     yield put({

@@ -9,6 +9,11 @@ import type { Error } from '../types/actions/error';
  * route Error
  */
 function *routeError(action: Error): Generator<Effect, void, *> {
+  if (!(action.error.code || action.error.error)) {
+    console.error(action);
+    return;
+  }
+
   const code = action.error.code || action.error.error.code;
 
   switch (code) {

@@ -5,14 +5,16 @@ import type { Search as Action } from '../types/actions/search';
 
 const initialState = {
   result : [],
-  history: []
+  history: [],
+  searchWord: ''
 };
 
 const reducer = (state: State = initialState, action: Action) => {
   switch (action.type) {
     case 'SEARCH_SUCCESS':
       return Object.assign({}, state, {
-        result: action.payload
+        result: action.payload.result,
+        searchWord: action.payload.searchWord
       });
     case 'SHOW_SEARCH_HISTORY_SUCCESS':
       return Object.assign({}, state, {
