@@ -1,12 +1,11 @@
 {
   "presets": [
     "stage-1",
-    "react"
+    "react",
+    "flow"
   ],
   "plugins": [
-    "syntax-flow",
-    "react-hot-loader/babel",
-    "transform-flow-strip-types"
+    "react-hot-loader/babel"
   ],
   "env": {
     "test": {
