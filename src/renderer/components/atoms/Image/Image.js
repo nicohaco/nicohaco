@@ -11,8 +11,10 @@ type Props = {
 
 const Image = (props: Props) => {
   let el: {
-    src: string;
+    src: '';
   };
+
+  let cnt = 0;
 
   return (
     <img
@@ -20,7 +22,14 @@ const Image = (props: Props) => {
       ref={(img) => {
         if (img) el = img;
       }}
-      onError={() => el.src = el.src.split('.M')[0]}
+      onError={() => {
+        if (cnt === 1) {
+          el.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+        }
+        cnt++;
+
+        el.src = el.src.split('.M')[0];
+      }}
       className={cx(styles.container, props.className)}
     />
   );

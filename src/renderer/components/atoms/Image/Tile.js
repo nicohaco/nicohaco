@@ -17,8 +17,10 @@ type Props = {
 
 const Img = (props: ImgProps) => {
   let el: {
-    src: string;
+    src: '';
   };
+
+  let cnt = 0;
 
   return (
     <img
@@ -28,7 +30,14 @@ const Img = (props: ImgProps) => {
       }}
       width="100%"
       height="100%"
-      onError={() => el.src = el.src.split('.M')[0]}
+      onError={() => {
+        if (cnt === 1) {
+          el.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+        }
+        cnt++;
+
+        el.src = el.src.split('.M')[0];
+      }}
     />
   );
 };
