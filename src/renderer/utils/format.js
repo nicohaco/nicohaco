@@ -21,9 +21,9 @@ export const formatDate = (unixTime: number): string => {
 
   const splitedDate = ((new Date(unixTime)).toString().split(' '));
 
-  const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
-    'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-
+  const month = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
   const m = (month.findIndex((item) => item === splitedDate[1]) + 1).toString().padStart(2, '0');
   const time = splitedDate[4].split(':').slice(0, 2).join(':');
 

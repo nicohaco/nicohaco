@@ -192,6 +192,7 @@ function *fetchMylist(action: FetchMylist): Generator<Effect, void, *> {
           itemId    : item.item_id,
           groupId   : action.id,
           postedDate: formatDate(item.item_data.first_retrieve * 1000)
+
         }) : data;
       }
       return data;
