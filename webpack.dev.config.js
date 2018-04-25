@@ -1,11 +1,8 @@
 'use strict';
 
-const webpack                 = require('webpack');
-const Dashboard               = require('webpack-dashboard');
-const DashboardPlugin         = require('webpack-dashboard/plugin');
-const FlowStatusWebpackPlugin = require('flow-status-webpack-plugin');
+const webpack = require('webpack');
 
-const dashboard = new Dashboard();
+// const FlowStatusWebpackPlugin = require('flow-status-webpack-plugin');
 
 require('dotenv').config();
 
@@ -37,7 +34,6 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.PASSWORD': JSON.stringify(process.env.PASSWORD)
     }),
-    new DashboardPlugin(dashboard.setData),
     new webpack.HotModuleReplacementPlugin(),
 
     // new FlowStatusWebpackPlugin({
